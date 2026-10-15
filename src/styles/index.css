@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
 @theme {
+
+  /* Colors */
   /* Primary */
   --color-primary-100-alpha-60: #F8F8F499;
   --color-primary-100: #F8F8F4;
@@ -62,4 +65,133 @@
   /* Shades */
   --color-shades-100: #FFFFFF;
   --color-shades-200: #000000;
+
+  /* Background color */
+  --color-background-light: #E8E7E7;
+  --color-background-dark: #2A2627;
+
+  /* Fonts  */
+  --font-sans : "Outfit", sans-serif;
+
+  --text-12px: 12px;
+  --text-12px--line-height: 1.6;
+
+  --text-14px: 14px;
+  --text-14px--line-height: 1.5;
+
+  --text-16px: 16px;
+  --text-16px--line-height: 1.5;
+
+  --text-20px: 20px;
+  --text-20px--line-height: 1.4;
+
+  --text-24px: 24px;
+  --text-24px--line-height: 1.35;
+
+  --text-28px: 28px;
+  --text-28px--line-height: 1.3;
+
+  --text-32px: 32px;
+  --text-32px--line-height: 1.25;
+
+  --text-40px: 40px;
+  --text-40px--line-height: 1.2;
+
+  --text-48px: 48px;
+  --text-48px--line-height: 1.15;
+
+  --text-56px: 56px;
+  --text-56px--line-height: 1.1;
+
+
+  /* Shadows */
+  /* Black Shadows */
+    --shadow-100: 0 1px 2px 0 rgb(35 31 32 / 5%);
+
+  --shadow-200:
+    0 1px 2px -1px rgb(35 31 32 / 10%),
+    0 1px 3px 0 rgb(35 31 32 / 10%);
+
+  --shadow-200-more-spread: 0 2px 6px 0 rgb(35 31 32 / 10%);
+
+  --shadow-300:
+    0 2px 4px -2px rgb(35 31 32 / 10%),
+    0 4px 6px -1px rgb(35 31 32 / 10%);
+
+  --shadow-400:
+    0 4px 6px -4px rgb(35 31 32 / 10%),
+    0 10px 15px -3px rgb(35 32 31 / 10%);
+
+  --shadow-500:
+    0 8px 10px -6px rgb(35 31 32 / 10%),
+    0 20px 25px -5px rgb(35 31 32 / 10%);
+
+  --shadow-600: 0 25px 50px -12px rgb(35 31 32 / 25%);
+
+
+  /* Yellow Shadows */
+  --shadow-100-yellow: 0 1px 2px 0 rgb(242 180 28 / 5%);
+
+  --shadow-200-yellow:
+    0 1px 2px -1px rgb(242 180 28 / 10%),
+    0 1px 3px 0 rgb(242 180 28 / 10%);
+
+  --shadow-300-yellow: 0 2px 6px 0 rgb(242 180 28 / 10%);
+
+  --shadow-400-yellow:
+    0 2px 4px -2px rgb(242 180 28 / 10%),
+    0 4px 6px -1px rgb(242 180 28 / 10%);
+
+  --shadow-500-yellow:
+    0 4px 6px -4px rgb(242 180 28 / 10%),
+    0 10px 15px -3px rgb(242 180 28 / 10%);
+
+  --shadow-600-yellow:
+    0 8px 10px -6px rgb(242 180 28 / 10%),
+    0 20px 25px -5px rgb(242 180 28 / 10%);
+
+  --shadow-700-yellow: 0 25px 50px -12px rgb(242 180 28 / 25%);
+
+  /* Other Shadows */
+  --shadow-100-BoxShadowM : 0px 0px 3px rgb(242 180 28 / 80%);
+
+  --shadow-200-BoxShadowM : 0px 2px 5px rgb(207 155 25 / 40%);
+
+  --shadow-300-BoxShadowM : 0px 0px 7.5px rgb(207 155 25 / 80%);
+
+  --shadow-300-destructure-BoxShadowM : 0px 0px 7.5px rgb(231 95 95 / 80%);
+
+  --shadow-300-success-BoxShadowM : 0px 0px 7.5px rgb(85 194 113 / 80%);
+
+  --shadow-400-BoxShadowM : 0px 0px 20px rgb(242 180 28 / 80%);
 }
+
+
+
+@layer utilities {
+  .solar-light {
+    --solar-color : var(--color-primary-100);
+    --solar-secondary-color : var(--color-accent-100);
+    --solar-secondary-opacity : 1;
+  }
+  .solar-dark {
+    --solar-color : var(--color-secondary-500);
+    --solar-secondary-color : var(--color-accent-100);
+    --solar-secondary-opacity : 1;
+  }
+}
+
+
+/* With this we will have darkmode whenever we add the dark class to html tag */
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background-light);
+}
+
+.dark body {
+  background-color: var(--color-background-dark);
+}
+
