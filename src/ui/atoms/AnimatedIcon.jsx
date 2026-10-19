@@ -1,0 +1,81 @@
+import { AltArrowRightIcon as AltArrowRightIconBold } from "@solar-icons/react/bold/alt-arrow-right";
+import { AltArrowDownIcon as AltArrowDownIconBold } from "@solar-icons/react/bold/alt-arrow-down";
+import { AltArrowUpIcon as AltArrowUpIconBold } from "@solar-icons/react/bold/alt-arrow-up";
+import { AltArrowLeftIcon as AltArrowLeftIconBold } from "@solar-icons/react/bold/alt-arrow-left";
+
+import { AltArrowRightIcon as AltArrowRightIconLinear } from "@solar-icons/react/linear/alt-arrow-right";
+import { AltArrowDownIcon as AltArrowDownIconLinear } from "@solar-icons/react/linear/alt-arrow-down";
+import { AltArrowUpIcon as AltArrowUpIconLinear } from "@solar-icons/react/linear/alt-arrow-up";
+import { AltArrowLeftIcon as AltArrowLeftIconLinear } from "@solar-icons/react/linear/alt-arrow-left";
+
+//Objects for diffrent variations
+const tokens = {
+  SM: "size-4",
+  MD: "size-5",
+  LG: "size-6",
+};
+
+const types = {
+  primary: "text-primary-100",
+  secondary: "text-secondary-500",
+  primary_200: "text-primary-200",
+  secondary_400: "text-secondary-400",
+};
+
+const icons = {
+  right: {
+    bold: AltArrowRightIconBold,
+    linear: AltArrowRightIconLinear,
+  },
+  down: {
+    bold: AltArrowDownIconBold,
+    linear: AltArrowDownIconLinear,
+  },
+  up: {
+    bold: AltArrowUpIconBold,
+    linear: AltArrowUpIconLinear,
+  },
+  left: {
+    bold: AltArrowLeftIconBold,
+    linear: AltArrowLeftIconLinear,
+  },
+};
+
+function AnimatedIcon({
+  type = "primary",
+  token = "MD",
+  position = "down",
+  className = "",
+}) {
+  //Error boundry
+  const selectedToken = tokens[token] ?? tokens.MD;
+  const selectedType = types[type] ?? types.primary;
+  const selectedPosition = icons[position] ? position : "down";
+
+  const BoldIcon = icons[selectedPosition].bold;
+  const LinearIcon = icons[selectedPosition].linear;
+
+  //Base style
+  const base = `absolute ${selectedType} inset-0 transition-opacity duration-150`;
+
+  //Component itself
+  return (
+    <span
+      className={`group relative inline-flex shrink-0 ${selectedToken} ${className}`}
+    >
+      <LinearIcon
+        className={`${base} opacity-100 group-hover:opacity-0`}
+        size="100%"
+        aria-hidden="true"
+      />
+
+      <BoldIcon
+        className={`${base} opacity-0 group-hover:opacity-100`}
+        size="100%"
+        aria-hidden="true"
+      />
+    </span>
+  );
+}
+
+export default AnimatedIcon;

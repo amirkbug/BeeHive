@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
+@import "react-circular-progressbar/dist/styles.css";
 @theme {
 
   /* Colors */
@@ -164,6 +165,23 @@
   --shadow-300-success-BoxShadowM : 0px 0px 7.5px rgb(85 194 113 / 80%);
 
   --shadow-400-BoxShadowM : 0px 0px 20px rgb(242 180 28 / 80%);
+
+
+  /* Other Drop Shadows */
+--drop-shadow-100-BoxShadowM: 0px 0px 3px rgb(242 180 28 / 80%);
+
+--drop-shadow-200-BoxShadowM: 0px 2px 5px rgb(207 155 25 / 40%);
+
+--drop-shadow-300-BoxShadowM: 0px 0px 7.5px rgb(207 155 25 / 80%);
+
+--drop-shadow-300-destructure-BoxShadowM: 0px 0px 7.5px rgb(231 95 95 / 80%);
+
+--drop-shadow-300-success-BoxShadowM: 0px 0px 7.5px rgb(85 194 113 / 80%);
+
+--drop-shadow-400-BoxShadowM: 0px 0px 20px rgb(242 180 28 / 80%);
+
+  /*Animation*/
+  --default-transition-timing-function: ease-out;
 }
 
 
@@ -195,3 +213,7 @@ body {
   background-color: var(--color-background-dark);
 }
 
+
+.CircularProgressbar-text {
+  font-weight: 700;
+}
