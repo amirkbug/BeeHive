@@ -2,15 +2,15 @@ import { DollarIcon } from "@solar-icons/react/linear/dollar";
 
 //Objects for diffrent variations
 const tokens = {
-  SM: {
+  sm: {
     containerToken: "size-6",
     iconToken: "size-4",
   },
-  MD: {
+  md: {
     containerToken: "size-8",
     iconToken: "size-4.5",
   },
-  LG: {
+  lg: {
     containerToken: "size-10",
     iconToken: "size-5",
   },
@@ -25,10 +25,10 @@ const types = {
 //Base style
 const base = "flex items-center justify-center rounded-md";
 
-function KpiIcons({ type = "warning", token = "MD", Icon = DollarIcon }) {
+function KpiIcons({ type = "warning", token = "md", Icon = DollarIcon }) {
   //Error boundry
   const selectedType = types[type] ?? types.destructive;
-  const selectedToken = tokens[token] ?? tokens.MD;
+  const selectedToken = tokens[token] ?? tokens.md;
 
   //Component itself
   return (

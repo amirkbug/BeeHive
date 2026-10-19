@@ -20,17 +20,17 @@ const types = {
   },
 };
 const tokens = {
-  SM: {
+  sm: {
     conatainerSize: "h-5 w-9",
     thumbSize: "size-4",
     translateAmount: "checked:translate-x-4",
   },
-  MD: {
+  md: {
     conatainerSize: "h-6 w-11",
     thumbSize: "size-5",
     translateAmount: "checked:translate-x-5",
   },
-  LG: {
+  lg: {
     conatainerSize: "h-7 w-13",
     thumbSize: "size-6",
     translateAmount: "checked:translate-x-6",
@@ -55,12 +55,12 @@ const containerBase =
 const inputBase =
   " absolute cursor-pointer appearance-none rounded-full transition-all ";
 
-function CheckBoxes({ type = "darkMode", token = "SM" }) {
+function CheckBoxes({ type = "darkMode", token = "sm" }) {
   //Error boundry
   const isDarkMode = type === "darkMode";
   const selectedToken = isDarkMode
     ? tokens.darkMode
-    : (tokens[token] ?? tokens.SM);
+    : (tokens[token] ?? tokens.sm);
 
   const selectedType = types[type] ?? types.primary;
 

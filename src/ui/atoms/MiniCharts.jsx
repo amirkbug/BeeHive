@@ -18,7 +18,7 @@ const types = {
 };
 
 const tokens = {
-  SM: {
+  sm: {
     size: { width: "100%", height: 32 },
     innerRadius: 4,
     tooltip: {
@@ -26,7 +26,7 @@ const tokens = {
       fontSize: "8px",
     },
   },
-  MD: {
+  md: {
     size: { width: "100%", height: 40 },
     innerRadius: 6,
     tooltip: {
@@ -34,7 +34,7 @@ const tokens = {
       fontSize: "10px",
     },
   },
-  LG: {
+  lg: {
     size: { width: "100%", height: 56 },
     innerRadius: 10,
     tooltip: {
@@ -44,7 +44,7 @@ const tokens = {
   },
 };
 
-function MiniCharts({ token = "MD", type = "warning" }) {
+function MiniCharts({ token = "md", type = "warning" }) {
   //Error boundry
   const selectedToken = tokens[token] ?? tokens.MD;
   const chartColor = types[type] ?? types.warning;

@@ -12,27 +12,27 @@ const base =
 // Logo sizes
 const sizes = {
   primary: {
-    SM: "w-5.25 h-6",
-    MD: "w-6 h-7",
-    LG: "w-7.5 h-8.75",
-    XL: "w-12.25 h-14.25",
-    XLL: "w-19.25 h-22.5",
+    sm: "w-5.25 h-6",
+    md: "w-6 h-7",
+    lg: "w-7.5 h-8.75",
+    xl: "w-12.25 h-14.25",
+    xll: "w-19.25 h-22.5",
   },
 
   secondary: {
-    SM: "w-6.5 h-5.25",
-    MD: "w-8.5 h-7",
-    LG: "w-11 h-9",
-    XL: "w-13 h-10",
-    XLL: "w-19.5 h-16",
+    sm: "w-6.5 h-5.25",
+    md: "w-8.5 h-7",
+    lg: "w-11 h-9",
+    xl: "w-13 h-10",
+    xll: "w-19.5 h-16",
   },
 
   primaryWithoutPolygone: {
-    SM: "w-6.5 h-6",
-    MD: "w-7.5 h-7",
-    LG: "w-9.5 h-8.75",
-    XL: "w-15.5 h-14.25",
-    XLL: "w-24.5 h-22.5",
+    sm: "w-6.5 h-6",
+    md: "w-7.5 h-7",
+    lg: "w-9.5 h-8.75",
+    xl: "w-15.5 h-14.25",
+    xll: "w-24.5 h-22.5",
   },
 };
 
@@ -47,7 +47,7 @@ const types = {
   secondary: "secondaryColor",
 };
 
-function Logo({ token = "MD", type = "primary", logoType = "primary" }) {
+function Logo({ token = "md", type = "primary", logoType = "primary" }) {
   const isWithoutPolygone = logoType === "primaryWithoutPolygone";
 
   const fileName = isWithoutPolygone

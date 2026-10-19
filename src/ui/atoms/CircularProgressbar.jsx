@@ -5,17 +5,17 @@ import {
 
 //Objects for diffrent variations
 const tokens = {
-  SM: {
+  sm: {
     progressBarSize: { width: 32, height: 32 },
     strokeWidth: 7,
     textSize: "20px",
   },
-  MD: {
+  md: {
     progressBarSize: { width: 40, height: 40 },
     strokeWidth: 8,
     textSize: "22px",
   },
-  LG: {
+  lg: {
     progressBarSize: { width: 56, height: 56 },
     strokeWidth: 9,
     textSize: "22px",
@@ -40,10 +40,10 @@ const types = {
   },
 };
 
-function CircularProgressbar({ token = "LG", type = "warning", value = 20.5 }) {
+function CircularProgressbar({ token = "lg", type = "warning", value = 20.5 }) {
   //Error boundry
   const selectedType = types[type] ?? types.warning;
-  const selectedToken = tokens[token] ?? tokens.MD;
+  const selectedToken = tokens[token] ?? tokens.lg;
 
   //Component itself
   return (

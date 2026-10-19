@@ -2,10 +2,10 @@ import HorizintalJustNone from "../../assets/userProfilePlaceholder/HorizintalJu
 
 //Object for diffrent variations
 const tokens = {
-  SM: "w-10 h-10",
-  MD: "w-12 h-12",
-  LG: "w-14 h-14",
-  XL: "w-19.25 h-19.25",
+  sm: "w-10 h-10",
+  md: "w-12 h-12",
+  lg: "w-14 h-14",
+  xl: "w-19.25 h-19.25",
 };
 
 //Base style
@@ -13,7 +13,7 @@ const base =
   "cursor-pointer items-center rounded-full transition-all hover:shadow-300-BoxShadowM";
 
 //Component itself
-function UserProfile({ token = "MD" }) {
+function UserProfile({ token = "md" }) {
   return (
     <img
       className={`${tokens[token]} ${base} object-cover`}

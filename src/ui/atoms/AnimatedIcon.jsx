@@ -10,9 +10,9 @@ import { AltArrowLeftIcon as AltArrowLeftIconLinear } from "@solar-icons/react/l
 
 //Objects for diffrent variations
 const tokens = {
-  SM: "size-4",
-  MD: "size-5",
-  LG: "size-6",
+  sm: "size-4",
+  md: "size-5",
+  lg: "size-6",
 };
 
 const types = {
@@ -43,12 +43,12 @@ const icons = {
 
 function AnimatedIcon({
   type = "primary",
-  token = "MD",
+  token = "md",
   position = "down",
   className = "",
 }) {
   //Error boundry
-  const selectedToken = tokens[token] ?? tokens.MD;
+  const selectedToken = tokens[token] ?? tokens.md;
   const selectedType = types[type] ?? types.primary;
   const selectedPosition = icons[position] ? position : "down";
 

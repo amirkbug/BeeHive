@@ -2,9 +2,9 @@ import { HomeIcon } from "@solar-icons/react/linear/home";
 
 //Objects for diffrent variations
 const tokens = {
-  SM: "h-10 w-10",
-  MD: "h-12 w-12",
-  LG: "h-14 w-14",
+  sm: "h-10 w-10",
+  md: "h-12 w-12",
+  lg: "h-14 w-14",
 };
 
 const types = {
@@ -24,12 +24,12 @@ const base =
 
 function FloatingButtons({
   className = "",
-  token = "MD",
+  token = "md",
   type = "primary",
   Icon = HomeIcon,
 }) {
   //Error boundry
-  const size = tokens[token] ?? tokens.MD;
+  const size = tokens[token] ?? tokens.md;
   const variant = types[type] ?? types.primary;
 
   //Component itself
