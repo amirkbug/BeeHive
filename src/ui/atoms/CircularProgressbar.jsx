@@ -28,7 +28,7 @@ const types = {
     pathColor: "var(--color-warning-400)",
     trailColor: "var(--color-warning-200)",
   },
-  destructure: {
+  destructive: {
     textColor: "var(--color-destructive-500)",
     pathColor: "var(--color-destructive-400)",
     trailColor: "var(--color-destructive-200)",
