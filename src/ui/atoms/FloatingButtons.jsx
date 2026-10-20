@@ -20,7 +20,7 @@ const types = {
 
 //Base style
 const base =
-  "group flex items-center justify-center gap-2.5 rounded-full cursor-pointer transition-all hover:shadow-300-BoxShadowM active:ring-1 active:ring-accent-100";
+  "group flex items-center inset-ring-0 justify-center gap-2.5 rounded-full cursor-pointer transition-all hover:shadow-300-BoxShadowM active:inset-ring-1 active:inset-ring-accent-100";
 
 function FloatingButtons({
   className = "",
@@ -36,9 +36,20 @@ function FloatingButtons({
   return (
     <button
       type="button"
-      className={`${base} ${size} ${variant.button} ${className}`}
+      className={`
+        ${base}
+        ${size}
+        ${variant.button}
+        ${className}
+      `}
     >
-      <Icon size={20} className={`transition-colors ${variant.icon}`} />
+      <Icon
+        size={20}
+        className={`
+          transition-colors
+          ${variant.icon}
+        `}
+      />
     </button>
   );
 }

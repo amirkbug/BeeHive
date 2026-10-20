@@ -61,16 +61,31 @@ function AnimatedIcon({
   //Component itself
   return (
     <span
-      className={`group relative inline-flex shrink-0 ${selectedToken} ${className}`}
+      className={`
+        relative
+        inline-flex
+        shrink-0
+        group
+        ${selectedToken}
+        ${className}
+      `}
     >
       <LinearIcon
-        className={`${base} opacity-100 group-hover:opacity-0`}
+        className={`
+          opacity-100
+          group-hover:opacity-0
+          ${base}
+        `}
         size="100%"
         aria-hidden="true"
       />
 
       <BoldIcon
-        className={`${base} opacity-0 group-hover:opacity-100`}
+        className={`
+          opacity-0
+          group-hover:opacity-100
+          ${base}
+        `}
         size="100%"
         aria-hidden="true"
       />

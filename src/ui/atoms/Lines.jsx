@@ -4,7 +4,13 @@ const orientationStyles = {
 };
 function Lines({ orientation = "vertical", color = "bg-primary-300" }) {
   return (
-    <hr className={`border-0 ${color} ${orientationStyles[orientation]}`} />
+    <hr
+      className={`
+        border-0
+        ${color}
+        ${orientationStyles[orientation]}
+      `}
+    />
   );
 }
 

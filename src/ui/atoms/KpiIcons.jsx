@@ -32,7 +32,13 @@ function KpiIcons({ type = "warning", token = "md", Icon = DollarIcon }) {
 
   //Component itself
   return (
-    <span className={`${selectedToken.containerToken} ${selectedType} ${base}`}>
+    <span
+      className={`
+        ${selectedToken.containerToken}
+        ${selectedType}
+        ${base}
+      `}
+    >
       <Icon className={selectedToken.iconToken} />
     </span>
   );

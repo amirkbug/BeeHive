@@ -57,7 +57,16 @@ function Logo({ token = "md", type = "primary", logoType = "primary" }) {
   const imgSrc = logos[`../../assets/icons/${fileName}`];
   const size = sizes[logoType][token];
 
-  return <img src={imgSrc} alt="BeeHive logo" className={`${size} ${base}`} />;
+  return (
+    <img
+      src={imgSrc}
+      alt="BeeHive logo"
+      className={`
+        ${size}
+        ${base}
+      `}
+    />
+  );
 }
 
 export default Logo;

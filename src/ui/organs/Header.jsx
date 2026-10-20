@@ -1,40 +1,46 @@
-import UserProfile from "../atoms/UserProfile";
+import Buttons from "../molecules/Buttons";
+import { MagnifierLinearIcon } from "@solar-icons/react";
 
 function Header() {
-  const tokens = ["sm", "md", "lg", "xl"];
-
   return (
-    <header className="flex flex-col gap-8 p-8">
-      <h1 className="text-2xl font-bold">UserProfile Playground</h1>
+    <header
+      className="
+        flex flex-col
+        gap-8
+        p-8
+      "
+    >
+      <h1
+        className="
+          text-2xl font-bold
+        "
+      >
+        UserProfile Playground
+      </h1>
+      <Buttons token="sm" type="primary">
+        Small
+      </Buttons>
 
-      <section className="flex flex-col gap-4">
-        <h2 className="font-semibold">Profile Sizes</h2>
+      <Buttons token="md" type="primary_destructive">
+        Delete
+      </Buttons>
 
-        <div className="border-primary-200 flex flex-wrap items-end gap-8 rounded-lg border p-6">
-          {tokens.map((token) => (
-            <div key={token} className="flex flex-col items-center gap-3">
-              <UserProfile token={token} />
+      <Buttons token="lg" type="secondary_success">
+        Save changes
+      </Buttons>
 
-              <span className="text-secondary-400 text-sm">{token}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <Buttons token="md" type="outline_secondary">
+        Cancel
+      </Buttons>
 
-      <section className="flex flex-col gap-4">
-        <h2 className="font-semibold">Profile in Context</h2>
+      <Buttons token="md" type="ghost_primary">
+        Learn more
+      </Buttons>
 
-        <div className="border-primary-200 flex items-center gap-3 rounded-lg border p-4">
-          <UserProfile token="md" />
-
-          <div className="flex flex-col">
-            <span className="font-medium">User Name</span>
-            <span className="text-secondary-400 text-sm">
-              Dashboard Account
-            </span>
-          </div>
-        </div>
-      </section>
+      <Buttons token="md" type="primary">
+        <MagnifierLinearIcon size={20} />
+        Search
+      </Buttons>
     </header>
   );
 }

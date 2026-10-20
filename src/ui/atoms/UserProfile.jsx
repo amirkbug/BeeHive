@@ -16,7 +16,11 @@ const base =
 function UserProfile({ token = "md" }) {
   return (
     <img
-      className={`${tokens[token]} ${base} object-cover`}
+      className={`
+        object-cover
+        ${tokens[token]}
+        ${base}
+      `}
       src={HorizintalJustNone}
       alt="User profile"
     />

@@ -28,7 +28,7 @@ export default defineConfig([
 
     rules: {
       // Variables
-      "no-unused-vars": ["warn"],
+      "no-unused-vars": "warn",
 
       // JavaScript Best Practices
       eqeqeq: ["error", "always"],

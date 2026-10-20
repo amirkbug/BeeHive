@@ -67,25 +67,38 @@ function CheckBoxes({ type = "darkMode", token = "sm" }) {
   //Component itself
   return (
     <div
-      className={`${containerBase} ${selectedType.containerClasses} ${selectedToken.conatainerSize}`}
+      className={`
+        ${containerBase}
+        ${selectedType.containerClasses}
+        ${selectedToken.conatainerSize}
+      `}
     >
       {isDarkMode && (
         <Sun2Icon
           color={selectedToken.iconProperties.iconColor.iconColorDark}
           size={selectedToken.iconProperties.iconSize}
-          className="pl-1"
+          className="
+            pl-1
+          "
         />
       )}
 
       <input
         type="checkbox"
-        className={`${inputBase} ${selectedType.inputClasses} ${selectedToken.thumbSize} ${selectedToken.translateAmount}`}
+        className={`
+          ${inputBase}
+          ${selectedType.inputClasses}
+          ${selectedToken.thumbSize}
+          ${selectedToken.translateAmount}
+        `}
       />
       {isDarkMode && (
         <MoonIcon
           color={selectedToken.iconProperties.iconColor.iconColorLight}
           size={selectedToken.iconProperties.iconSize}
-          className="pr-1"
+          className="
+            pr-1
+          "
         />
       )}
     </div>
