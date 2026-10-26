@@ -101,7 +101,9 @@ const types = {
   `,
 };
 
+//Base classes
 const base = `
+  group
   flex flex-row justify-center items-center
   w-fit h-fit
   gap-1
@@ -113,9 +115,11 @@ const base = `
   `;
 
 function Buttons({ token = "md", type = "primary", children }) {
+  //Error boundry
   const selectedToekn = tokens[token] ?? tokens.md;
   const selectedType = types[type] ?? types.primary;
 
+  //Component itself
   return (
     <button
       className={`

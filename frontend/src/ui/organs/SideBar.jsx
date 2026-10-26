@@ -11,11 +11,36 @@ import UserProfile from "../atoms/UserProfile";
 
 function SideBar() {
   return (
-    <aside className="flex h-full max-w-24 flex-col items-center justify-center gap-5 px-2 pt-12 pb-4">
-      <Link to="/app/aboutus" className="absolute top-5">
+    <aside
+      className="
+        flex flex-col
+        items-center justify-center
+        h-full max-w-24
+        gap-5
+        px-2 pt-12
+        pb-4
+      "
+    >
+      <Link
+        to="/app/aboutus"
+        className="
+          absolute
+          top-5
+        "
+      >
         <Logo logoType="primaryWithoutPolygone" token="xll" />
       </Link>
-      <section className="bg-primary-100 flex h-full flex-col items-center justify-start gap-2 rounded-lg px-2 py-10">
+      <section
+        className="
+          flex flex-col
+          items-center justify-start
+          h-full
+          gap-2
+          px-2 py-10
+          rounded-lg
+          bg-primary-100
+        "
+      >
         <Logo logoType="secondary" type="primary" token="xl" />
         <Lines orientation="vertical" />
         <UserProfile token="lg" />
@@ -29,7 +54,13 @@ function SideBar() {
           <FloatingButtons type="primary" token="sm" Icon={DatabaseIcon} />
         </Link>
       </section>
-      <section className="flex items-center justify-center gap-4">
+      <section
+        className="
+          flex
+          items-center justify-center
+          gap-4
+        "
+      >
         <Link to="/app/settings">
           <FloatingButtons type="primary" token="sm" Icon={SettingsIcon} />
         </Link>

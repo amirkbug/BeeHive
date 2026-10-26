@@ -27,6 +27,7 @@ function FloatingButtons({
   token = "md",
   type = "primary",
   Icon = HomeIcon,
+  onClick,
 }) {
   //Error boundry
   const size = tokens[token] ?? tokens.md;
@@ -36,6 +37,7 @@ function FloatingButtons({
   return (
     <button
       type="button"
+      onClick={onClick}
       className={`
         ${base}
         ${size}

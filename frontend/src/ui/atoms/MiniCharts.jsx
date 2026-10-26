@@ -46,7 +46,7 @@ const tokens = {
 
 function MiniCharts({ token = "md", type = "warning" }) {
   //Error boundry
-  const selectedToken = tokens[token] ?? tokens.MD;
+  const selectedToken = tokens[token] ?? tokens.md;
   const chartColor = types[type] ?? types.warning;
 
   //Component itself

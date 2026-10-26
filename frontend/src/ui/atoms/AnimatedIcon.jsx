@@ -16,10 +16,18 @@ const tokens = {
 };
 
 const types = {
-  primary: "text-primary-100",
-  secondary: "text-secondary-500",
-  primary_200: "text-primary-200",
-  secondary_400: "text-secondary-400",
+  primary: {
+    iconClasses: "text-primary-100",
+  },
+  secondary: {
+    iconClasses: "text-secondary-500",
+  },
+  primary_200: {
+    iconClasses: "text-primary-200",
+  },
+  secondary_400: {
+    iconClasses: "text-secondary-400",
+  },
 };
 
 const icons = {
@@ -46,6 +54,7 @@ function AnimatedIcon({
   token = "md",
   position = "down",
   className = "",
+  isBackgroundChange = false,
 }) {
   //Error boundry
   const selectedToken = tokens[token] ?? tokens.md;
@@ -56,7 +65,7 @@ function AnimatedIcon({
   const LinearIcon = icons[selectedPosition].linear;
 
   //Base style
-  const base = `absolute ${selectedType} inset-0 transition-opacity duration-150`;
+  const base = `absolute group-hover:opacity-70 ${selectedType.iconClasses} inset-0 transition-opacity duration-150`;
 
   //Component itself
   return (
@@ -65,7 +74,6 @@ function AnimatedIcon({
         relative
         inline-flex
         shrink-0
-        group
         ${selectedToken}
         ${className}
       `}
@@ -85,6 +93,7 @@ function AnimatedIcon({
           opacity-0
           group-hover:opacity-100
           ${base}
+          ${isBackgroundChange ? `${selectedType.conditionalClasses}` : ""}
         `}
         size="100%"
         aria-hidden="true"
