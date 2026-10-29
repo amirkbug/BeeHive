@@ -70,7 +70,7 @@ const base = {
 };
 
 //Component itself
-function Inputs({
+function Input({
   type = "secondary",
   token = "md",
   classNameMainContainer = "",
@@ -100,7 +100,13 @@ function Inputs({
           ${base.iconsDivClasses}
         `}
       >
-        {LeftIcon && <LeftIcon size={tokens[token].iconSize} />}
+        {LeftIcon && (
+          <LeftIcon
+            secondaryOpacity={1}
+            secondaryColor="var(--color-accent-100)"
+            size={tokens[token].iconSize}
+          />
+        )}
         <input
           id={inputID}
           type="text"
@@ -127,11 +133,16 @@ function Inputs({
         </p>
         {RightIcon &&
           RightIcon.map((Icon, i) => (
-            <Icon key={i} size={selectedToken.iconSize} />
+            <Icon
+              secondaryOpacity={1}
+              secondaryColor="var(--color-accent-100)"
+              key={i}
+              size={selectedToken.iconSize}
+            />
           ))}
       </div>
     </div>
   );
 }
 
-export default Inputs;
+export default Input;

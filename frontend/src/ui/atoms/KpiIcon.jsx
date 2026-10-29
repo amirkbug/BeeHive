@@ -25,7 +25,7 @@ const types = {
 //Base style
 const base = "flex items-center justify-center rounded-md";
 
-function KpiIcons({ type = "warning", token = "md", Icon = DollarIcon }) {
+function KpiIcon({ type = "warning", token = "md", Icon = DollarIcon }) {
   //Error boundry
   const selectedType = types[type] ?? types.destructive;
   const selectedToken = tokens[token] ?? tokens.md;
@@ -44,4 +44,4 @@ function KpiIcons({ type = "warning", token = "md", Icon = DollarIcon }) {
   );
 }
 
-export default KpiIcons;
+export default KpiIcon;

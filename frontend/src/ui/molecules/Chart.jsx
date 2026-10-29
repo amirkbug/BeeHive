@@ -118,7 +118,7 @@ const articleBase = `
   hover:shadow-400-BoxShadowM
 `;
 
-function Charts({ chartType = "pie", token = "sm", type = "secondary" }) {
+function Chart({ chartType = "pie", token = "sm", type = "secondary" }) {
   // Error boundary / fallback values
   const selectedType = types[type] ?? types.primary;
   const selectedToken = tokens[token] ?? tokens.md;
@@ -355,4 +355,4 @@ function Charts({ chartType = "pie", token = "sm", type = "secondary" }) {
   );
 }
 
-export default Charts;
+export default Chart;

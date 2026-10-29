@@ -10,19 +10,25 @@ const tokens = {
 const types = {
   secondary: {
     button: "bg-primary-100 active:bg-primary-200",
-    icon: "text-secondary-500 group-active:text-secondary-300",
+    icon: "text-secondary-500 group-active:text-secondary-300 group-[.active]:text-secondary-300",
   },
   primary: {
     button: "bg-secondary-500 active:bg-secondary-400",
-    icon: "text-primary-100 group-active:text-primary-300",
+    icon: "text-primary-100 group-active:text-primary-300 group-[.active]:text-primary-300",
   },
 };
 
 //Base style
-const base =
-  "group flex items-center inset-ring-0 justify-center gap-2.5 rounded-full cursor-pointer transition-all hover:shadow-300-BoxShadowM active:inset-ring-1 active:inset-ring-accent-100";
+const base = `
+  group flex items-center inset-ring-0 justify-center gap-2.5
+  rounded-full cursor-pointer transition-all
+  hover:shadow-300-BoxShadowM
+  active:inset-ring-1 active:inset-ring-accent-100 active:scale-95
+  group-[.active]:ring-1
+  group-[.active]:ring-accent-100
+`;
 
-function FloatingButtons({
+function FloatingButton({
   className = "",
   token = "md",
   type = "primary",
@@ -47,6 +53,8 @@ function FloatingButtons({
     >
       <Icon
         size={20}
+        secondaryOpacity={1}
+        secondaryColor="var(--color-accent-100)"
         className={`
           transition-colors
           ${variant.icon}
@@ -56,4 +64,4 @@ function FloatingButtons({
   );
 }
 
-export default FloatingButtons;
+export default FloatingButton;

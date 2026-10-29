@@ -17,7 +17,7 @@ const tokens = {
   lg: { textSize: "text-16px", iconSize: 20 },
 };
 
-function InputTxts({
+function InputTxt({
   isCaption = false,
   token = "md",
   type = "primary",
@@ -47,4 +47,4 @@ function InputTxts({
   );
 }
 
-export default InputTxts;
+export default InputTxt;

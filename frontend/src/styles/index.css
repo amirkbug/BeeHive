@@ -157,6 +157,8 @@
   --shadow-100-BoxShadowM : 0px 0px 3px rgb(242 180 28 / 80%);
 
   --shadow-200-BoxShadowM : 0px 2px 5px rgb(207 155 25 / 40%);
+  --shadow-200-destructure-BoxShadowM : 0px 2px 5px rgb(231 95 95 / 40%);
+  --shadow-200-success-BoxShadowM : 0px 2px 5px rgb(85 194 113 / 40%);
 
   --shadow-300-BoxShadowM : 0px 0px 7.5px rgb(207 155 25 / 80%);
 

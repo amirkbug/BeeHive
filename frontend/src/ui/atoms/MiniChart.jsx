@@ -44,7 +44,7 @@ const tokens = {
   },
 };
 
-function MiniCharts({ token = "md", type = "warning" }) {
+function MiniChart({ token = "md", type = "warning" }) {
   //Error boundry
   const selectedToken = tokens[token] ?? tokens.md;
   const chartColor = types[type] ?? types.warning;
@@ -91,4 +91,4 @@ function MiniCharts({ token = "md", type = "warning" }) {
   );
 }
 
-export default MiniCharts;
+export default MiniChart;

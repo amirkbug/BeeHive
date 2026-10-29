@@ -1,15 +1,33 @@
-import { HomeIcon } from "@solar-icons/react/linear/home";
-import { ChartIcon } from "@solar-icons/react/linear/chart";
-import { DatabaseIcon } from "@solar-icons/react/linear/database";
-import { SettingsIcon } from "@solar-icons/react/linear/settings";
-import { Link } from "react-router-dom";
+import {
+  HomeIcon,
+  ChartIcon,
+  DatabaseIcon,
+  SettingsIcon,
+} from "@solar-icons/react/line-duotone";
+import { NavLink, Link } from "react-router-dom";
 
-import FloatingButtons from "../atoms/FloatingButtons";
+import FloatingButton from "../atoms/FloatingButton";
 import Logo from "../atoms/Logo";
-import Lines from "../atoms/Lines";
+import Line from "../atoms/Line";
 import UserProfile from "../atoms/UserProfile";
 
-function SideBar() {
+const types = {
+  primary: "bg-primary-100",
+  secondary: "bg-secondary-500",
+};
+
+const mainSectionBase = `
+  flex flex-col
+  items-center justify-start
+  h-full
+  gap-2
+  px-2 py-10
+  rounded-lg
+  `;
+
+function SideBar({ type = "primary" }) {
+  const selectedType = Object.hasOwn(types, type) ? type : "primary";
+
   return (
     <aside
       className="
@@ -31,28 +49,38 @@ function SideBar() {
         <Logo logoType="primaryWithoutPolygone" token="xll" />
       </Link>
       <section
-        className="
-          flex flex-col
-          items-center justify-start
-          h-full
-          gap-2
-          px-2 py-10
-          rounded-lg
-          bg-primary-100
-        "
+        className={`
+          ${mainSectionBase}
+          ${types[selectedType]}
+        `}
       >
-        <Logo logoType="secondary" type="primary" token="xl" />
-        <Lines orientation="vertical" />
+        <Logo logoType="secondary" type={selectedType} token="xl" />
+        <Line orientation="vertical" />
         <UserProfile token="lg" />
-        <Link to="/app/dashboard">
-          <FloatingButtons type="primary" token="sm" Icon={HomeIcon} />
-        </Link>
-        <Link to="/app/analytics">
-          <FloatingButtons type="primary" token="sm" Icon={ChartIcon} />
-        </Link>
-        <Link to="/app/data">
-          <FloatingButtons type="primary" token="sm" Icon={DatabaseIcon} />
-        </Link>
+        <NavLink
+          className="
+            group
+          "
+          to="/app/dashboard"
+        >
+          <FloatingButton type={selectedType} token="sm" Icon={HomeIcon} />
+        </NavLink>
+        <NavLink
+          className="
+            group
+          "
+          to="/app/analytics"
+        >
+          <FloatingButton type={selectedType} token="sm" Icon={ChartIcon} />
+        </NavLink>
+        <NavLink
+          className="
+            group
+          "
+          to="/app/data"
+        >
+          <FloatingButton type={selectedType} token="sm" Icon={DatabaseIcon} />
+        </NavLink>
       </section>
       <section
         className="
@@ -61,9 +89,14 @@ function SideBar() {
           gap-4
         "
       >
-        <Link to="/app/settings">
-          <FloatingButtons type="primary" token="sm" Icon={SettingsIcon} />
-        </Link>
+        <NavLink
+          className="
+            group
+          "
+          to="/app/settings"
+        >
+          <FloatingButton type={selectedType} token="sm" Icon={SettingsIcon} />
+        </NavLink>
       </section>
     </aside>
   );

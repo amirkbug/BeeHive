@@ -1,5 +1,7 @@
+import Table from "../ui/organs/Table";
+
 function Data() {
-  return <div>DATA</div>;
+  return <Table />;
 }
 
 export default Data;

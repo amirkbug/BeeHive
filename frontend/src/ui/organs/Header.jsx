@@ -1,39 +1,47 @@
-import Charts from "../molecules/Charts";
+import CheckBox from "../atoms/CheckBox";
+import FloatingButton from "../atoms/FloatingButton";
 import SearchIcon from "../molecules/SearchIcon";
 
-const chartTypes = ["bar", "line", "pie", "donut", "scatter"];
-const tokens = ["sm", "md", "lg"];
-const types = ["primary", "secondary"];
+import { BellRingIcon } from "@solar-icons/react/line-duotone/bell-ring";
+//Objects for diffrent variations
 
-function Header() {
+const types = {
+  primary: "bg-primary-100",
+  secondary: "bg-secondary-500",
+};
+
+const headerBase = `
+  flex flex-row
+  items-center justify-between
+  w-full
+  py-2
+  pl-5 pr-2
+  rounded-lg
+  `;
+
+function Header({ type = "primary" }) {
+  //Error boundry
+  const selectedType = Object.hasOwn(types, type) ? type : "primary";
+
+  //Component itself
   return (
     <header
-      className="
-        min-h-screen
-        p-8
-        text-secondary-500
-        bg-primary-100
-      "
+      className={`
+        ${headerBase}
+        ${types[selectedType]}
+      `}
     >
-      <h1
+      <SearchIcon type={selectedType} />
+      <div
         className="
-          mb-2
-          text-2xl font-semibold
+          flex flex-row
+          items-center justify-end
+          gap-2
         "
       >
-        Chart Playground
-      </h1>
-
-      <p
-        className="
-          mb-8
-          text-sm
-        "
-      >
-        Testing all chart types, sizes, and themes.
-      </p>
-      <SearchIcon type="primary" />
-      <SearchIcon type="secondary" />
+        <FloatingButton type={selectedType} token="sm" Icon={BellRingIcon} />
+        <CheckBox type="darkMode" />
+      </div>
     </header>
   );
 }

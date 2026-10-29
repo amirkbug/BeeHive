@@ -1,5 +1,4 @@
-import { MoonIcon } from "@solar-icons/react/linear/moon";
-import { Sun2Icon } from "@solar-icons/react/linear/sun-2";
+import { MoonIcon, Sun2Icon } from "@solar-icons/react/linear";
 
 //Objects for diffrent variations
 const types = {

@@ -1,8 +1,8 @@
-import FloatingButtons from "../atoms/FloatingButtons";
-import Inputs from "./Inputs";
+import FloatingButton from "../atoms/FloatingButton";
+import Input from "./Input";
 
 import { useState } from "react";
-import { MagnifierIcon } from "@solar-icons/react/linear/magnifier";
+import { MagnifierIcon } from "@solar-icons/react/line-duotone/magnifier";
 
 //Objects for diffrent variations
 const types = ["primary", "secondary"];
@@ -26,7 +26,7 @@ function SearchIcon({ type = "primary" }) {
         flex
       "
     >
-      <FloatingButtons
+      <FloatingButton
         onClick={handleSearchClick}
         type={selectedType}
         token="sm"
@@ -35,7 +35,7 @@ function SearchIcon({ type = "primary" }) {
           ${isSearchOpen ? "absolute opacity-0" : "z-10 opacity-100"}
         `}
       />
-      <Inputs
+      <Input
         LeftIcon={MagnifierIcon}
         rightTxt=""
         RightIcon={[]}

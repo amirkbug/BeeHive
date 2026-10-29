@@ -2,7 +2,7 @@ const orientationStyles = {
   vertical: `h-px w-full`,
   horizontal: `h-full w-px`,
 };
-function Lines({ orientation = "vertical", color = "bg-primary-300" }) {
+function Line({ orientation = "vertical", color = "bg-primary-300" }) {
   return (
     <hr
       className={`
@@ -14,4 +14,4 @@ function Lines({ orientation = "vertical", color = "bg-primary-300" }) {
   );
 }
 
-export default Lines;
+export default Line;

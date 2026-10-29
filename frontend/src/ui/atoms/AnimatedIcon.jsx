@@ -1,12 +1,16 @@
-import { AltArrowRightIcon as AltArrowRightIconBold } from "@solar-icons/react/bold/alt-arrow-right";
-import { AltArrowDownIcon as AltArrowDownIconBold } from "@solar-icons/react/bold/alt-arrow-down";
-import { AltArrowUpIcon as AltArrowUpIconBold } from "@solar-icons/react/bold/alt-arrow-up";
-import { AltArrowLeftIcon as AltArrowLeftIconBold } from "@solar-icons/react/bold/alt-arrow-left";
+import {
+  AltArrowRightIcon as AltArrowRightIconBold,
+  AltArrowDownIcon as AltArrowDownIconBold,
+  AltArrowUpIcon as AltArrowUpIconBold,
+  AltArrowLeftIcon as AltArrowLeftIconBold,
+} from "@solar-icons/react/bold";
 
-import { AltArrowRightIcon as AltArrowRightIconLinear } from "@solar-icons/react/linear/alt-arrow-right";
-import { AltArrowDownIcon as AltArrowDownIconLinear } from "@solar-icons/react/linear/alt-arrow-down";
-import { AltArrowUpIcon as AltArrowUpIconLinear } from "@solar-icons/react/linear/alt-arrow-up";
-import { AltArrowLeftIcon as AltArrowLeftIconLinear } from "@solar-icons/react/linear/alt-arrow-left";
+import {
+  AltArrowRightIcon as AltArrowRightIconLinear,
+  AltArrowDownIcon as AltArrowDownIconLinear,
+  AltArrowUpIcon as AltArrowUpIconLinear,
+  AltArrowLeftIcon as AltArrowLeftIconLinear,
+} from "@solar-icons/react/linear";
 
 //Objects for diffrent variations
 const tokens = {
