@@ -1,3 +1,8 @@
+import Logo from "../atoms/Logo";
+import Line from "../atoms/Line";
+import UserLogoPreview from "../../features/authentication/UserLogoPreview";
+import SideBarButton from "../molecules/SideBarButton";
+
 import {
   HomeIcon,
   ChartIcon,
@@ -6,11 +11,7 @@ import {
 } from "@solar-icons/react/line-duotone";
 import { NavLink, Link } from "react-router-dom";
 
-import FloatingButton from "../atoms/FloatingButton";
-import Logo from "../atoms/Logo";
-import Line from "../atoms/Line";
-import UserProfile from "../atoms/UserProfile";
-
+//Objects for diffrent variations
 const types = {
   primary: "bg-primary-100",
   secondary: "bg-secondary-500",
@@ -19,21 +20,23 @@ const types = {
 const mainSectionBase = `
   flex flex-col
   items-center justify-start
-  h-full
+  h-full w-full
   gap-2
   px-2 py-10
   rounded-lg
   `;
 
 function SideBar({ type = "primary" }) {
+  //Error boundry
   const selectedType = Object.hasOwn(types, type) ? type : "primary";
 
+  //Component itself
   return (
     <aside
       className="
         flex flex-col
         items-center justify-center
-        h-full max-w-24
+        w-fit h-full
         gap-5
         px-2 pt-12
         pb-4
@@ -48,56 +51,108 @@ function SideBar({ type = "primary" }) {
       >
         <Logo logoType="primaryWithoutPolygone" token="xll" />
       </Link>
-      <section
-        className={`
-          ${mainSectionBase}
-          ${types[selectedType]}
-        `}
-      >
-        <Logo logoType="secondary" type={selectedType} token="xl" />
-        <Line orientation="vertical" />
-        <UserProfile token="lg" />
-        <NavLink
-          className="
-            group
-          "
-          to="/app/dashboard"
-        >
-          <FloatingButton type={selectedType} token="sm" Icon={HomeIcon} />
-        </NavLink>
-        <NavLink
-          className="
-            group
-          "
-          to="/app/analytics"
-        >
-          <FloatingButton type={selectedType} token="sm" Icon={ChartIcon} />
-        </NavLink>
-        <NavLink
-          className="
-            group
-          "
-          to="/app/data"
-        >
-          <FloatingButton type={selectedType} token="sm" Icon={DatabaseIcon} />
-        </NavLink>
-      </section>
-      <section
+      <div
         className="
-          flex
-          items-center justify-center
-          gap-4
+          flex flex-col
+          h-full
+          gap-5
+          group/sidebar
         "
       >
-        <NavLink
-          className="
-            group
-          "
-          to="/app/settings"
+        <section
+          className={`
+            items-start
+            min-w-14
+            transition-all
+            group-hover/sidebar:min-w-80.5
+            sidebar-main
+            ${mainSectionBase}
+            ${types[selectedType]}
+          `}
         >
-          <FloatingButton type={selectedType} token="sm" Icon={SettingsIcon} />
-        </NavLink>
-      </section>
+          <Logo
+            className="
+              self-center
+            "
+            logoType="secondary"
+            type={selectedType}
+            token="xl"
+          />
+          <Line orientation="vertical" />
+
+          <UserLogoPreview />
+
+          <NavLink
+            className="
+              group
+            "
+            to="/app/dashboard"
+          >
+            <SideBarButton Icon={HomeIcon}>
+              <HomeIcon
+                secondaryColor="var(--color-accent-100)"
+                secondaryOpacity={1}
+                size={20}
+              />
+              Home
+            </SideBarButton>
+          </NavLink>
+          <NavLink
+            className="
+              group
+            "
+            to="/app/analytics"
+          >
+            <SideBarButton Icon={ChartIcon}>
+              <ChartIcon
+                secondaryColor="var(--color-accent-100)"
+                secondaryOpacity={1}
+                size={20}
+              />
+              Analytics
+            </SideBarButton>
+          </NavLink>
+          <NavLink
+            className="
+              group
+            "
+            to="/app/data"
+          >
+            <SideBarButton Icon={DatabaseIcon}>
+              <DatabaseIcon
+                secondaryColor="var(--color-accent-100)"
+                secondaryOpacity={1}
+                size={20}
+              />
+              Data
+            </SideBarButton>
+          </NavLink>
+        </section>
+        <section
+          className="
+            flex
+            justify-center self-start
+            gap-4
+            pl-2
+          "
+        >
+          <NavLink
+            className="
+              group
+            "
+            to="/app/settings"
+          >
+            <SideBarButton Icon={SettingsIcon}>
+              <SettingsIcon
+                secondaryColor="var(--color-accent-100)"
+                secondaryOpacity={1}
+                size={20}
+              />
+              Settings
+            </SideBarButton>
+          </NavLink>
+        </section>
+      </div>
     </aside>
   );
 }

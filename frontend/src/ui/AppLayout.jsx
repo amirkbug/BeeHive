@@ -7,7 +7,7 @@ function AppLayout() {
     <main
       className="
         flex flex-row
-        items-start justify-start
+        items-start justify-end
         w-dvw h-dvh
         gap-4
         px-10 py-4
@@ -22,7 +22,7 @@ function AppLayout() {
           pb-4
         "
       >
-        <Header />
+        <Header type="primary" />
 
         <Outlet />
       </section>

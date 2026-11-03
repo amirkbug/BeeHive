@@ -6,7 +6,7 @@ const tokens = {
 };
 
 const types = {
-  primary: `
+  secondary: `
   text-primary-100
   bg-secondary-500
   inset-ring-0
@@ -14,7 +14,7 @@ const types = {
   active:inset-ring-accent-100  active:shadow-none active:inset-ring-1 active:scale-95
   focus-visible:inset-ring-accent-200
   `,
-  primary_destructive: `
+  secondary_destructive: `
   text-destructive-500
   bg-secondary-500
   inset-ring-0
@@ -22,7 +22,7 @@ const types = {
   active:inset-ring-destructive-400  active:inset-ring-1 active:shadow-none active:scale-95
   focus-visible:inset-ring-destructive-400
   `,
-  primary_warning: `
+  secondary_warning: `
   text-warning-300
   bg-secondary-500
   inset-ring-0
@@ -30,7 +30,7 @@ const types = {
   active:inset-ring-accent-100  active:inset-ring-1 active:shadow-none active:scale-95
   focus-visible:inset-ring-accent-100 
   `,
-  primary_success: `
+  secondary_success: `
   text-success-400
   bg-secondary-500
   inset-ring-0
@@ -39,7 +39,7 @@ const types = {
   focus-visible:inset-ring-success-400
   `,
 
-  secondary: `
+  primary: `
   text-secondary-500
   bg-primary-100
   inset-ring-0
@@ -47,7 +47,7 @@ const types = {
   active:inset-ring-accent-100 active:shadow-none active:inset-ring-1 active:scale-95
   focus-visible:inset-ring-accent-100
   `,
-  secondary_destructive: `
+  primary_destructive: `
   text-destructive-500
   bg-primary-100
   inset-ring-0
@@ -55,7 +55,7 @@ const types = {
   active:inset-ring-destructive-400 active:inset-ring-1 active:shadow-none active:scale-95
   focus-visible:inset-ring-destructive-400
   `,
-  secondary_warning: `
+  primary_warning: `
   text-warning-500
   bg-primary-100
   inset-ring-0
@@ -63,7 +63,7 @@ const types = {
   active:inset-ring-accent-100 active:inset-ring-1 active:shadow-none active:scale-95
   focus-visible:inset-ring-accent-100
   `,
-  secondary_success: `
+  primary_success: `
   text-success-500
   bg-primary-100
   inset-ring-0
@@ -72,14 +72,14 @@ const types = {
   focus-visible:inset-ring-success-400
   `,
 
-  outline_secondary: `
+  outline_primary: `
   text-secondary-500
   inset-ring-1 inset-ring-secondary-300
   hover:inset-ring-0 hover:shadow-200-BoxShadowM hover:bg-primary-100
   active:inset-ring-accent-100 active:inset-ring-1 active:shadow-none active:bg-transparent active:scale-95
   focus-visible:inset-ring-accent-100
   `,
-  outline_primary: `
+  outline_secondary: `
   text-primary-100
   inset-ring-1 inset-ring-primary-300
   hover:inset-ring-0 hover:shadow-200-BoxShadowM hover:bg-secondary-500
@@ -119,6 +119,8 @@ function Button({
   type = "primary",
   children,
   disabled = false,
+  className = "",
+  ...props
 }) {
   //Error boundry
   const selectedToekn = tokens[token] ?? tokens.md;
@@ -127,12 +129,14 @@ function Button({
   //Component itself
   return (
     <button
+      {...props}
       disabled={disabled}
       className={`
         ${base}
         ${selectedType}
         ${disabled ? "pointer-events-none" : ""}
         ${selectedToekn}
+        ${className}
       `}
     >
       {children}

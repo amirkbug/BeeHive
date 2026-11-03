@@ -10,7 +10,7 @@ const tokens = {
 
 //Base style
 const base =
-  "cursor-pointer items-center rounded-full transition-all hover:shadow-300-BoxShadowM";
+  "cursor-pointer items-center active:scale-95 rounded-full transition-all hover:shadow-300-BoxShadowM";
 
 //Component itself
 function UserProfile({ token = "md" }) {

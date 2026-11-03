@@ -8,11 +8,11 @@ const tokens = {
 };
 
 const types = {
-  secondary: {
+  primary: {
     button: "bg-primary-100 active:bg-primary-200",
     icon: "text-secondary-500 group-active:text-secondary-300 group-[.active]:text-secondary-300",
   },
-  primary: {
+  secondary: {
     button: "bg-secondary-500 active:bg-secondary-400",
     icon: "text-primary-100 group-active:text-primary-300 group-[.active]:text-primary-300",
   },

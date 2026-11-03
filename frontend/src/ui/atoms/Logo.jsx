@@ -7,7 +7,7 @@ const logos = import.meta.glob("../../assets/icons/*.png", {
 
 // Shared styles
 const base =
-  "cursor-pointer transition-all object-contain hover:drop-shadow-200-BoxShadowM";
+  "cursor-pointer transition-all object-contain hover:drop-shadow-200-BoxShadowM active:scale-95";
 
 // Logo sizes
 const sizes = {
@@ -47,7 +47,13 @@ const types = {
   secondary: "secondaryColor",
 };
 
-function Logo({ token = "md", type = "primary", logoType = "primary" }) {
+function Logo({
+  token = "md",
+  type = "primary",
+  logoType = "primary",
+  className = "",
+}) {
+  //Define the logo type and logo color by the type that programmer insert
   const isWithoutPolygone = logoType === "primaryWithoutPolygone";
 
   const fileName = isWithoutPolygone
@@ -57,6 +63,7 @@ function Logo({ token = "md", type = "primary", logoType = "primary" }) {
   const imgSrc = logos[`../../assets/icons/${fileName}`];
   const size = sizes[logoType][token];
 
+  //Component itself
   return (
     <img
       src={imgSrc}
@@ -64,6 +71,7 @@ function Logo({ token = "md", type = "primary", logoType = "primary" }) {
       className={`
         ${size}
         ${base}
+        ${className}
       `}
     />
   );

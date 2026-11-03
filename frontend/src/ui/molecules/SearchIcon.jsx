@@ -1,5 +1,5 @@
 import FloatingButton from "../atoms/FloatingButton";
-import Input from "./Input";
+import InputContainer from "./InputContainer";
 
 import { useState } from "react";
 import { MagnifierIcon } from "@solar-icons/react/line-duotone/magnifier";
@@ -11,6 +11,7 @@ const types = ["primary", "secondary"];
 function SearchIcon({ type = "primary" }) {
   //Dynamic functionality
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   function handleSearchClick() {
     setIsSearchOpen((isOpen) => !isOpen);
   }
@@ -32,21 +33,24 @@ function SearchIcon({ type = "primary" }) {
         token="sm"
         Icon={MagnifierIcon}
         className={`
+          shrink-0
           ${isSearchOpen ? "absolute opacity-0" : "z-10 opacity-100"}
         `}
       />
-      <Input
-        LeftIcon={MagnifierIcon}
-        rightTxt=""
-        RightIcon={[]}
-        type={selectedType}
-        token="md"
-        classNameMainContainer={`${
-          isSearchOpen
-            ? "opacity-100 pl-3"
-            : "opacity-0 pointer-events-none !w-5 absolute !p-0 z-0"
-        }`}
-      />
+
+      <InputContainer type={selectedType} token="md">
+        <InputContainer.Input
+          LeftIcon={MagnifierIcon}
+          placeholderText="Write here ..."
+          classNameMainContainer={`
+            ${
+              isSearchOpen
+                ? "opacity-100 pl-3"
+                : "opacity-0 pointer-events-none !w-0 absolute !p-0 z-0"
+            }
+            `}
+        />
+      </InputContainer>
     </div>
   );
 }

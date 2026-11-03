@@ -1,8 +1,9 @@
-import CheckBox from "../atoms/CheckBox";
+import RadioButton from "../atoms/RadioButton";
 import FloatingButton from "../atoms/FloatingButton";
 import SearchIcon from "../molecules/SearchIcon";
 
 import { BellRingIcon } from "@solar-icons/react/line-duotone/bell-ring";
+
 //Objects for diffrent variations
 
 const types = {
@@ -22,6 +23,8 @@ const headerBase = `
 function Header({ type = "primary" }) {
   //Error boundry
   const selectedType = Object.hasOwn(types, type) ? type : "primary";
+  const selectedTypeInerse =
+    selectedType === "primary" ? "secondary" : "primary";
 
   //Component itself
   return (
@@ -31,7 +34,7 @@ function Header({ type = "primary" }) {
         ${types[selectedType]}
       `}
     >
-      <SearchIcon type={selectedType} />
+      <SearchIcon type={selectedTypeInerse} />
       <div
         className="
           flex flex-row
@@ -39,8 +42,12 @@ function Header({ type = "primary" }) {
           gap-2
         "
       >
-        <FloatingButton type={selectedType} token="sm" Icon={BellRingIcon} />
-        <CheckBox type="darkMode" />
+        <FloatingButton
+          type={selectedTypeInerse}
+          token="sm"
+          Icon={BellRingIcon}
+        />
+        <RadioButton type="darkMode" />
       </div>
     </header>
   );
