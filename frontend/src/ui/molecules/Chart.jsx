@@ -13,6 +13,8 @@ import {
   Line,
   ScatterChart,
   Scatter,
+  Area,
+  AreaChart,
 } from "recharts";
 import { compactFormatter } from "../../utils/helpers";
 
@@ -99,7 +101,7 @@ const types = {
   },
 };
 
-const chartTypes = ["bar", "line", "pie", "donut", "scatter"];
+const chartTypes = ["bar", "line", "pie", "dougnut", "scatter", "area"];
 
 const paddingBaseOnChartType = {
   sm: "pr-8 pb-2 pt-6",
@@ -112,7 +114,6 @@ const articleBase = `
   items-center justify-center
   max-w-3xl
   rounded-lg
-  w-fit h-fit
   shrink-0
   transition-all
   hover:shadow-400-BoxShadowM
@@ -132,7 +133,7 @@ function Chart({ chartType = "pie", token = "sm", type = "secondary" }) {
       className={`
         ${articleBase}
         ${selectedType.containerClasses}
-        ${selectedChartType === "pie" || selectedChartType === "donut" ? "" : `${selectedPaddingBaseOnChartType} pl-0`}
+        ${selectedChartType === "pie" || selectedChartType === "dougnut" ? "" : `${selectedPaddingBaseOnChartType} pl-0`}
         ${selectedToken.containerPadding}
       `}
     >
@@ -188,6 +189,58 @@ function Chart({ chartType = "pie", token = "sm", type = "secondary" }) {
           />
         </ScatterChart>
       )}
+      {selectedChartType === "area" && (
+        <AreaChart
+          responsive
+          data={data}
+          style={{
+            width: selectedToken.barAndLineAndScatterChartSize.width,
+            height: selectedToken.barAndLineAndScatterChartSize.height,
+            maxWidth: "100%",
+          }}
+        >
+          <CartesianGrid
+            stroke={selectedType.txtColor.firstBarAndGrid}
+            strokeOpacity={0.25}
+            strokeDasharray="4 4"
+          />
+
+          <XAxis
+            dataKey="month"
+            tick={{ fill: selectedType.txtColor.secondBar, fontSize: 12 }}
+            axisLine={{ stroke: selectedType.txtColor.firstBarAndGrid }}
+          />
+
+          <YAxis
+            tick={{ fill: selectedType.txtColor.secondBar, fontSize: 12 }}
+            axisLine={false}
+            tickFormatter={(value) => compactFormatter(value)}
+          />
+
+          <ChartTooltip
+            labelColor={selectedType.tooltip.txtColor}
+            backgroundColor={selectedType.tooltip.labelBackground}
+          />
+
+          <Area
+            type="monotone"
+            dataKey="revenue"
+            name="Revenue"
+            stroke={selectedType.chartColors.primaryColor}
+            fill={selectedType.chartColors.secondaryColor}
+            strokeWidth={2.5}
+          />
+
+          <Area
+            type="monotone"
+            dataKey="profit"
+            name="Profit"
+            stroke={selectedType.chartColors.secondaryColor}
+            fill={selectedType.chartColors.primaryColor}
+            strokeWidth={2.5}
+          />
+        </AreaChart>
+      )}
       {selectedChartType === "line" && (
         <LineChart
           responsive
@@ -242,13 +295,13 @@ function Chart({ chartType = "pie", token = "sm", type = "secondary" }) {
           />
         </LineChart>
       )}
-      {selectedChartType === "donut" && (
+      {selectedChartType === "dougnut" && (
         <PieChart responsive style={selectedToken.pieAndDonutChartSize}>
           <Pie
             activeShape={{
               fill: selectedType.chartColors.secondaryColor,
             }}
-            paddingAngle={0.5}
+            paddingAngle={5}
             innerRadius={selectedToken.donutChartRadius}
             data={pieData}
             dataKey="profit"

@@ -10,6 +10,7 @@ import {
   SettingsIcon,
 } from "@solar-icons/react/line-duotone";
 import { NavLink, Link } from "react-router-dom";
+import IconDoutone from "../atoms/IconDoutone";
 
 //Objects for diffrent variations
 const types = {
@@ -39,7 +40,7 @@ function SideBar({ type = "primary" }) {
         w-fit h-full
         gap-5
         px-2 pt-12
-        pb-4
+        pb-3
       "
     >
       <Link
@@ -89,11 +90,7 @@ function SideBar({ type = "primary" }) {
             to="/app/dashboard"
           >
             <SideBarButton Icon={HomeIcon}>
-              <HomeIcon
-                secondaryColor="var(--color-accent-100)"
-                secondaryOpacity={1}
-                size={20}
-              />
+              <IconDoutone Icon={HomeIcon} size={20} type="secondary" />
               Home
             </SideBarButton>
           </NavLink>
@@ -104,11 +101,7 @@ function SideBar({ type = "primary" }) {
             to="/app/analytics"
           >
             <SideBarButton Icon={ChartIcon}>
-              <ChartIcon
-                secondaryColor="var(--color-accent-100)"
-                secondaryOpacity={1}
-                size={20}
-              />
+              <IconDoutone Icon={ChartIcon} size={20} type="secondary" />
               Analytics
             </SideBarButton>
           </NavLink>
@@ -119,11 +112,7 @@ function SideBar({ type = "primary" }) {
             to="/app/data"
           >
             <SideBarButton Icon={DatabaseIcon}>
-              <DatabaseIcon
-                secondaryColor="var(--color-accent-100)"
-                secondaryOpacity={1}
-                size={20}
-              />
+              <IconDoutone Icon={DatabaseIcon} size={20} type="secondary" />
               Data
             </SideBarButton>
           </NavLink>
@@ -143,11 +132,7 @@ function SideBar({ type = "primary" }) {
             to="/app/settings"
           >
             <SideBarButton Icon={SettingsIcon}>
-              <SettingsIcon
-                secondaryColor="var(--color-accent-100)"
-                secondaryOpacity={1}
-                size={20}
-              />
+              <IconDoutone Icon={SettingsIcon} size={20} type="secondary" />
               Settings
             </SideBarButton>
           </NavLink>

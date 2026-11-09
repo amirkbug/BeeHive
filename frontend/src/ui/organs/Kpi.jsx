@@ -43,7 +43,10 @@ const tokens = {
 const articleBase = `
     flex flex-col
     items-start justify-between
-    rounded-lg
+    rounded-lg 
+    min-w-82
+    transition-shadow
+    hover:shadow-400-BoxShadowM
 `;
 
 function Kpi({
@@ -55,6 +58,7 @@ function Kpi({
   subtxt = "Subtext",
   SubTxtIcon = ChartSquare2Icon,
   KpiIconName = Chart2Icon,
+  chartValue = 20,
 }) {
   //Error boundry
   const selectedType = types[type] ?? types.primary;
@@ -64,8 +68,6 @@ function Kpi({
   return (
     <article
       className={`
-        transition-shadow
-        hover:shadow-400-BoxShadowM
         ${articleBase}
         ${selectedToken.containerClasses}
         ${selectedType}
@@ -90,7 +92,7 @@ function Kpi({
         `}
       >
         <h1>{number}</h1>
-        <CircularProgressbar token={token} type={kpiType} />
+        <CircularProgressbar value={chartValue} token={token} type={kpiType} />
       </div>
       <p
         className={`
@@ -100,7 +102,7 @@ function Kpi({
       >
         {subtxt}
       </p>
-      <SubTxtIcon size={selectedToken.iconSize} />
+      {SubTxtIcon && <SubTxtIcon size={selectedToken.iconSize} />}
     </article>
   );
 }

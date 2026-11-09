@@ -16,7 +16,7 @@ const headerBase = `
   items-center justify-between
   w-full
   py-2
-  pl-5 pr-2
+  pl-2 pr-2
   rounded-lg
   `;
 

@@ -9,7 +9,6 @@ function AppLayout() {
         flex flex-row
         items-start justify-end
         w-dvw h-dvh
-        gap-4
         px-10 py-4
       "
     >
@@ -18,12 +17,19 @@ function AppLayout() {
       <section
         className="
           flex flex-col flex-1
-          gap-2
-          pb-4
+          items-end justify-between
+          h-full
+          min-w-0
         "
       >
-        <Header type="primary" />
-
+        <div
+          className="
+            w-full
+            pl-4
+          "
+        >
+          <Header type="primary" />
+        </div>
         <Outlet />
       </section>
     </main>

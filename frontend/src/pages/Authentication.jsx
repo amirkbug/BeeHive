@@ -12,7 +12,7 @@ function Authentication() {
           Enter your email address and we'll send you a link to reset your
           password.
         </FormContainer.Description>
-        <InputContainer token="sm" type="secondary">
+        <InputContainer token="sm" type="primary">
           <InputContainer.InputTxt>Gmail :</InputContainer.InputTxt>
           <InputContainer.Input placeholderText="Write here ...">
             <InputContainer.InputRightContent>
@@ -20,7 +20,7 @@ function Authentication() {
             </InputContainer.InputRightContent>
           </InputContainer.Input>
         </InputContainer>
-        <InputContainer token="sm" type="secondary">
+        <InputContainer token="sm" type="primary">
           <InputContainer.InputTxt>Gmail :</InputContainer.InputTxt>
           <InputContainer.Input placeholderText="Write here ...">
             <InputContainer.InputRightContent>

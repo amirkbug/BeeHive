@@ -1,58 +1,161 @@
+import Button from "../ui/molecules/Button";
+import {
+  CalendarDateIcon,
+  CalendarMarkIcon,
+  CalendarIcon,
+} from "@solar-icons/react/line-duotone";
 import Chart from "../ui/molecules/Chart";
+import IconDoutone from "../ui/atoms/IconDoutone";
 
 function Analytics() {
   return (
-    <main
+    <section
       className="
         flex flex-col
-        gap-8
-        p-8
+        items-center justify-between
+        w-full h-full
+        pt-4
       "
     >
-      <h1
+      <div
         className="
-          text-28px text-secondary-500 font-bold
+          flex flex-col
+          items-center justify-start
+          w-full
+          py-1
         "
       >
-        Analytics
-      </h1>
-
-      {/* Large Charts */}
-      <section
+        <div
+          className="
+            w-full
+            pl-4
+          "
+        >
+          <Button
+            className="
+              justify-start
+              w-full
+            "
+            token="sm"
+            type="secondary"
+            disabled
+          >
+            <IconDoutone type="secondary" size={16} Icon={CalendarDateIcon} />{" "}
+            Daily
+          </Button>
+        </div>
+        <section
+          className="
+            overflow-x-auto
+            flex flex-row
+            items-center justify-start
+            w-full
+            gap-4
+            py-3
+            pl-4
+          "
+        >
+          <Chart token="md" type="secondary" chartType="bar" />
+          <Chart token="md" type="secondary" chartType="dougnut" />
+          <Chart token="md" type="secondary" chartType="area" />
+          <Chart token="md" type="secondary" chartType="line" />
+          <Chart token="md" type="secondary" chartType="pie" />
+          <Chart token="md" type="secondary" chartType="bar" />
+        </section>
+      </div>
+      <div
         className="
-          flex flex-wrap
-          items-start
-          gap-6
+          flex flex-col
+          items-center justify-start
+          w-full
+          py-1
         "
       >
-        <Chart chartType="bar" token="lg" type="primary" />
-        <Chart chartType="line" token="lg" type="primary" />
-      </section>
-
-      {/* Medium Charts */}
-      <section
+        <div
+          className="
+            w-full
+            pl-4
+          "
+        >
+          <Button
+            className="
+              justify-start
+              w-full
+            "
+            token="sm"
+            type="secondary"
+            disabled
+          >
+            <IconDoutone type="secondary" size={16} Icon={CalendarMarkIcon} />{" "}
+            Weekly
+          </Button>
+        </div>
+        <section
+          className="
+            overflow-x-auto
+            flex flex-row
+            items-center justify-start
+            w-full
+            gap-4
+            py-3
+            pl-4
+          "
+        >
+          <Chart token="md" type="secondary" chartType="bar" />
+          <Chart token="md" type="secondary" chartType="dougnut" />
+          <Chart token="md" type="secondary" chartType="area" />
+          <Chart token="md" type="secondary" chartType="line" />
+          <Chart token="md" type="secondary" chartType="pie" />
+          <Chart token="md" type="secondary" chartType="bar" />
+        </section>
+      </div>
+      <div
         className="
-          flex flex-wrap
-          items-start
-          gap-6
+          flex flex-col
+          items-center justify-start
+          w-full
+          py-1
         "
       >
-        <Chart chartType="scatter" token="md" type="secondary" />
-        <Chart chartType="donut" token="md" type="primary" />
-      </section>
-
-      {/* Small Charts */}
-      <section
-        className="
-          flex flex-wrap
-          items-start
-          gap-6
-        "
-      >
-        <Chart chartType="pie" token="sm" type="secondary" />
-        <Chart chartType="bar" token="sm" type="secondary" />
-      </section>
-    </main>
+        <div
+          className="
+            w-full
+            pl-4
+          "
+        >
+          <Button
+            className="
+              justify-start
+              w-full
+            "
+            token="sm"
+            type="secondary"
+            disabled
+          >
+            <IconDoutone type="secondary" size={16} Icon={CalendarIcon} />{" "}
+            Monthly
+          </Button>
+        </div>
+        <section
+          className="
+            overflow-x-auto
+            flex flex-row
+            items-center justify-start
+            w-full
+            gap-4
+            py-3
+            pl-4
+          "
+        >
+          <Chart token="md" type="secondary" chartType="bar" />
+          <Chart token="md" type="secondary" chartType="dougnut" />
+          <Chart token="md" type="secondary" chartType="area" />
+          <Chart token="md" type="secondary" chartType="line" />
+          <Chart token="md" type="secondary" chartType="pie" />
+          <Chart token="md" type="secondary" chartType="bar" />
+        </section>
+      </div>
+    </section>
   );
 }
 

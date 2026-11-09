@@ -78,6 +78,7 @@ function AnimatedIcon({
         relative
         inline-flex
         shrink-0
+        animated-icon
         ${selectedToken}
         ${className}
       `}
@@ -85,7 +86,8 @@ function AnimatedIcon({
       <LinearIcon
         className={`
           opacity-100
-          group-hover:opacity-0
+          group-hover:opacity-0 group-disabled:opacity-0
+          linear-icon
           ${base}
         `}
         size="100%"
@@ -95,7 +97,8 @@ function AnimatedIcon({
       <BoldIcon
         className={`
           opacity-0
-          group-hover:opacity-100
+          group-hover:opacity-100 group-disabled:opacity-100
+          bold-icon
           ${base}
           ${isBackgroundChange ? `${selectedType.conditionalClasses}` : ""}
         `}

@@ -132,6 +132,7 @@ function Button({
       {...props}
       disabled={disabled}
       className={`
+        disabled:
         ${base}
         ${selectedType}
         ${disabled ? "pointer-events-none" : ""}

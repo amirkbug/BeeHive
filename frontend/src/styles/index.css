@@ -188,6 +188,7 @@
 
 
 
+
 @layer utilities {
   .solar-light {
     --solar-color : var(--color-primary-100);
@@ -207,7 +208,6 @@
 
 
 
-
 body {
   font-family: var(--font-sans);
   background-color: var(--color-background-light);
@@ -223,5 +223,44 @@ body {
 }
 
 
+/* Hide all scrollbars globally */
+* {
+  scrollbar-width: none;
+}
 
+*::-webkit-scrollbar {
+  display: none;
+}
+/* Reset default select styles */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
+  background-image: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Reset default option styles */
+option {
+  appearance: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font:inherit
+}
+
+/* Remove default focus styles */
+select:focus,
+select:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Remove default disabled appearance */
+select:disabled {
+  opacity: 1;
+  cursor: not-allowed;
+}

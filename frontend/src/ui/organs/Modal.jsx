@@ -2,6 +2,7 @@ import Line from "../atoms/Line";
 
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import { cloneElement, createContext, useContext, useState } from "react";
+import { createPortal } from "react-dom";
 
 //1)Create context
 const ModalContext = createContext();
@@ -63,10 +64,11 @@ function Modal({ children, type = "primary" }) {
 
   const open = setOpenName;
 
-  return (
+  return createPortal(
     <ModalContext.Provider value={{ selectedType, open, close, openName }}>
       {children}
-    </ModalContext.Provider>
+    </ModalContext.Provider>,
+    document.body,
   );
 }
 
@@ -97,7 +99,6 @@ function Window({ children, name }) {
 
   //States and variables
   const isOpen = name === openName;
-
   const ref = useOutsideClick(close);
 
   //Component itself

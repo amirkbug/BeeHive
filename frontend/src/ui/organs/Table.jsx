@@ -25,6 +25,16 @@ import { AltArrowUpIcon, AltArrowDownIcon } from "@solar-icons/react/bold";
 //1)Create context
 const TableContext = createContext();
 
+//Make the context throw and error when used outside of the bound
+function useTableContext() {
+  const context = useContext(TableContext);
+
+  if (!context) {
+    throw new Error("You used form context out of the bound.");
+  }
+  return context;
+}
+
 //Header default data
 const tempHeaderContent = [
   {
@@ -106,7 +116,7 @@ const tempHeaderContent = [
   },
 ];
 
-//Dumb data
+// Dumb data
 const testData = [
   {
     id: 1,
@@ -180,6 +190,60 @@ const testData = [
     monthly_profit: -4,
     yearly_profit: 35,
   },
+  {
+    id: 9,
+    icon_name: "widget",
+    name: "Travel Savings",
+    balance: 125.75,
+    daily_profit: 12,
+    monthly_profit: -4,
+    yearly_profit: 35,
+  },
+  {
+    id: 10,
+    icon_name: "widget",
+    name: "Travel Savings",
+    balance: 125.75,
+    daily_profit: 12,
+    monthly_profit: -4,
+    yearly_profit: 35,
+  },
+  {
+    id: 11,
+    icon_name: "widget",
+    name: "Travel Savings",
+    balance: 125.75,
+    daily_profit: 12,
+    monthly_profit: -4,
+    yearly_profit: 35,
+  },
+  {
+    id: 12,
+    icon_name: "widget",
+    name: "Travel Savings",
+    balance: 125.75,
+    daily_profit: 12,
+    monthly_profit: -4,
+    yearly_profit: 35,
+  },
+  {
+    id: 13,
+    icon_name: "widget",
+    name: "Travel Savings",
+    balance: 125.75,
+    daily_profit: 12,
+    monthly_profit: -4,
+    yearly_profit: 35,
+  },
+  {
+    id: 14,
+    icon_name: "shop",
+    name: "Online Store",
+    balance: 58200,
+    daily_profit: 3200,
+    monthly_profit: 1450,
+    yearly_profit: 8200,
+  },
 ];
 
 //Objecs for diffrent variations
@@ -205,21 +269,21 @@ function Table({
   data = testData,
   headerContent = tempHeaderContent,
   type = "secondary",
+  children,
 }) {
   return (
     //2)Provide the value
     <TableContext.Provider value={{ data, headerContent, type }}>
       <table
         className="
-          flex flex-col
-          justify-center
+          overflow-hidden
+          flex flex-5 flex-col
+          w-full
           gap-4
-          pb-4
+          pb-4 pl-4
         "
       >
-        <TableHeader />
-        <TableBody />
-        <TableFooter />
+        {children}
       </table>
     </TableContext.Provider>
   );
@@ -237,7 +301,7 @@ const tableRowBaseClasses = `
 
 function TableBody() {
   //3)Use the value
-  const { data, type } = useContext(TableContext);
+  const { data, type } = useTableContext();
 
   //Error boundry
   const selectedType = types[type] ?? types.primary;
@@ -262,8 +326,10 @@ function TableBody() {
   return (
     <tbody
       className="
-        flex flex-col
-        gap-16
+        overflow-y-auto
+        flex flex-1 flex-col
+        min-h-0
+        gap-4
       "
     >
       {data.map((item, i) => (
@@ -289,7 +355,7 @@ const buttonsBaseClasses = `
   `;
 
 function TableHeader() {
-  const { headerContent, type } = useContext(TableContext);
+  const { headerContent, type } = useTableContext();
 
   //Error boundry
   const selectedType = Object.hasOwn(types, type) ? type : "primary";
@@ -379,7 +445,7 @@ const upAndDownArrow = `
   `;
 
 function TableCell({ item }) {
-  const { type } = useContext(TableContext);
+  const { type } = useTableContext();
 
   //Destructure the item object
   const {
@@ -579,5 +645,9 @@ function TableFooter({ children }) {
   //Maybe in the feature we added some pagination but not now
   return <tfoot>{children}</tfoot>;
 }
+
+Table.TableHeader = TableHeader;
+Table.TableBody = TableBody;
+Table.TableFooter = TableFooter;
 
 export default Table;
