@@ -1,10 +1,9 @@
+import { useThemeContext } from "../../contexts/ThemeContext";
 import Chart from "../../ui/molecules/Chart";
 
-function Charts({
-  chartTypes = ["scatter", "dougnut", "bar"],
-  token = "lg",
-  type = "secondary",
-}) {
+function Charts({ chartTypes = ["scatter", "dougnut", "bar"], token = "lg" }) {
+  const { selectedTypeInverse } = useThemeContext();
+
   return (
     <section
       className="
@@ -17,9 +16,21 @@ function Charts({
         pl-4
       "
     >
-      <Chart chartType={chartTypes.at(0)} type={type} token={token} />
-      <Chart chartType={chartTypes.at(1)} type={type} token={token} />
-      <Chart chartType={chartTypes.at(2)} type={type} token={token} />
+      <Chart
+        chartType={chartTypes.at(0)}
+        type={selectedTypeInverse}
+        token={token}
+      />
+      <Chart
+        chartType={chartTypes.at(1)}
+        type={selectedTypeInverse}
+        token={token}
+      />
+      <Chart
+        chartType={chartTypes.at(2)}
+        type={selectedTypeInverse}
+        token={token}
+      />
     </section>
   );
 }

@@ -11,6 +11,7 @@ import {
 } from "@solar-icons/react/line-duotone";
 import { NavLink, Link } from "react-router-dom";
 import IconDoutone from "../atoms/IconDoutone";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 //Objects for diffrent variations
 const types = {
@@ -27,8 +28,10 @@ const mainSectionBase = `
   rounded-lg
   `;
 
-function SideBar({ type = "primary" }) {
+function SideBar() {
   //Error boundry
+  const { type, selectedTypeInverse } = useThemeContext();
+
   const selectedType = Object.hasOwn(types, type) ? type : "primary";
 
   //Component itself
@@ -65,7 +68,7 @@ function SideBar({ type = "primary" }) {
             items-start
             min-w-14
             transition-all
-            group-hover/sidebar:min-w-80.5
+            group-hover/sidebar:min-w-80.5 group-hover/sidebar:shadow-300-BoxShadowM
             sidebar-main
             ${mainSectionBase}
             ${types[selectedType]}
@@ -89,8 +92,12 @@ function SideBar({ type = "primary" }) {
             "
             to="/app/dashboard"
           >
-            <SideBarButton Icon={HomeIcon}>
-              <IconDoutone Icon={HomeIcon} size={20} type="secondary" />
+            <SideBarButton type={selectedTypeInverse} Icon={HomeIcon}>
+              <IconDoutone
+                Icon={HomeIcon}
+                size={20}
+                type={selectedTypeInverse}
+              />
               Home
             </SideBarButton>
           </NavLink>
@@ -100,8 +107,12 @@ function SideBar({ type = "primary" }) {
             "
             to="/app/analytics"
           >
-            <SideBarButton Icon={ChartIcon}>
-              <IconDoutone Icon={ChartIcon} size={20} type="secondary" />
+            <SideBarButton type={selectedTypeInverse} Icon={ChartIcon}>
+              <IconDoutone
+                Icon={ChartIcon}
+                size={20}
+                type={selectedTypeInverse}
+              />
               Analytics
             </SideBarButton>
           </NavLink>
@@ -111,8 +122,12 @@ function SideBar({ type = "primary" }) {
             "
             to="/app/data"
           >
-            <SideBarButton Icon={DatabaseIcon}>
-              <IconDoutone Icon={DatabaseIcon} size={20} type="secondary" />
+            <SideBarButton type={selectedTypeInverse} Icon={DatabaseIcon}>
+              <IconDoutone
+                Icon={DatabaseIcon}
+                size={20}
+                type={selectedTypeInverse}
+              />
               Data
             </SideBarButton>
           </NavLink>
@@ -120,7 +135,7 @@ function SideBar({ type = "primary" }) {
         <section
           className="
             flex
-            justify-center self-start
+            items-start justify-start self-start
             gap-4
             pl-2
           "
@@ -131,8 +146,19 @@ function SideBar({ type = "primary" }) {
             "
             to="/app/settings"
           >
-            <SideBarButton Icon={SettingsIcon}>
-              <IconDoutone Icon={SettingsIcon} size={20} type="secondary" />
+            <SideBarButton
+              className="
+                group-hover/sidebar:w-80.5!
+                -translate-x-4!
+              "
+              type={selectedTypeInverse}
+              Icon={SettingsIcon}
+            >
+              <IconDoutone
+                Icon={SettingsIcon}
+                size={20}
+                type={selectedTypeInverse}
+              />
               Settings
             </SideBarButton>
           </NavLink>

@@ -54,7 +54,12 @@ const containerBase =
 const inputBase =
   " absolute cursor-pointer appearance-none rounded-full transition-all ";
 
-function CheckBoxes({ type = "darkMode", token = "sm" }) {
+function CheckBoxes({
+  type = "darkMode",
+  token = "sm",
+  checked = false,
+  onChange,
+}) {
   //Error boundry
   const isDarkMode = type === "darkMode";
   const selectedToken = isDarkMode
@@ -84,6 +89,8 @@ function CheckBoxes({ type = "darkMode", token = "sm" }) {
 
       <input
         type="checkbox"
+        onChange={onChange}
+        value={checked}
         className={`
           ${inputBase}
           ${selectedType.inputClasses}

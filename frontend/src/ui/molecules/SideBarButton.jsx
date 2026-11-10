@@ -9,7 +9,12 @@ const types = {
   secondary: "group-[.active]:text-primary-300",
 };
 
-function SideBarButton({ type = "secondary", children, Icon = HomeIcon }) {
+function SideBarButton({
+  type = "secondary",
+  children,
+  Icon = HomeIcon,
+  className = "",
+}) {
   //Error boundry
   const selectedType = types[type] ?? types.primary;
 
@@ -37,6 +42,7 @@ function SideBarButton({ type = "secondary", children, Icon = HomeIcon }) {
           w-0!
           opacity-0
           group-[.active]:ring-1 group-[.active]:ring-accent-100 group-hover/sidebar:opacity-100 group-hover/sidebar:w-72.75!
+          ${className}
           ${selectedType}
         `}
       >

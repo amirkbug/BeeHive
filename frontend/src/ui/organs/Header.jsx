@@ -3,6 +3,7 @@ import FloatingButton from "../atoms/FloatingButton";
 import SearchIcon from "../molecules/SearchIcon";
 
 import { BellRingIcon } from "@solar-icons/react/line-duotone/bell-ring";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 //Objects for diffrent variations
 
@@ -18,13 +19,15 @@ const headerBase = `
   py-2
   pl-2 pr-2
   rounded-lg
+  transition-all
+  hover:shadow-200-BoxShadowM
   `;
 
-function Header({ type = "primary" }) {
+function Header() {
+  const { isDarkMode, handleDarkMode, selectedTypeInerse, type } =
+    useThemeContext();
   //Error boundry
   const selectedType = Object.hasOwn(types, type) ? type : "primary";
-  const selectedTypeInerse =
-    selectedType === "primary" ? "secondary" : "primary";
 
   //Component itself
   return (
@@ -47,7 +50,11 @@ function Header({ type = "primary" }) {
           token="sm"
           Icon={BellRingIcon}
         />
-        <RadioButton type="darkMode" />
+        <RadioButton
+          type="darkMode"
+          checked={isDarkMode}
+          onChange={(e) => handleDarkMode(e.target.checked)}
+        />
       </div>
     </header>
   );

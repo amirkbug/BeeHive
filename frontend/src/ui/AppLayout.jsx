@@ -28,7 +28,7 @@ function AppLayout() {
             pl-4
           "
         >
-          <Header type="primary" />
+          <Header />
         </div>
         <Outlet />
       </section>

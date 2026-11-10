@@ -4,8 +4,11 @@ import Line from "../../ui/atoms/Line";
 
 import { CalendarIcon, ClockCircleIcon } from "@solar-icons/react/line-duotone";
 import { CalendarMarkIcon } from "@solar-icons/react/line-duotone/calendar-mark";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 function NavigationButtons() {
+  const { selectedTypeInverse } = useThemeContext();
+
   return (
     <nav
       className="
@@ -22,17 +25,25 @@ function NavigationButtons() {
           ml-4!
         "
       />
-      <Button token="sm" type="secondary">
+      <Button token="sm" type={selectedTypeInverse}>
         Past month
-        <IconDoutone Icon={CalendarMarkIcon} size={16} type="secondary" />
+        <IconDoutone
+          Icon={CalendarMarkIcon}
+          size={16}
+          type={selectedTypeInverse}
+        />
       </Button>
-      <Button token="sm" type="secondary">
+      <Button token="sm" type={selectedTypeInverse}>
         Past week
-        <IconDoutone Icon={CalendarIcon} size={16} type="secondary" />
+        <IconDoutone Icon={CalendarIcon} size={16} type={selectedTypeInverse} />
       </Button>
-      <Button token="sm" type="secondary">
+      <Button token="sm" type={selectedTypeInverse}>
         Today
-        <IconDoutone Icon={ClockCircleIcon} size={16} type="secondary" />
+        <IconDoutone
+          Icon={ClockCircleIcon}
+          size={16}
+          type={selectedTypeInverse}
+        />
       </Button>
     </nav>
   );

@@ -1,3 +1,4 @@
+import { useThemeContext } from "../../contexts/ThemeContext";
 import Kpi from "../../ui/organs/Kpi";
 
 import {
@@ -7,6 +8,8 @@ import {
 } from "@solar-icons/react/line-duotone";
 
 function KpisDashboard() {
+  const { selectedTypeInverse } = useThemeContext();
+
   return (
     <section
       className="
@@ -22,7 +25,7 @@ function KpisDashboard() {
       <Kpi
         chartValue={30}
         token="md"
-        type="secondary"
+        type={selectedTypeInverse}
         kpiType="warning"
         KpiIconName={WalletMoneyIcon}
         SubTxtIcon={null}
@@ -34,7 +37,7 @@ function KpisDashboard() {
       <Kpi
         chartValue={85}
         token="md"
-        type="secondary"
+        type={selectedTypeInverse}
         kpiType="success"
         KpiIconName={GraphUpIcon}
         SubTxtIcon={null}
@@ -46,7 +49,7 @@ function KpisDashboard() {
       <Kpi
         chartValue={15}
         token="md"
-        type="secondary"
+        type={selectedTypeInverse}
         kpiType="destructive"
         KpiIconName={DangerTriangleIcon}
         SubTxtIcon={null}
