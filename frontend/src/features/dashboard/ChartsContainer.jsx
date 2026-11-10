@@ -1,21 +1,23 @@
 import Charts from "./Charts";
 
+const baseClasses = {
+  div: `
+  overflow-x-hidden
+  w-full h-full
+  mt-4
+  `,
+
+  section: `
+  flex flex-col flex-1
+  justify-between
+  w-full
+  `,
+};
+
 function ChartsContainer() {
   return (
-    <div
-      className="
-        overflow-x-hidden
-        w-full h-full
-        mt-4
-      "
-    >
-      <section
-        className="
-          flex flex-col flex-1
-          justify-between
-          w-full
-        "
-      >
+    <div className={baseClasses.div}>
+      <section className={baseClasses.section}>
         <Charts
           token="lg"
           type="secondary"

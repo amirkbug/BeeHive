@@ -7,21 +7,23 @@ import {
   DangerTriangleIcon,
 } from "@solar-icons/react/line-duotone";
 
+const baseClasses = {
+  section: `
+  overflow-x-auto
+  flex flex-row shrink-0
+  items-center justify-between
+  w-full h-fit
+  gap-5
+  py-5
+  pl-4
+  `,
+};
+
 function KpisDashboard() {
   const { selectedTypeInverse } = useThemeContext();
 
   return (
-    <section
-      className="
-        overflow-x-auto
-        flex flex-row shrink-0
-        items-center justify-between
-        w-full h-fit
-        gap-5
-        py-5
-        pl-4
-      "
-    >
+    <section className={baseClasses.section}>
       <Kpi
         chartValue={30}
         token="md"

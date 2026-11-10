@@ -6,25 +6,26 @@ import { CalendarIcon, ClockCircleIcon } from "@solar-icons/react/line-duotone";
 import { CalendarMarkIcon } from "@solar-icons/react/line-duotone/calendar-mark";
 import { useThemeContext } from "../../contexts/ThemeContext";
 
+const baseClasses = {
+  nav: `
+  flex flex-row
+  items-center justify-end
+  w-full
+  gap-2
+  pt-4
+  `,
+  line: `
+  flex-1
+  ml-4!
+  `,
+};
+
 function NavigationButtons() {
   const { selectedTypeInverse } = useThemeContext();
 
   return (
-    <nav
-      className="
-        flex flex-row
-        items-center justify-end
-        w-full
-        gap-2
-        pt-4
-      "
-    >
-      <Line
-        className="
-          flex-1
-          ml-4!
-        "
-      />
+    <nav className={baseClasses.nav}>
+      <Line className={baseClasses.line} />
       <Button token="sm" type={selectedTypeInverse}>
         Past month
         <IconDoutone
