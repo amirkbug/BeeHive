@@ -21,6 +21,7 @@ import {
 } from "@solar-icons/react/line-duotone";
 
 import { AltArrowUpIcon, AltArrowDownIcon } from "@solar-icons/react/bold";
+import IconDoutone from "../atoms/IconDoutone";
 //Maybe in the feature i made a reusable Compound component out of that for now its perfect
 //1)Create context
 const TableContext = createContext();
@@ -610,29 +611,18 @@ function TableCell({ item }) {
           "
         >
           <button type="button" aria-label="Delete">
-            <TrashBinTrashIcon
-              secondaryOpacity={1}
-              secondaryColor="var(--color-accent-100)"
+            <IconDoutone
+              Icon={TrashBinTrashIcon}
               size={16}
-              className={`
-                hover:
-                ${selectedType.iconHoverColor}
-                ${iconBaseClasses}
-                ${selectedType.txtColor}
-              `}
+              type={type === "primary" ? "secondary" : "primary"}
             />
           </button>
 
           <button type="button" aria-label="Edit">
-            <Pen2Icon
-              secondaryOpacity={1}
-              secondaryColor="var(--color-accent-100)"
+            <IconDoutone
+              Icon={Pen2Icon}
               size={16}
-              className={`
-                ${iconBaseClasses}
-                ${selectedType.txtColor}
-                ${selectedType.iconHoverColor}
-              `}
+              type={type === "primary" ? "secondary" : "primary"}
             />
           </button>
         </div>

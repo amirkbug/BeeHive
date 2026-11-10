@@ -106,7 +106,7 @@ const chartTypes = ["bar", "line", "pie", "dougnut", "scatter", "area"];
 const paddingBaseOnChartType = {
   sm: "pr-8 pb-2 pt-6",
   md: "pr-8 pt-8 pb-5",
-  lg: "pt-12 pb-8 pr-10",
+  lg: "pr-10 pb-8 pt-12",
 };
 
 // Base classes

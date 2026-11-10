@@ -5,12 +5,23 @@ const types = {
   secondary: "var(--color-primary-100)",
 };
 
-function IconDoutone({ Icon = HomeIcon, size = 20, type = "primary" }) {
+function IconDoutone({
+  Icon = HomeIcon,
+  size = 20,
+  type = "primary",
+  className = "",
+}) {
   const selectedType = types[type] ?? types.primary;
 
   return (
     <Icon
       secondaryColor="var(--color-accent-100)"
+      className={`
+        transition-all
+        hover:opacity-60 active:scale-90
+        cursor-pointer
+        ${className}
+      `}
       color={selectedType}
       secondaryOpacity={1}
       size={size}
