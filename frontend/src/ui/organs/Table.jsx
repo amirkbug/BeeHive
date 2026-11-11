@@ -297,6 +297,36 @@ const baseClasses = {
   flex flex-row
   items-center justify-center
   `,
+
+  table: `
+  overflow-hidden
+  flex flex-5 flex-col
+  w-full
+  gap-4
+  pb-4 pl-4
+  `,
+
+  tbody: `
+  overflow-y-auto
+  flex flex-1 flex-col
+  min-h-0
+  gap-4
+  `,
+
+  theadTr: `
+  grid
+  items-center justify-center
+  px-2 py-5
+  `,
+
+  theadTrFirstTd: `
+  first:border-r last:justify-end
+  `,
+
+  theadTrSecondTd: `
+  justify-center
+  border-r
+  `,
 };
 
 //Make the context throw and error when used outside of the bound
@@ -316,20 +346,16 @@ function Table({
   type = "secondary",
   children,
 }) {
+  //Error boundry
+  const selectedTypeInverse = type === "primary" ? "secondary" : "primary";
+  const selectedType = types[selectedTypeInverse] ?? types.primary;
+
   return (
     //2)Provide the value
-    <TableContext.Provider value={{ data, headerContent, type }}>
-      <table
-        className="
-          overflow-hidden
-          flex flex-5 flex-col
-          w-full
-          gap-4
-          pb-4 pl-4
-        "
-      >
-        {children}
-      </table>
+    <TableContext.Provider
+      value={{ data, headerContent, type, selectedType, selectedTypeInverse }}
+    >
+      <table className={baseClasses.table}>{children}</table>
     </TableContext.Provider>
   );
 }
@@ -339,7 +365,8 @@ function TableBody() {
   const { data, type } = useTableContext();
 
   //Error boundry
-  const selectedType = types[type] ?? types.primary;
+  const selectedTypeInverse = type === "primary" ? "secondary" : "primary";
+  const selectedType = types[selectedTypeInverse] ?? types.primary;
 
   //Calculating whether the user is in profit or loss
   const rowShadowClasses = data.map((item) => {
@@ -359,14 +386,7 @@ function TableBody() {
 
   //Component itself
   return (
-    <tbody
-      className="
-        overflow-y-auto
-        flex flex-1 flex-col
-        min-h-0
-        gap-4
-      "
-    >
+    <tbody className={baseClasses.tbody}>
       {data.map((item, i) => (
         <tr
           key={item.id}
@@ -393,9 +413,7 @@ function TableHeader() {
     <thead>
       <tr
         className={`
-          grid
-          items-center justify-center
-          px-2 py-5
+          ${baseClasses.theadTr}
           ${"grid-cols-" + headerContent.length}
         `}
       >
@@ -404,7 +422,7 @@ function TableHeader() {
             <td
               key={i}
               className={`
-                first:border-r last:justify-end
+                ${baseClasses.theadTrFirstTd}
                 ${types[selectedType].tdLineColorHeader}
                 ${baseClasses.td}
               `}
@@ -422,8 +440,7 @@ function TableHeader() {
             <td
               key={i}
               className={`
-                justify-center
-                border-r
+                ${baseClasses.theadTrSecondTd}
                 ${types[selectedType].tdLineColorHeader}
                 ${baseClasses.td}
               `}
@@ -441,7 +458,7 @@ function TableHeader() {
 }
 
 function TableCell({ item }) {
-  const { type } = useTableContext();
+  const { type, selectedType } = useTableContext();
 
   //Destructure the item object
   const {
@@ -455,9 +472,6 @@ function TableCell({ item }) {
 
   //Choose the icon base on the item icon_name
   const Icon = iconMap[icon_name] ?? WidgetIcon;
-
-  //Error boundry
-  const selectedType = types[type] ?? types.primary;
 
   //Component itself
   return (
@@ -606,19 +620,11 @@ function TableCell({ item }) {
           "
         >
           <button type="button" aria-label="Delete">
-            <IconDoutone
-              Icon={TrashBinTrashIcon}
-              size={16}
-              type={type === "primary" ? "secondary" : "primary"}
-            />
+            <IconDoutone Icon={TrashBinTrashIcon} size={16} type={type} />
           </button>
 
           <button type="button" aria-label="Edit">
-            <IconDoutone
-              Icon={Pen2Icon}
-              size={16}
-              type={type === "primary" ? "secondary" : "primary"}
-            />
+            <IconDoutone Icon={Pen2Icon} size={16} type={type} />
           </button>
         </div>
       </td>
