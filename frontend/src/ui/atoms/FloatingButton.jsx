@@ -18,15 +18,20 @@ const types = {
   },
 };
 
-//Base style
-const base = `
+//Base classes
+const baseClasses = {
+  button: `
   group flex items-center inset-ring-0 justify-center gap-2.5
   rounded-full cursor-pointer transition-all
   hover:shadow-300-BoxShadowM
   active:inset-ring-1 active:inset-ring-accent-100 active:scale-95
   group-[.active]:ring-1
   group-[.active]:ring-accent-100
-`;
+`,
+  icon: `
+  transition-colors
+  `,
+};
 
 function FloatingButton({
   className = "",
@@ -45,7 +50,7 @@ function FloatingButton({
       type="button"
       onClick={onClick}
       className={`
-        ${base}
+        ${baseClasses.button}
         ${size}
         ${variant.button}
         ${className}
@@ -56,7 +61,7 @@ function FloatingButton({
         secondaryOpacity={1}
         secondaryColor="var(--color-accent-100)"
         className={`
-          transition-colors
+          ${baseClasses.icon}
           ${variant.icon}
         `}
       />

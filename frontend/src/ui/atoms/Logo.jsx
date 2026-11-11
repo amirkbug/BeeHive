@@ -5,10 +5,6 @@ const logos = import.meta.glob("../../assets/icons/*.png", {
   import: "default",
 });
 
-// Shared styles
-const base =
-  "cursor-pointer transition-all object-contain hover:drop-shadow-200-BoxShadowM active:scale-95";
-
 // Logo sizes
 const sizes = {
   primary: {
@@ -47,6 +43,16 @@ const types = {
   secondary: "secondaryColor",
 };
 
+//Base classes
+const baseClasses = {
+  img: `
+  object-contain
+  transition-all
+  hover:drop-shadow-200-BoxShadowM active:scale-95
+  cursor-pointer
+  `,
+};
+
 function Logo({
   token = "md",
   type = "primary",
@@ -69,8 +75,8 @@ function Logo({
       src={imgSrc}
       alt="BeeHive logo"
       className={`
+        ${baseClasses.img}
         ${size}
-        ${base}
         ${className}
       `}
     />

@@ -22,8 +22,14 @@ const types = {
   warning: "bg-warning-200 text-warning-500",
 };
 
-//Base style
-const base = "flex items-center justify-center rounded-md";
+//Base classes
+const baseClasses = {
+  span: `
+  flex
+  items-center justify-center
+  rounded-md
+  `,
+};
 
 function KpiIcon({ type = "warning", token = "md", Icon = DollarIcon }) {
   //Error boundry
@@ -34,9 +40,9 @@ function KpiIcon({ type = "warning", token = "md", Icon = DollarIcon }) {
   return (
     <span
       className={`
+        ${baseClasses.span}
         ${selectedToken.containerToken}
         ${selectedType}
-        ${base}
       `}
     >
       <Icon className={selectedToken.iconToken} />

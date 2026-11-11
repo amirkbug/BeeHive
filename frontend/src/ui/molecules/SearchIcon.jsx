@@ -7,6 +7,18 @@ import { MagnifierIcon } from "@solar-icons/react/line-duotone/magnifier";
 //Objects for diffrent variations
 const types = ["primary", "secondary"];
 
+//Base classes
+const baseClasses = {
+  div: `
+  relative
+  flex
+  `,
+
+  floatingButton: `
+  shrink-0
+  `,
+};
+
 //Component itself
 function SearchIcon({ type = "primary" }) {
   //Dynamic functionality
@@ -21,19 +33,14 @@ function SearchIcon({ type = "primary" }) {
 
   //Coponent itself
   return (
-    <div
-      className="
-        relative
-        flex
-      "
-    >
+    <div className={baseClasses.div}>
       <FloatingButton
         onClick={handleSearchClick}
         type={selectedType}
         token="sm"
         Icon={MagnifierIcon}
         className={`
-          shrink-0
+          ${baseClasses.floatingButton}
           ${isSearchOpen ? "absolute opacity-0" : "z-10 opacity-100"}
         `}
       />

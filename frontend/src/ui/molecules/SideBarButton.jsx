@@ -9,6 +9,26 @@ const types = {
   secondary: "group-[.active]:text-primary-300",
 };
 
+//Base classes
+const baseClasses = {
+  div: `
+  flex flex-row
+  translate-x-2
+  `,
+
+  floatingButton: `
+  group-hover/sidebar:opacity-0
+  `,
+
+  button: `
+  absolute
+  items-center justify-start
+  w-0!
+  opacity-0
+  group-[.active]:ring-1 group-[.active]:ring-accent-100 group-hover/sidebar:opacity-100 group-hover/sidebar:w-72.75!     
+  `,
+};
+
 function SideBarButton({
   type = "secondary",
   children,
@@ -20,28 +40,17 @@ function SideBarButton({
 
   //Component itself
   return (
-    <div
-      className="
-        flex flex-row
-        translate-x-2
-      "
-    >
+    <div className={baseClasses.div}>
       <FloatingButton
         type={type}
-        className={`
-          group-hover/sidebar:opacity-0
-        `}
+        className={baseClasses.floatingButton}
         Icon={Icon}
         token="sm"
       />
       <Button
         type={type}
         className={`
-          absolute
-          items-center justify-start
-          w-0!
-          opacity-0
-          group-[.active]:ring-1 group-[.active]:ring-accent-100 group-hover/sidebar:opacity-100 group-hover/sidebar:w-72.75!
+          ${baseClasses.button}
           ${className}
           ${selectedType}
         `}

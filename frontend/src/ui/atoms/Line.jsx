@@ -2,6 +2,12 @@ const orientationStyles = {
   vertical: `h-px w-full`,
   horizontal: `h-full w-px`,
 };
+
+//Base classes
+const baseClasses = {
+  hr: `border-0`,
+};
+
 function Line({
   orientation = "vertical",
   color = "bg-primary-300",
@@ -10,7 +16,7 @@ function Line({
   return (
     <hr
       className={`
-        border-0
+        ${baseClasses.hr}
         ${color}
         ${orientationStyles[orientation]}
         ${className}

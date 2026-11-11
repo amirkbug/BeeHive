@@ -102,7 +102,8 @@ const types = {
 };
 
 //Base classes
-const base = `
+const baseClasses = {
+  button: `
   group
   flex flex-row justify-center items-center
   w-fit h-fit
@@ -112,7 +113,8 @@ const base = `
   cursor-pointer
   focus-visible:outline-none
   focus-visible:inset-ring-1
-  `;
+  `,
+};
 
 function Button({
   token = "md",
@@ -133,7 +135,7 @@ function Button({
       disabled={disabled}
       className={`
         disabled:
-        ${base}
+        ${baseClasses.button}
         ${selectedType}
         ${disabled ? "pointer-events-none" : ""}
         ${selectedToekn}

@@ -5,6 +5,15 @@ const types = {
   secondary: "var(--color-primary-100)",
 };
 
+//Base classes
+const baseClasses = {
+  icon: `
+  transition-all
+  hover:opacity-60 active:scale-90
+  cursor-pointer
+  `,
+};
+
 function IconDoutone({
   Icon = HomeIcon,
   size = 20,
@@ -17,9 +26,7 @@ function IconDoutone({
     <Icon
       secondaryColor="var(--color-accent-100)"
       className={`
-        transition-all
-        hover:opacity-60 active:scale-90
-        cursor-pointer
+        ${baseClasses.icon}
         ${className}
       `}
       color={selectedType}

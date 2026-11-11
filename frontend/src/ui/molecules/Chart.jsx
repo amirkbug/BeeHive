@@ -109,15 +109,17 @@ const paddingBaseOnChartType = {
   lg: "pr-10 pb-8 pt-12",
 };
 
-// Base classes
-const articleBase = `
+//Base classes
+const baseClasses = {
+  article: `
   items-center justify-center
   max-w-3xl
   rounded-lg
   shrink-0
   transition-all
   hover:shadow-400-BoxShadowM
-`;
+`,
+};
 
 function Chart({ chartType = "pie", token = "sm", type = "secondary" }) {
   // Error boundary / fallback values
@@ -131,7 +133,7 @@ function Chart({ chartType = "pie", token = "sm", type = "secondary" }) {
   return (
     <article
       className={`
-        ${articleBase}
+        ${baseClasses.article}
         ${selectedType.containerClasses}
         ${selectedChartType === "pie" || selectedChartType === "dougnut" ? "" : `${selectedPaddingBaseOnChartType} pl-0`}
         ${selectedToken.containerPadding}

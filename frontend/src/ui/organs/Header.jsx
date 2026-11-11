@@ -12,7 +12,9 @@ const types = {
   secondary: "bg-secondary-500",
 };
 
-const headerBase = `
+//Base classes
+const baseClasses = {
+  header: `
   flex flex-row
   items-center justify-between
   w-full
@@ -21,11 +23,19 @@ const headerBase = `
   rounded-lg
   transition-all
   hover:shadow-200-BoxShadowM
-  `;
+  `,
+
+  div: `
+  flex flex-row
+  items-center justify-end
+  gap-2
+  `,
+};
 
 function Header() {
-  const { isDarkMode, handleDarkMode, selectedTypeInerse, type } =
+  const { isDarkMode, handleDarkMode, selectedTypeInverse, type } =
     useThemeContext();
+
   //Error boundry
   const selectedType = Object.hasOwn(types, type) ? type : "primary";
 
@@ -33,20 +43,14 @@ function Header() {
   return (
     <header
       className={`
-        ${headerBase}
+        ${baseClasses.header}
         ${types[selectedType]}
       `}
     >
-      <SearchIcon type={selectedTypeInerse} />
-      <div
-        className="
-          flex flex-row
-          items-center justify-end
-          gap-2
-        "
-      >
+      <SearchIcon type={selectedTypeInverse} />
+      <div className={baseClasses.div}>
         <FloatingButton
-          type={selectedTypeInerse}
+          type={selectedTypeInverse}
           token="sm"
           Icon={BellRingIcon}
         />

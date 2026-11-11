@@ -8,18 +8,25 @@ const tokens = {
   xl: "w-19.25 h-19.25",
 };
 
-//Base style
-const base =
-  "cursor-pointer items-center active:scale-95 rounded-full transition-all hover:shadow-300-BoxShadowM";
+//Base classes
+const baseClasses = {
+  img: `
+  object-cover
+  items-center
+  rounded-full
+  transition-all
+  hover:shadow-300-BoxShadowM active:scale-95
+  cursor-pointer
+  `,
+};
 
 //Component itself
 function UserProfile({ token = "md" }) {
   return (
     <img
       className={`
-        object-cover
+        ${baseClasses.img}
         ${tokens[token]}
-        ${base}
       `}
       src={HorizintalJustNone}
       alt="User profile"

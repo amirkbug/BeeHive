@@ -6,6 +6,14 @@ const tokens = {
   lg: "w-16",
 };
 
+//Base classes
+const baseClasses = {
+  div: `
+  h-9/10
+  rounded-full
+  `,
+};
+
 //Comopnent intself
 function OnlyColorBackground({ token = "md", color = "#f9a38f" }) {
   const selectedToken = tokens[token] ?? tokens.sm;
@@ -13,8 +21,7 @@ function OnlyColorBackground({ token = "md", color = "#f9a38f" }) {
   return (
     <div
       className={`
-        h-9/10
-        rounded-full
+        ${baseClasses.div}
         ${selectedToken}
       `}
       style={{ backgroundColor: color }}

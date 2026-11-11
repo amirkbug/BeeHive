@@ -1,4 +1,5 @@
 import Button from "../molecules/Button";
+import IconDoutone from "../atoms/IconDoutone";
 
 import { createContext, useContext } from "react";
 import {
@@ -19,103 +20,11 @@ import {
   SunIcon,
   BoltIcon,
 } from "@solar-icons/react/line-duotone";
-
 import { AltArrowUpIcon, AltArrowDownIcon } from "@solar-icons/react/bold";
-import IconDoutone from "../atoms/IconDoutone";
+
 //Maybe in the feature i made a reusable Compound component out of that for now its perfect
 //1)Create context
 const TableContext = createContext();
-
-//Make the context throw and error when used outside of the bound
-function useTableContext() {
-  const context = useContext(TableContext);
-
-  if (!context) {
-    throw new Error("You used form context out of the bound.");
-  }
-  return context;
-}
-
-//Header default data
-const tempHeaderContent = [
-  {
-    content: "Icon",
-    icon: (
-      <WidgetIcon
-        size={16}
-        secondaryColor="var(--color-accent-100)"
-        secondaryOpacity={1}
-      />
-    ),
-    type: "primary",
-  },
-  {
-    content: "Title",
-    icon: (
-      <ChartSquareIcon
-        size={16}
-        secondaryColor="var(--color-accent-100)"
-        secondaryOpacity={1}
-      />
-    ),
-    type: "secondary",
-  },
-  {
-    content: "Value",
-    icon: (
-      <WalletMoneyIcon
-        size={16}
-        secondaryColor="var(--color-accent-100)"
-        secondaryOpacity={1}
-      />
-    ),
-    type: "secondary",
-  },
-  {
-    content: "Daily",
-    icon: (
-      <CalendarDateIcon
-        size={16}
-        secondaryColor="var(--color-accent-100)"
-        secondaryOpacity={1}
-      />
-    ),
-    type: "secondary",
-  },
-  {
-    content: "Weekly",
-    icon: (
-      <CalendarMarkIcon
-        size={16}
-        secondaryColor="var(--color-accent-100)"
-        secondaryOpacity={1}
-      />
-    ),
-    type: "secondary",
-  },
-  {
-    content: "Monthly",
-    icon: (
-      <CalendarIcon
-        size={16}
-        secondaryColor="var(--color-accent-100)"
-        secondaryOpacity={1}
-      />
-    ),
-    type: "secondary",
-  },
-  {
-    content: "Actions",
-    icon: (
-      <MenuDotsVerticalIcon
-        size={16}
-        secondaryColor="var(--color-accent-100)"
-        secondaryOpacity={1}
-      />
-    ),
-    type: "primary",
-  },
-];
 
 // Dumb data
 const testData = [
@@ -247,6 +156,101 @@ const testData = [
   },
 ];
 
+//Header default data
+const tempHeaderContent = [
+  {
+    content: "Icon",
+    icon: (
+      <WidgetIcon
+        size={16}
+        secondaryColor="var(--color-accent-100)"
+        secondaryOpacity={1}
+      />
+    ),
+    type: "primary",
+  },
+  {
+    content: "Title",
+    icon: (
+      <ChartSquareIcon
+        size={16}
+        secondaryColor="var(--color-accent-100)"
+        secondaryOpacity={1}
+      />
+    ),
+    type: "secondary",
+  },
+  {
+    content: "Value",
+    icon: (
+      <WalletMoneyIcon
+        size={16}
+        secondaryColor="var(--color-accent-100)"
+        secondaryOpacity={1}
+      />
+    ),
+    type: "secondary",
+  },
+  {
+    content: "Daily",
+    icon: (
+      <CalendarDateIcon
+        size={16}
+        secondaryColor="var(--color-accent-100)"
+        secondaryOpacity={1}
+      />
+    ),
+    type: "secondary",
+  },
+  {
+    content: "Weekly",
+    icon: (
+      <CalendarMarkIcon
+        size={16}
+        secondaryColor="var(--color-accent-100)"
+        secondaryOpacity={1}
+      />
+    ),
+    type: "secondary",
+  },
+  {
+    content: "Monthly",
+    icon: (
+      <CalendarIcon
+        size={16}
+        secondaryColor="var(--color-accent-100)"
+        secondaryOpacity={1}
+      />
+    ),
+    type: "secondary",
+  },
+  {
+    content: "Actions",
+    icon: (
+      <MenuDotsVerticalIcon
+        size={16}
+        secondaryColor="var(--color-accent-100)"
+        secondaryOpacity={1}
+      />
+    ),
+    type: "primary",
+  },
+];
+
+//What icon should be in the rows
+const iconMap = {
+  "widget": WidgetIcon,
+  "wallet-money": WalletMoneyIcon,
+  "chart-square": ChartSquareIcon,
+  "database": DatabaseIcon,
+  "server": ServerIcon,
+  "shop": ShopIcon,
+  "users-group-rounded": UsersGroupRoundedIcon,
+  "folder": FolderIcon,
+  "sun": SunIcon,
+  "bolt": BoltIcon,
+};
+
 //Objecs for diffrent variations
 const types = {
   primary: {
@@ -264,6 +268,46 @@ const types = {
     iconHoverColor: "hover:text-secondary-300",
   },
 };
+
+//Base classes
+const baseClasses = {
+  tr: `
+  grid grid-cols-7
+  items-center justify-center
+  rounded-lg
+  text-secondary-500 text-12px
+  bg-secondary-100
+  transition-shadow
+  `,
+
+  td: `
+  flex flex-row
+  items-center 
+  h-8
+  `,
+
+  secondTd: `
+  flex flex-row
+  items-center 
+  h-8
+  border-r 
+  `,
+
+  span: ` 
+  flex flex-row
+  items-center justify-center
+  `,
+};
+
+//Make the context throw and error when used outside of the bound
+function useTableContext() {
+  const context = useContext(TableContext);
+
+  if (!context) {
+    throw new Error("You used form context out of the bound.");
+  }
+  return context;
+}
 
 //Table component just act as a hub the data will come here and get used in other parts
 function Table({
@@ -289,16 +333,6 @@ function Table({
     </TableContext.Provider>
   );
 }
-
-//Table row base classes
-const tableRowBaseClasses = `
-  grid grid-cols-7
-  items-center justify-center
-  rounded-lg
-  text-secondary-500 text-12px
-  bg-secondary-100
-  transition-shadow
-  `;
 
 function TableBody() {
   //3)Use the value
@@ -337,7 +371,7 @@ function TableBody() {
         <tr
           key={item.id}
           className={`
-            ${tableRowBaseClasses}
+            ${baseClasses.tr}
             ${rowShadowClasses[i]}
             ${selectedType.trClasses}
           `}
@@ -348,12 +382,6 @@ function TableBody() {
     </tbody>
   );
 }
-
-const buttonsBaseClasses = `
-  flex flex-row
-  items-center 
-  h-8
-  `;
 
 function TableHeader() {
   const { headerContent, type } = useTableContext();
@@ -378,7 +406,7 @@ function TableHeader() {
               className={`
                 first:border-r last:justify-end
                 ${types[selectedType].tdLineColorHeader}
-                ${buttonsBaseClasses}
+                ${baseClasses.td}
               `}
             >
               <Button
@@ -397,7 +425,7 @@ function TableHeader() {
                 justify-center
                 border-r
                 ${types[selectedType].tdLineColorHeader}
-                ${buttonsBaseClasses}
+                ${baseClasses.td}
               `}
             >
               <Button type={selectedType} token="sm">
@@ -411,39 +439,6 @@ function TableHeader() {
     </thead>
   );
 }
-
-const iconMap = {
-  "widget": WidgetIcon,
-  "wallet-money": WalletMoneyIcon,
-  "chart-square": ChartSquareIcon,
-  "database": DatabaseIcon,
-  "server": ServerIcon,
-  "shop": ShopIcon,
-  "users-group-rounded": UsersGroupRoundedIcon,
-  "folder": FolderIcon,
-  "sun": SunIcon,
-  "bolt": BoltIcon,
-};
-
-//Objects for diffrent variations
-
-const tdBaseClasses = `
-  flex flex-row
-  items-center 
-  h-8
-  border-r 
-  `;
-
-const iconBaseClasses = `
-  transition-colors
-  active:scale-95
-  cursor-pointer
-  `;
-
-const upAndDownArrow = ` 
-  flex flex-row
-  items-center justify-center
-  `;
 
 function TableCell({ item }) {
   const { type } = useTableContext();
@@ -471,7 +466,7 @@ function TableCell({ item }) {
         className={`
           justify-start
           pl-6
-          ${tdBaseClasses}
+          ${baseClasses.secondTd}
           ${selectedType.tdLineColor}
           ${selectedType.txtColor}
         `}
@@ -486,7 +481,7 @@ function TableCell({ item }) {
       <td
         className={`
           justify-center
-          ${tdBaseClasses}
+          ${baseClasses.secondTd}
           ${selectedType.tdLineColor}
           ${selectedType.txtColor}
         `}
@@ -497,7 +492,7 @@ function TableCell({ item }) {
       <td
         className={`
           justify-center
-          ${tdBaseClasses}
+          ${baseClasses.secondTd}
           ${selectedType.tdLineColor}
           ${selectedType.txtColor}
         `}
@@ -508,7 +503,7 @@ function TableCell({ item }) {
       <td
         className={`
           justify-center
-          ${tdBaseClasses}
+          ${baseClasses.secondTd}
           ${selectedType.tdLineColor}
           ${selectedType.txtColor}
         `}
@@ -519,7 +514,7 @@ function TableCell({ item }) {
           <span
             className={`
               text-success-400
-              ${upAndDownArrow}
+              ${baseClasses.span}
             `}
           >
             <AltArrowUpIcon size={9} color="var(--color-success-400)" />
@@ -529,7 +524,7 @@ function TableCell({ item }) {
           <span
             className={`
               text-destructive-400
-              ${upAndDownArrow}
+              ${baseClasses.span}
             `}
           >
             <AltArrowDownIcon size={9} color="var(--color-destructive-400)" />
@@ -541,7 +536,7 @@ function TableCell({ item }) {
       <td
         className={`
           justify-center
-          ${tdBaseClasses}
+          ${baseClasses.secondTd}
           ${selectedType.txtColor}
         `}
       >
@@ -551,7 +546,7 @@ function TableCell({ item }) {
           <span
             className={`
               text-success-400
-              ${upAndDownArrow}
+              ${baseClasses.span}
             `}
           >
             <AltArrowUpIcon size={9} color="var(--color-success-400)" />
@@ -561,7 +556,7 @@ function TableCell({ item }) {
           <span
             className={`
               text-destructive-400
-              ${upAndDownArrow}
+              ${baseClasses.span}
             `}
           >
             <AltArrowDownIcon size={9} color="var(--color-destructive-400)" />
@@ -573,7 +568,7 @@ function TableCell({ item }) {
       <td
         className={`
           justify-center
-          ${tdBaseClasses}
+          ${baseClasses.secondTd}
           ${selectedType.txtColor}
         `}
       >
@@ -583,7 +578,7 @@ function TableCell({ item }) {
           <span
             className={`
               text-success-400
-              ${upAndDownArrow}
+              ${baseClasses.span}
             `}
           >
             <AltArrowUpIcon size={9} color="var(--color-success-400)" />
@@ -593,7 +588,7 @@ function TableCell({ item }) {
           <span
             className={`
               text-destructive-400
-              ${upAndDownArrow}
+              ${baseClasses.span}
             `}
           >
             <AltArrowDownIcon size={9} color="var(--color-destructive-400)" />

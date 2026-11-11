@@ -53,6 +53,26 @@ const icons = {
   },
 };
 
+//Base classes
+const baseClasses = {
+  span: `
+  relative
+  inline-flex
+  shrink-0
+  animated-icon
+  `,
+  linearIcon: `
+  opacity-100
+  group-hover:opacity-0 group-disabled:opacity-0
+  linear-icon
+  `,
+  boldIcon: `
+  opacity-0
+  group-hover:opacity-100 group-disabled:opacity-100
+  bold-icon
+  `,
+};
+
 function AnimatedIcon({
   type = "primary",
   token = "md",
@@ -69,26 +89,21 @@ function AnimatedIcon({
   const LinearIcon = icons[selectedPosition].linear;
 
   //Base style
-  const base = `absolute group-hover:opacity-70 ${selectedType.iconClasses} inset-0 transition-opacity duration-150`;
+  const iconsBaseClasses = `absolute group-hover:opacity-70 ${selectedType.iconClasses} inset-0 transition-opacity duration-150`;
 
   //Component itself
   return (
     <span
       className={`
-        relative
-        inline-flex
-        shrink-0
-        animated-icon
+        ${baseClasses.span}
         ${selectedToken}
         ${className}
       `}
     >
       <LinearIcon
         className={`
-          opacity-100
-          group-hover:opacity-0 group-disabled:opacity-0
-          linear-icon
-          ${base}
+          ${baseClasses.linearIcon}
+          ${iconsBaseClasses}
         `}
         size="100%"
         aria-hidden="true"
@@ -96,10 +111,8 @@ function AnimatedIcon({
 
       <BoldIcon
         className={`
-          opacity-0
-          group-hover:opacity-100 group-disabled:opacity-100
-          bold-icon
-          ${base}
+          ${baseClasses.boldIcon}
+          ${iconsBaseClasses}
           ${isBackgroundChange ? `${selectedType.conditionalClasses}` : ""}
         `}
         size="100%"

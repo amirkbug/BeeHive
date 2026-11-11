@@ -49,10 +49,23 @@ const tokens = {
 };
 
 //Base classes
-const containerBase =
-  "flex relative  flex-row items-center justify-between rounded-full p-0.5 transition-all";
-const inputBase =
-  " absolute cursor-pointer appearance-none rounded-full transition-all ";
+const baseClasses = {
+  containerBase: `
+  relative
+  flex flex-row
+  items-center justify-between
+  p-0.5
+  rounded-full
+  transition-all
+  `,
+
+  inputBase: `
+  absolute
+  rounded-full
+  transition-all
+  cursor-pointer appearance-none
+  `,
+};
 
 function CheckBoxes({
   type = "darkMode",
@@ -72,7 +85,7 @@ function CheckBoxes({
   return (
     <div
       className={`
-        ${containerBase}
+        ${baseClasses.containerBase}
         ${selectedType.containerClasses}
         ${selectedToken.conatainerSize}
       `}
@@ -92,7 +105,7 @@ function CheckBoxes({
         onChange={onChange}
         value={checked}
         className={`
-          ${inputBase}
+          ${baseClasses.inputBase}
           ${selectedType.inputClasses}
           ${selectedToken.thumbSize}
           ${selectedToken.translateAmount}

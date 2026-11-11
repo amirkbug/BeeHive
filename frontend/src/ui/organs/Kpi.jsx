@@ -40,14 +40,31 @@ const tokens = {
 };
 
 //Base classes
-const articleBase = `
-    flex flex-col
-    items-start justify-between
-    rounded-lg 
-    min-w-82
-    transition-shadow
-    hover:shadow-400-BoxShadowM
-`;
+const baseClasses = {
+  article: `
+  flex flex-col
+  items-start justify-between
+  rounded-lg 
+  min-w-82
+  transition-shadow
+  hover:shadow-400-BoxShadowM
+  `,
+
+  h2: `
+  font-semibold
+  `,
+
+  div: `
+  flex flex-row
+  items-center justify-between
+  w-full
+  font-bold
+  `,
+
+  p: `
+  font-medium
+  `,
+};
 
 function Kpi({
   type = "secondary",
@@ -68,7 +85,7 @@ function Kpi({
   return (
     <article
       className={`
-        ${articleBase}
+        ${baseClasses.article}
         ${selectedToken.containerClasses}
         ${selectedType}
       `}
@@ -76,7 +93,7 @@ function Kpi({
       <KpiIcon type={kpiType} token={token} Icon={KpiIconName} />
       <h2
         className={`
-          font-semibold
+          ${baseClasses.h2}
           ${selectedToken.txtClasses.title}
         `}
       >
@@ -84,10 +101,7 @@ function Kpi({
       </h2>
       <div
         className={`
-          flex flex-row
-          items-center justify-between
-          w-full
-          font-bold
+          ${baseClasses.div}
           ${selectedToken.txtClasses.number}
         `}
       >
@@ -96,7 +110,7 @@ function Kpi({
       </div>
       <p
         className={`
-          font-medium
+          ${baseClasses.p}
           ${selectedToken.txtClasses.subtxt}
         `}
       >
