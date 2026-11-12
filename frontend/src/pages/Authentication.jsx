@@ -9,8 +9,7 @@ function Authentication() {
         <FormContainer.Logo />
         <FormContainer.Title>Forgot your password?</FormContainer.Title>
         <FormContainer.Description>
-          Enter your email address and we'll send you a link to reset your
-          password.
+          Enter your email address and send you a link to reset your password.
         </FormContainer.Description>
         <InputContainer token="sm" type="primary">
           <InputContainer.InputTxt>Gmail :</InputContainer.InputTxt>

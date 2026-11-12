@@ -1,5 +1,6 @@
-import { useThemeContext } from "../../contexts/ThemeContext";
 import Table from "../../ui/organs/Table";
+
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 function DataTable() {
   const { type } = useThemeContext();

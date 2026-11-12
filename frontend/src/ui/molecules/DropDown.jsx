@@ -104,7 +104,7 @@ function DropDown({ children, type = "primary", token = "sm" }) {
 function DropDownButton({ children, opens: dropDownUlName }) {
   const { getPosition, setOpenName, openName } = useDropDownContext();
   const buttonRef = useRef(null);
-  const isOpen = openName === null ? false : true;
+  const isOpen = openName === dropDownUlName;
 
   function handleClick(e) {
     e.stopPropagation();

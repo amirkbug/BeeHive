@@ -5,10 +5,11 @@ import Data from "./pages/Data";
 import Dashboard from "./pages/Dashboard";
 import AboutUs from "./pages/AboutUs";
 import AppLayout from "./ui/AppLayout";
-import SettingsGeneral from "./pages/SettingsGeneral";
+import General from "./features/settings/General";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeContextProvider } from "./contexts/ThemeContext";
+import Notifications from "./features/settings/Notifications";
 
 function App() {
   return (
@@ -19,8 +20,8 @@ function App() {
           <Route path="app" element={<AppLayout />}>
             <Route path="analytics" element={<Analytics />} />
             <Route path="settings" element={<Settings />}>
-              <Route path="general" element={<SettingsGeneral />} />
-              <Route path="notifications" element={<p>NOTIFICATIONS</p>} />
+              <Route index element={<General />} />
+              <Route path="notifications" element={<Notifications />} />
               <Route path="customazation" element={<p>CUSTOMAZATION</p>} />
               <Route path="kpi-management" element={<p>KPI-MANAGEMENT</p>} />
               <Route path="about-us" element={<p>ABOUT-US</p>} />

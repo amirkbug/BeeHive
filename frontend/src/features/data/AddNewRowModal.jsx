@@ -44,7 +44,13 @@ function AddNewData() {
         </InputContainer>
         <DropDown token="sm" type={type}>
           <DropDown.DropDownButton opens="sync_frequency">
-            <Button token="md" type={selectedTypeInverse}>
+            <Button
+              className="
+                disabled:ring-1 disabled:ring-accent-100
+              "
+              token="md"
+              type={selectedTypeInverse}
+            >
               Provider
               <AnimatedIcon position="right" type={type} token="md" />
             </Button>

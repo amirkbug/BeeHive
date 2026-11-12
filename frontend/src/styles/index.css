@@ -265,3 +265,6 @@ select:disabled {
   cursor: not-allowed;
 }
 
+html {
+  overflow: hidden;
+}

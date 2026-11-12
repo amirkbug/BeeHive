@@ -19,7 +19,7 @@ const baseClasses = {
   `,
 
   div: `
-  w-full
+  w-full 
   pl-4
   `,
 };

@@ -113,6 +113,7 @@ const baseClasses = {
   cursor-pointer
   focus-visible:outline-none
   focus-visible:inset-ring-1
+  group-[.active]:ring-1 group-[.active]:ring-accent-100
   `,
 };
 
@@ -134,7 +135,6 @@ function Button({
       {...props}
       disabled={disabled}
       className={`
-        disabled:
         ${baseClasses.button}
         ${selectedType}
         ${disabled ? "pointer-events-none" : ""}

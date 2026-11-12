@@ -1,158 +1,42 @@
-import Button from "../ui/molecules/Button";
+import { Outlet } from "react-router-dom";
+import { useThemeContext } from "../contexts/ThemeContext";
+import NavigationButtons from "../features/settings/NavigationButtons";
 
-import {
-  SettingsMinimalisticIcon,
-  BellIcon,
-  PaletteRoundIcon,
-  ChartSquareIcon,
-  InfoCircleIcon,
-} from "@solar-icons/react/line-duotone";
-import { NavLink, Outlet } from "react-router-dom";
-import IconDoutone from "../ui/atoms/IconDoutone";
+const baseClasses = {
+  div: `
+  w-full h-full
+  py-3
+  pl-4
+  `,
+
+  section: `
+  w-full h-full
+  px-6 py-5
+  rounded-lg
+  `,
+
+  main: `
+  flex flex-row
+  items-center justify-start
+  w-full h-full
+  gap-4
+  p-2.5
+  `,
+};
+
 function Settings() {
+  const { type } = useThemeContext();
+
   return (
-    <div
-      className="
-        w-full h-full
-        py-3
-        pl-4
-      "
-    >
+    <div className={baseClasses.div}>
       <section
-        className="
-          w-full h-full
-          px-6 py-5
-          rounded-lg
-          bg-primary-100
-        "
+        className={`
+          ${type === "primary" ? "bg-primary-100" : "bg-secondary-500"}
+          ${baseClasses.section}
+        `}
       >
-        <main
-          className="
-            flex flex-row
-            items-center justify-start
-            w-full h-full
-            gap-4
-            p-2.5
-          "
-        >
-          <nav
-            className="
-              flex flex-col shrink-0
-              items-start justify-start
-              h-full
-              gap-8
-              px-4
-              pb-4
-            "
-          >
-            <NavLink
-              className="
-                w-full
-                group
-              "
-              to="general"
-            >
-              <Button
-                className="
-                  justify-start
-                  w-full
-                "
-                type="secondary"
-                token="lg"
-              >
-                <IconDoutone
-                  Icon={SettingsMinimalisticIcon}
-                  size={20}
-                  type="secondary"
-                />
-                General
-              </Button>
-            </NavLink>
-            <NavLink
-              className="
-                w-full
-                group
-              "
-              to="notifications"
-            >
-              <Button
-                className="
-                  justify-start
-                  w-full
-                "
-                type="secondary"
-                token="lg"
-              >
-                <IconDoutone Icon={BellIcon} size={20} type="secondary" />
-                Notifacation
-              </Button>
-            </NavLink>
-            <NavLink
-              className="
-                w-full
-                group
-              "
-              to="customazation"
-            >
-              <Button
-                className="
-                  justify-start
-                  w-full
-                "
-                type="secondary"
-                token="lg"
-              >
-                <IconDoutone
-                  Icon={PaletteRoundIcon}
-                  size={20}
-                  type="secondary"
-                />
-                Customazation
-              </Button>
-            </NavLink>
-            <NavLink
-              className="
-                w-full
-                group
-              "
-              to="kpi-management"
-            >
-              <Button
-                className="
-                  justify-start
-                  w-full
-                "
-                type="secondary"
-                token="lg"
-              >
-                <IconDoutone
-                  Icon={ChartSquareIcon}
-                  size={20}
-                  type="secondary"
-                />
-                KPI Management
-              </Button>
-            </NavLink>
-            <NavLink
-              className="
-                w-full
-                group
-              "
-              to="about-us"
-            >
-              <Button
-                className="
-                  justify-start
-                  w-full
-                "
-                type="secondary"
-                token="lg"
-              >
-                <IconDoutone Icon={InfoCircleIcon} size={20} type="secondary" />
-                About Us
-              </Button>
-            </NavLink>
-          </nav>
+        <main className={baseClasses.main}>
+          <NavigationButtons />
           <Outlet />
         </main>
       </section>
