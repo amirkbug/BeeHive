@@ -47,7 +47,6 @@ const baseClasses = {
   rounded-lg 
   min-w-82
   transition-shadow
-  hover:shadow-400-BoxShadowM
   `,
 
   h2: `
@@ -80,12 +79,19 @@ function Kpi({
   //Error boundry
   const selectedType = types[type] ?? types.primary;
   const selectedToken = tokens[token] ?? tokens.sm;
+  const kpiShadow =
+    kpiType === "destructive"
+      ? "hover:shadow-400-destructure-BoxShadowM"
+      : kpiType === "success"
+        ? "hover:shadow-400-success-BoxShadowM"
+        : "hover:shadow-400-BoxShadowM";
 
   //Component itself
   return (
     <article
       className={`
         ${baseClasses.article}
+        ${kpiShadow}
         ${selectedToken.containerClasses}
         ${selectedType}
       `}

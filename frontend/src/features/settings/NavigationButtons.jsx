@@ -1,6 +1,8 @@
 import Button from "../../ui/molecules/Button";
 import IconDoutone from "../../ui/atoms/IconDoutone";
 
+import { NavLink } from "react-router-dom";
+import { useThemeContext } from "../../contexts/ThemeContext";
 import {
   SettingsMinimalisticIcon,
   BellIcon,
@@ -8,8 +10,39 @@ import {
   ChartSquareIcon,
   InfoCircleIcon,
 } from "@solar-icons/react/line-duotone";
-import { NavLink } from "react-router-dom";
-import { useThemeContext } from "../../contexts/ThemeContext";
+
+const tempNavigationButtonsContent = [
+  {
+    to: "/app/settings",
+    icon: SettingsMinimalisticIcon,
+    content: "General",
+    end: true,
+  },
+  {
+    to: "notifications",
+    icon: BellIcon,
+    content: "Notifacation",
+    end: false,
+  },
+  {
+    to: "customazation",
+    icon: PaletteRoundIcon,
+    content: "Customazation",
+    end: false,
+  },
+  {
+    to: "kpi-management",
+    icon: ChartSquareIcon,
+    content: "KPI Management",
+    end: false,
+  },
+  {
+    to: "about-us",
+    icon: InfoCircleIcon,
+    content: "About Us",
+    end: false,
+  },
+];
 
 const baseClasses = {
   nav: `
@@ -34,84 +67,26 @@ const baseClasses = {
   `,
 };
 
-function SettingsNavigationButtons() {
+function NavigationButton() {
   const { selectedTypeInverse } = useThemeContext();
 
-  return (
-    <nav
-      className={`
-        ${selectedTypeInverse === "primary" ? "border-primary-100/10" : "border-secondary-500/10"}
-        ${baseClasses.nav}
-      `}
+  return tempNavigationButtonsContent.map((content) => (
+    <NavLink
+      key={content.content}
+      className={baseClasses.navLink}
+      to={content.to}
+      end={content.end}
     >
-      <NavLink className={baseClasses.navLink} to="/app/settings" end>
-        <Button
-          className={baseClasses.button}
-          type={selectedTypeInverse}
-          token="lg"
-        >
-          <IconDoutone
-            Icon={SettingsMinimalisticIcon}
-            size={20}
-            type={selectedTypeInverse}
-          />
-          General
-        </Button>
-      </NavLink>
-      <NavLink className={baseClasses.navLink} to="notifications">
-        <Button
-          className={baseClasses.button}
-          type={selectedTypeInverse}
-          token="lg"
-        >
-          <IconDoutone Icon={BellIcon} size={20} type={selectedTypeInverse} />
-          Notifacation
-        </Button>
-      </NavLink>
-      <NavLink className={baseClasses.navLink} to="customazation">
-        <Button
-          className={baseClasses.button}
-          type={selectedTypeInverse}
-          token="lg"
-        >
-          <IconDoutone
-            Icon={PaletteRoundIcon}
-            size={20}
-            type={selectedTypeInverse}
-          />
-          Customazation
-        </Button>
-      </NavLink>
-      <NavLink className={baseClasses.navLink} to="kpi-management">
-        <Button
-          className={baseClasses.button}
-          type={selectedTypeInverse}
-          token="lg"
-        >
-          <IconDoutone
-            Icon={ChartSquareIcon}
-            size={20}
-            type={selectedTypeInverse}
-          />
-          KPI Management
-        </Button>
-      </NavLink>
-      <NavLink className={baseClasses.navLink} to="about-us">
-        <Button
-          className={baseClasses.button}
-          type={selectedTypeInverse}
-          token="lg"
-        >
-          <IconDoutone
-            Icon={InfoCircleIcon}
-            size={20}
-            type={selectedTypeInverse}
-          />
-          About Us
-        </Button>
-      </NavLink>
-    </nav>
-  );
+      <Button
+        className={baseClasses.button}
+        type={selectedTypeInverse}
+        token="lg"
+      >
+        <IconDoutone Icon={content.icon} size={20} type={selectedTypeInverse} />
+        {content.content}
+      </Button>
+    </NavLink>
+  ));
 }
 
-export default SettingsNavigationButtons;
+export default NavigationButton;

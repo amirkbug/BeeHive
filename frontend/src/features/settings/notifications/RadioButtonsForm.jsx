@@ -1,7 +1,7 @@
-import IconDoutone from "../../ui/atoms/IconDoutone";
-import RadioButton from "../../ui/atoms/RadioButton";
+import IconDoutone from "../../../ui/atoms/IconDoutone";
+import RadioButton from "../../../ui/atoms/RadioButton";
 
-import { useThemeContext } from "../../contexts/ThemeContext";
+import { useThemeContext } from "../../../contexts/ThemeContext";
 import { LetterIcon } from "@solar-icons/react/line-duotone";
 
 const notificationSettingsTemp = [

@@ -168,6 +168,10 @@
 
   --shadow-400-BoxShadowM : 0px 0px 20px rgb(242 180 28 / 80%);
 
+  --shadow-400-destructure-BoxShadowM: 0px 0px 20px rgb(231 95 95 / 80%);
+
+  --shadow-400-success-BoxShadowM: 0px 0px 20px rgb(85 194 113 / 80%);
+
 
   /* Other Drop Shadows */
 --drop-shadow-100-BoxShadowM: 0px 0px 3px rgb(242 180 28 / 80%);

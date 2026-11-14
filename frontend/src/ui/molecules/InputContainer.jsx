@@ -82,6 +82,7 @@ const base = {
   focus:outline-none
   appearance-none
   min-w-0 flex-1
+  w-full
   `,
   iconsDivClasses: `
   flex flex-row

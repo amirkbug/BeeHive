@@ -1,15 +1,15 @@
 //Objects for diffrent variations
 
 const tokens = {
-  sm: "w-8",
-  md: "w-12",
-  lg: "w-16",
+  sm: "w-12 h-22",
+  md: "w-13 h-23",
+  lg: "w-14 h-25",
 };
 
 //Base classes
 const baseClasses = {
   div: `
-  h-9/10
+  ring-1
   rounded-full
   `,
 };
@@ -21,6 +21,7 @@ function OnlyColorBackground({ token = "md", color = "#f9a38f" }) {
   return (
     <div
       className={`
+        ring-primary-300
         ${baseClasses.div}
         ${selectedToken}
       `}

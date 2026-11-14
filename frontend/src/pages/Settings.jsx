@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useThemeContext } from "../contexts/ThemeContext";
-import NavigationButtons from "../features/settings/NavigationButtons";
+import Navigation from "../features/settings/Navigation";
 
 const baseClasses = {
   div: `
@@ -36,7 +36,7 @@ function Settings() {
         `}
       >
         <main className={baseClasses.main}>
-          <NavigationButtons />
+          <Navigation />
           <Outlet />
         </main>
       </section>
