@@ -2,8 +2,6 @@ import Logo from "../atoms/Logo";
 import SideBarSettingsButton from "../molecules/SideBarSettingsButton";
 import SideBarNavigationButtons from "../molecules/SideBarNavigationButtons";
 
-import { Link } from "react-router-dom";
-
 //Base classes
 const baseClasses = {
   aside: `
@@ -22,18 +20,19 @@ const baseClasses = {
   group/sidebar
   `,
 
-  firstLink: `
+  logoDiv: `
   absolute
   top-5
+  pointer-events-none
   `,
 };
 
 function SideBar() {
   return (
     <aside className={baseClasses.aside}>
-      <Link to="/app/aboutus" className={baseClasses.firstLink}>
+      <div className={baseClasses.logoDiv}>
         <Logo logoType="primaryWithoutPolygone" token="xll" />
-      </Link>
+      </div>
       <div className={baseClasses.div}>
         <SideBarNavigationButtons />
         <SideBarSettingsButton />

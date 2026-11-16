@@ -4,7 +4,7 @@ import UserLogoPreview from "../../features/authentication/userLogoPreview/UserL
 import SideBarButton from "./SideBarButton";
 import IconDoutone from "../atoms/IconDoutone";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useThemeContext } from "../../contexts/ThemeContext";
 import {
   HomeIcon,
@@ -53,12 +53,9 @@ function SideBarNavigationButtons() {
         ${types[type]}
       `}
     >
-      <Logo
-        className={baseClasses.logo}
-        logoType="secondary"
-        type={type}
-        token="xl"
-      />
+      <Link to="/app/aboutus" className={baseClasses.logo}>
+        <Logo logoType="secondary" type={type} token="xl" />
+      </Link>
       <Line orientation="vertical" />
 
       <UserLogoPreview />
