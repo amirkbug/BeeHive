@@ -1,6 +1,6 @@
 import Logo from "../atoms/Logo";
 import Line from "../atoms/Line";
-import UserLogoPreview from "../../features/authentication/UserLogoPreview";
+import UserLogoPreview from "../../features/authentication/userLogoPreview/UserLogoPreview";
 import SideBarButton from "./SideBarButton";
 import IconDoutone from "../atoms/IconDoutone";
 

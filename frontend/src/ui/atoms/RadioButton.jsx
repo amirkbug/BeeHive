@@ -103,7 +103,7 @@ function CheckBoxes({
       <input
         type="checkbox"
         onChange={onChange}
-        value={checked}
+        checked={checked}
         className={`
           ${baseClasses.inputBase}
           ${selectedType.inputClasses}

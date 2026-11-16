@@ -8,12 +8,25 @@ const WINDOW_MATCH_MEDIA = window.matchMedia(
   "(prefers-color-scheme: light)",
 ).matches;
 
-//1-useReducer)Create a intialState
-const initialState = {
-  isLightMode: WINDOW_MATCH_MEDIA,
-  token: "md",
-  type: WINDOW_MATCH_MEDIA ? "primary" : "secondary",
-};
+/*
+1-useReducer)Create a intialState
+we have to use a function so we get the local storage value and make
+the variable with it
+*/
+function intialState() {
+  const isLightModeLocal = localStorage.getItem("isLightMode");
+
+  const isLightMode =
+    isLightModeLocal === null
+      ? WINDOW_MATCH_MEDIA
+      : JSON.parse(isLightModeLocal);
+
+  return {
+    isLightMode,
+    token: "md",
+    type: isLightMode ? "primary" : "secondary",
+  };
+}
 
 //2-useReducer)Create reducer function
 function reducer(state, action) {
@@ -22,7 +35,7 @@ function reducer(state, action) {
       return {
         ...state,
         isLightMode: action.payload,
-        type: state.isLightMode ? "secondary" : "primary",
+        type: action.payload ? "primary" : "secondary",
       };
 
     default:
@@ -35,7 +48,8 @@ function ThemeContextProvider({ children }) {
   //Variables
   const [{ isLightMode, token, type }, dispatch] = useReducer(
     reducer,
-    initialState,
+    undefined,
+    intialState,
   );
   const selectedTypeInverse = type === "primary" ? "secondary" : "primary";
 
@@ -61,6 +75,11 @@ function ThemeContextProvider({ children }) {
     },
     [isLightMode],
   );
+
+  //Change the islightmode in local storage whenever it change in app
+  useEffect(() => {
+    localStorage.setItem("isLightMode", JSON.stringify(isLightMode));
+  }, [isLightMode]);
 
   return (
     <ThemeProvider.Provider

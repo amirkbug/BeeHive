@@ -33,7 +33,7 @@ const baseClasses = {
 };
 
 function Header() {
-  const { isDarkMode, handleDarkMode, selectedTypeInverse, type } =
+  const { isLightMode, handleDarkMode, selectedTypeInverse, type } =
     useThemeContext();
 
   //Error boundry
@@ -56,7 +56,7 @@ function Header() {
         />
         <RadioButton
           type="darkMode"
-          checked={isDarkMode}
+          checked={isLightMode}
           onChange={(e) => handleDarkMode(e.target.checked)}
         />
       </div>
