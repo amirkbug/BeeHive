@@ -4,6 +4,7 @@ import SearchIcon from "../molecules/SearchIcon";
 
 import { BellRingIcon } from "@solar-icons/react/line-duotone/bell-ring";
 import { useThemeContext } from "../../contexts/ThemeContext";
+import SearchIconV2Component from "../molecules/searchIconV2/SearchIconV2Component";
 
 //Objects for diffrent variations
 
@@ -47,7 +48,8 @@ function Header() {
         ${types[selectedType]}
       `}
     >
-      <SearchIcon type={selectedTypeInverse} />
+      {/* <SearchIcon type={selectedTypeInverse} /> */}
+      <SearchIconV2Component />
       <div className={baseClasses.div}>
         <FloatingButton
           type={selectedTypeInverse}
