@@ -6,7 +6,8 @@ const baseClasses = {
   div: `
   w-full h-full
   py-3
-  pl-4
+  pl-5
+  pr-10
   `,
 
   section: `

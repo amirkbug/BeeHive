@@ -9,7 +9,7 @@ const baseClasses = {
   items-center justify-center
   w-fit h-full
   gap-5
-  px-2 pt-12
+  px-5 pt-12
   pb-3
   `,
 

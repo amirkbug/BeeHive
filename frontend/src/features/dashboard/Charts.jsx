@@ -1,5 +1,6 @@
-import { useThemeContext } from "../../contexts/ThemeContext";
 import Chart from "../../ui/molecules/Chart";
+
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 const baseClasses = {
   section: `
@@ -9,7 +10,8 @@ const baseClasses = {
   w-full
   gap-4
   py-4
-  pl-4
+  pl-5
+  pr-10
 `,
 };
 

@@ -11,6 +11,7 @@ const baseClasses = {
   flex flex-col flex-1
   justify-between
   w-full
+  gap-5
   `,
 };
 

@@ -1,7 +1,7 @@
-import { useThemeContext } from "../../contexts/ThemeContext";
 import OnlyColorBackground from "../atoms/OnlyColorBackground";
 import InputContainer from "../molecules/InputContainer";
 
+import { useThemeContext } from "../../contexts/ThemeContext";
 //Base classes
 const baseClasses = {
   div: `

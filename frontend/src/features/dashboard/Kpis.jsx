@@ -1,5 +1,6 @@
-import { useThemeContext } from "../../contexts/ThemeContext";
 import Kpi from "../../ui/organs/Kpi";
+
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 import {
   WalletMoneyIcon,
@@ -15,7 +16,8 @@ const baseClasses = {
   w-full h-fit
   gap-5
   py-5
-  pl-4
+  pl-5
+  pr-10
   `,
 };
 

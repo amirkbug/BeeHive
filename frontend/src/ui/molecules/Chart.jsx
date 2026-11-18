@@ -121,7 +121,12 @@ const baseClasses = {
 `,
 };
 
-function Chart({ chartType = "pie", token = "sm", type = "secondary" }) {
+function Chart({
+  chartType = "pie",
+  token = "sm",
+  type = "secondary",
+  className = "",
+}) {
   // Error boundary / fallback values
   const selectedType = types[type] ?? types.primary;
   const selectedToken = tokens[token] ?? tokens.md;
@@ -137,6 +142,7 @@ function Chart({ chartType = "pie", token = "sm", type = "secondary" }) {
         ${selectedType.containerClasses}
         ${selectedChartType === "pie" || selectedChartType === "dougnut" ? "" : `${selectedPaddingBaseOnChartType} pl-0`}
         ${selectedToken.containerPadding}
+        ${className}
       `}
     >
       {selectedChartType === "scatter" && (

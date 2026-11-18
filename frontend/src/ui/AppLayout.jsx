@@ -1,14 +1,14 @@
-import { Outlet } from "react-router-dom";
 import Header from "./organs/Header";
 import SideBar from "./organs/SideBar";
 
+import { Outlet } from "react-router-dom";
 //Base classes
 const baseClasses = {
   main: `
   flex flex-row
   items-start justify-end
   w-dvw h-dvh
-  px-10 py-4
+   py-4
   `,
 
   section: `
@@ -20,7 +20,8 @@ const baseClasses = {
 
   div: `
   w-full 
-  pl-4
+  pl-5
+  pr-10
   `,
 };
 

@@ -1,5 +1,3 @@
-import Button from "../../ui/molecules/Button";
-import IconDoutone from "../../ui/atoms/IconDoutone";
 import Line from "../../ui/atoms/Line";
 
 import {
@@ -17,6 +15,8 @@ const baseClasses = {
   w-full
   gap-2
   pt-4
+  pr-10
+  pl-1
   `,
   line: `
   flex-1

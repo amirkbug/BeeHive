@@ -75,6 +75,7 @@ function Kpi({
   SubTxtIcon = ChartSquare2Icon,
   KpiIconName = Chart2Icon,
   chartValue = 20,
+  className = "",
 }) {
   //Error boundry
   const selectedType = types[type] ?? types.primary;
@@ -94,6 +95,7 @@ function Kpi({
         ${kpiShadow}
         ${selectedToken.containerClasses}
         ${selectedType}
+        ${className}
       `}
     >
       <KpiIcon type={kpiType} token={token} Icon={KpiIconName} />

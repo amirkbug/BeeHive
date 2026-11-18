@@ -6,7 +6,8 @@ const baseClasses = {
   div: `
   w-full h-full
   pt-5
-  pb-3.25 pl-4
+  pb-3.25 pl-5
+  pr-10
   `,
 
   main: `

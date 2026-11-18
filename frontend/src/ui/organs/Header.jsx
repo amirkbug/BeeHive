@@ -1,10 +1,9 @@
 import RadioButton from "../atoms/RadioButton";
 import FloatingButton from "../atoms/FloatingButton";
-import SearchIcon from "../molecules/SearchIcon";
+import SearchIconV2Component from "../molecules/SearchIconV2Component";
 
 import { BellRingIcon } from "@solar-icons/react/line-duotone/bell-ring";
 import { useThemeContext } from "../../contexts/ThemeContext";
-import SearchIconV2Component from "../molecules/SearchIconV2Component";
 
 //Objects for diffrent variations
 
@@ -21,6 +20,7 @@ const baseClasses = {
   w-full
   py-2
   pl-2 pr-2
+  
   rounded-lg
   transition-all
   hover:shadow-200-BoxShadowM

@@ -20,6 +20,7 @@ function AddNewData() {
           className="
             flex flex-1
             items-center
+            pr-10
           "
         >
           <Button type={type}>
