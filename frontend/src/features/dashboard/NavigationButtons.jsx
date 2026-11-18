@@ -2,9 +2,13 @@ import Button from "../../ui/molecules/Button";
 import IconDoutone from "../../ui/atoms/IconDoutone";
 import Line from "../../ui/atoms/Line";
 
-import { CalendarIcon, ClockCircleIcon } from "@solar-icons/react/line-duotone";
-import { CalendarMarkIcon } from "@solar-icons/react/line-duotone/calendar-mark";
+import {
+  CalendarIcon,
+  ClockCircleIcon,
+  CalendarMarkIcon,
+} from "@solar-icons/react/line-duotone";
 import { useThemeContext } from "../../contexts/ThemeContext";
+import NavigationButton from "./NavigationButton";
 
 const baseClasses = {
   nav: `
@@ -20,32 +24,25 @@ const baseClasses = {
   `,
 };
 
+const buttonsContentTemp = [
+  { title: "Past month", to: "past_month", Icon: CalendarMarkIcon },
+  { title: "Past week", to: "past_week", Icon: CalendarIcon },
+  { title: "Today", to: "today", Icon: ClockCircleIcon },
+];
+
 function NavigationButtons() {
   const { selectedTypeInverse } = useThemeContext();
 
   return (
     <nav className={baseClasses.nav}>
       <Line className={baseClasses.line} />
-      <Button token="sm" type={selectedTypeInverse}>
-        Past month
-        <IconDoutone
-          Icon={CalendarMarkIcon}
-          size={16}
-          type={selectedTypeInverse}
+      {buttonsContentTemp.map((content) => (
+        <NavigationButton
+          key={content.to}
+          selectedTypeInverse={selectedTypeInverse}
+          content={content}
         />
-      </Button>
-      <Button token="sm" type={selectedTypeInverse}>
-        Past week
-        <IconDoutone Icon={CalendarIcon} size={16} type={selectedTypeInverse} />
-      </Button>
-      <Button token="sm" type={selectedTypeInverse}>
-        Today
-        <IconDoutone
-          Icon={ClockCircleIcon}
-          size={16}
-          type={selectedTypeInverse}
-        />
-      </Button>
+      ))}
     </nav>
   );
 }

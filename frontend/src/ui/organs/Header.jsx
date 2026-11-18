@@ -4,7 +4,7 @@ import SearchIcon from "../molecules/SearchIcon";
 
 import { BellRingIcon } from "@solar-icons/react/line-duotone/bell-ring";
 import { useThemeContext } from "../../contexts/ThemeContext";
-import SearchIconV2Component from "../molecules/searchIconV2/SearchIconV2Component";
+import SearchIconV2Component from "../molecules/SearchIconV2Component";
 
 //Objects for diffrent variations
 

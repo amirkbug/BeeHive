@@ -1,9 +1,11 @@
-import { MagnifierIcon } from "@solar-icons/react/line-duotone/magnifier";
-import IconDoutone from "../../atoms/IconDoutone";
+import IconDoutone from "../atoms/IconDoutone";
+
 import { useState } from "react";
+import { MagnifierIcon } from "@solar-icons/react/line-duotone/magnifier";
 
 const baseClasses = {
   div: `
+  has-focus-visible:shadow-300-BoxShadowM
   flex flex-row
   bg-secondary-500
   transition-all
@@ -33,7 +35,7 @@ const baseClasses = {
 };
 
 function SearchIconV2Component() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleOpen() {
     setIsOpen((prev) => !prev);
@@ -42,7 +44,6 @@ function SearchIconV2Component() {
   return (
     <div
       className={`
-        has-focus-visible:shadow-300-BoxShadowM
         ${baseClasses.div}
         ${isOpen ? "w-1/5" : "size-10"}
       `}
