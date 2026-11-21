@@ -124,6 +124,7 @@ function DropDownButton({ children, opens: dropDownUlName }) {
     >
       {cloneElement(children, {
         disabled: isOpen,
+        htmlType: "button",
       })}
     </div>
   );

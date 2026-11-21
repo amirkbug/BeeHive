@@ -3,6 +3,7 @@ import IconDoutone from "../../../ui/atoms/IconDoutone";
 
 import { useThemeContext } from "../../../contexts/ThemeContext";
 import { Pen2Icon } from "@solar-icons/react/line-duotone";
+import { useSelector } from "react-redux";
 
 const baseClasses = {
   div: `
@@ -27,14 +28,24 @@ const baseClasses = {
 
 function EditProfile() {
   const { type } = useThemeContext();
+  const { userBackgroundColor } = useSelector((state) => state.settings);
+
   return (
     <div
+      style={{
+        "--profile-bg": userBackgroundColor,
+      }}
       className={`
-        ${type === "primary" ? "from-[#E7D7B5] to-primary-100" : "from-[#E7D7B5] to-secondary-500"}
+        ${
+        type === "primary"
+        ? "from-(--profile-bg) to-primary-100"
+        : "from-(--profile-bg) to-secondary-500"
+        }
         ${baseClasses.div}
       `}
     >
       <UserProfile token="xl" />
+
       <IconDoutone
         type={type}
         className={baseClasses.iconDoutone}

@@ -269,6 +269,16 @@ select:disabled {
   cursor: not-allowed;
 }
 
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 9999px;
+}
+
 html {
   overflow: hidden;
 }
+

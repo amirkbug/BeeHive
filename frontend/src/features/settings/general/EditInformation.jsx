@@ -25,7 +25,7 @@ function EditInformation() {
       <InputContainer token="lg" type={selectedTypeInverse}>
         <InputContainer.Input
           LeftIcon={LetterIcon}
-          placeholderText="Example : example@gmail.com"
+          placeholderText="example@gmail.com"
         />
       </InputContainer>
       <InputContainer token="lg" type={selectedTypeInverse}>
@@ -42,6 +42,7 @@ function EditInformation() {
           </InputContainer.InputRightContent>
         </InputContainer.Input>
       </InputContainer>
+
       <DropDown type={type}>
         <DropDown.DropDownButton opens="sync_frequency">
           <Button

@@ -278,6 +278,7 @@ const baseClasses = {
   text-secondary-500 text-12px
   bg-secondary-100
   transition-shadow
+  mx-1
   `,
 
   td: `
@@ -304,7 +305,7 @@ const baseClasses = {
   w-full
   gap-4
   pb-4 pl-4
-  pr-10
+  pr-9
   `,
 
   tbody: `

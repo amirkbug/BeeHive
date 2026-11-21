@@ -79,11 +79,11 @@ const base = {
   font-normal
   bg-transparent
   outline-none
-  focus:outline-none
   appearance-none
-  min-w-0 flex-1
+  flex-1
+  min-w-0
   w-full
-  `,
+`,
   iconsDivClasses: `
   flex flex-row
   items-center
@@ -140,8 +140,8 @@ function Input({
   return (
     <div
       className={`
-        ${tokens[selectedToken].inputHeight}
         ${base.containerClassesBase}
+        ${tokens[selectedToken].inputHeight}
         ${types[selectedType].containerClasses}
         ${classNameMainContainer}
         ${hasError ? "inset-ring-1 inset-ring-destructive-500" : ""}
@@ -149,6 +149,7 @@ function Input({
     >
       <div
         className={`
+          w-full
           ${base.iconsDivClasses}
         `}
       >
@@ -169,6 +170,7 @@ function Input({
             ${tokens[selectedToken].textSize}
           `}
           {...inputProps}
+          autoComplete="off"
         />
       </div>
       {children}

@@ -3,6 +3,7 @@ import Button from "../../../ui/molecules/Button";
 
 import { useThemeContext } from "../../../contexts/ThemeContext";
 import { LinkIcon, PenIcon } from "@solar-icons/react/linear";
+import { useSelector } from "react-redux";
 
 const baseClasses = {
   div: `
@@ -23,13 +24,16 @@ const baseClasses = {
 
 function Buttons() {
   const { type } = useThemeContext();
-  const gradientColor = `${type === "secondary" ? "from-primary-100 to-secondary-500" : "from-secondary-500 to-primary-100"}`;
+  const { userBackgroundColor } = useSelector((state) => state.settings);
 
   return (
     <div
+      style={{
+        "--profile-bg": userBackgroundColor,
+      }}
       className={`
         ${baseClasses.div}
-        ${gradientColor}
+        ${`${type === "secondary" ? "from-primary-100 to-(--profile-bg)" : "from-(--profile-bg) to-primary-100"}`}
       `}
     >
       <UserProfile token="xl" />

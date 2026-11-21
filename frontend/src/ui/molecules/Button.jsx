@@ -123,6 +123,7 @@ function Button({
   children,
   disabled = false,
   className = "",
+  htmlType = "button",
   ...props
 }) {
   //Error boundry
@@ -133,6 +134,7 @@ function Button({
   return (
     <button
       {...props}
+      type={htmlType}
       disabled={disabled}
       className={`
         ${baseClasses.button}
