@@ -2,9 +2,6 @@ import OnlyColorBackground from "../atoms/OnlyColorBackground";
 import InputContainer from "../molecules/InputContainer";
 
 import { useThemeContext } from "../../contexts/ThemeContext";
-import { useDispatch, useSelector } from "react-redux";
-import { backgroundChange } from "../../features/settings/settingsSlice";
-
 const baseClasses = {
   div: `
     flex flex-row
@@ -19,30 +16,25 @@ function ColorInput({
   title = "Background color",
   subTitle = "Profile background color.",
   token = "sm",
+  onColorChange,
+  selectedColor = "#DEC9AE",
 }) {
   const { selectedTypeInverse } = useThemeContext();
-  const { userBackgroundColor } = useSelector((state) => state.settings);
-
-  const dispatch = useDispatch();
-
-  function handleSelectedColor(color) {
-    dispatch(backgroundChange(color));
-  }
 
   return (
     <div className={baseClasses.div}>
       <OnlyColorBackground
         token={token}
-        selectedColor={userBackgroundColor}
-        setSelectedColor={handleSelectedColor}
+        selectedColor={selectedColor}
+        onColorChange={onColorChange}
       />
 
       <InputContainer token={token} type={selectedTypeInverse}>
         <InputContainer.InputTxt>{title}</InputContainer.InputTxt>
 
         <InputContainer.Input
-          value={userBackgroundColor}
-          onChange={(e) => handleSelectedColor(e.target.value)}
+          value={selectedColor}
+          onChange={(e) => onColorChange(e.target.value)}
           LeftIcon={null}
           placeholderText={inputPlaceholderText}
         />

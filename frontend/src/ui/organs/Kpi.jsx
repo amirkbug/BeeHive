@@ -2,8 +2,10 @@ import KpiIcon from "../atoms/KpiIcon";
 import CircularProgressbar from "../atoms/CircularProgressbar";
 
 import { Chart2Icon, ChartSquare2Icon } from "@solar-icons/react/line-duotone";
+import { useSelector } from "react-redux";
+import useCustomColor from "../../hooks/useCustomColor";
 
-//Object for diffrent variations
+// Object for different variations
 const types = {
   primary: "text-primary-100 bg-secondary-500",
   secondary: "text-secondary-500 bg-primary-100",
@@ -39,29 +41,29 @@ const tokens = {
   },
 };
 
-//Base classes
+// Base classes
 const baseClasses = {
   article: `
-  flex flex-col
-  items-start justify-between
-  rounded-lg 
-  min-w-82
-  transition-shadow
+    flex flex-col
+    items-start justify-between
+    rounded-lg
+    min-w-82
+    transition-shadow
   `,
 
   h2: `
-  font-semibold
+    font-semibold
   `,
 
   div: `
-  flex flex-row
-  items-center justify-between
-  w-full
-  font-bold
+    flex flex-row
+    items-center justify-between
+    w-full
+    font-bold
   `,
 
   p: `
-  font-medium
+    font-medium
   `,
 };
 
@@ -77,28 +79,26 @@ function Kpi({
   chartValue = 20,
   className = "",
 }) {
-  //Error boundry
+  // Error boundary
   const selectedType = types[type] ?? types.primary;
   const selectedToken = tokens[token] ?? tokens.sm;
-  const kpiShadow =
-    kpiType === "destructive"
-      ? "hover:shadow-400-destructure-BoxShadowM"
-      : kpiType === "success"
-        ? "hover:shadow-400-success-BoxShadowM"
-        : "hover:shadow-400-BoxShadowM";
-
-  //Component itself
+  const customColor = useCustomColor(kpiType);
+  // Component itself
   return (
     <article
+      style={{
+        "--shadow-color": customColor,
+      }}
       className={`
+        hover:shadow-[0_0_20px_color-mix(in_srgb,var(--shadow-color)_80%,transparent)]
         ${baseClasses.article}
-        ${kpiShadow}
         ${selectedToken.containerClasses}
         ${selectedType}
         ${className}
       `}
     >
       <KpiIcon type={kpiType} token={token} Icon={KpiIconName} />
+
       <h2
         className={`
           ${baseClasses.h2}
@@ -107,6 +107,7 @@ function Kpi({
       >
         {title}
       </h2>
+
       <div
         className={`
           ${baseClasses.div}
@@ -116,6 +117,7 @@ function Kpi({
         <h1>{number}</h1>
         <CircularProgressbar value={chartValue} token={token} type={kpiType} />
       </div>
+
       <p
         className={`
           ${baseClasses.p}
@@ -124,6 +126,7 @@ function Kpi({
       >
         {subtxt}
       </p>
+
       {SubTxtIcon && <SubTxtIcon size={selectedToken.iconSize} />}
     </article>
   );

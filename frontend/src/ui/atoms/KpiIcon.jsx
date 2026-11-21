@@ -1,3 +1,5 @@
+import useCustomColor from "../../hooks/useCustomColor";
+
 import { DollarIcon } from "@solar-icons/react/linear/dollar";
 
 //Objects for diffrent variations
@@ -16,12 +18,6 @@ const tokens = {
   },
 };
 
-const types = {
-  success: "bg-success-200 text-success-500",
-  destructive: "bg-destructive-200 text-destructive-500",
-  warning: "bg-warning-200 text-warning-500",
-};
-
 //Base classes
 const baseClasses = {
   span: `
@@ -33,19 +29,28 @@ const baseClasses = {
 
 function KpiIcon({ type = "warning", token = "md", Icon = DollarIcon }) {
   //Error boundry
-  const selectedType = types[type] ?? types.destructive;
   const selectedToken = tokens[token] ?? tokens.md;
+  const customColor = useCustomColor(type);
 
   //Component itself
   return (
     <span
+      style={{
+        "--bg-color": `color-mix(in srgb, ${customColor} 20%, transparent)`,
+        "--icon-color": customColor,
+      }}
       className={`
+        bg-(--bg-color)
         ${baseClasses.span}
         ${selectedToken.containerToken}
-        ${selectedType}
       `}
     >
-      <Icon className={selectedToken.iconToken} />
+      <Icon
+        className={`
+          text-(--icon-color)
+          ${selectedToken.iconToken}
+        `}
+      />
     </span>
   );
 }

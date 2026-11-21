@@ -1,3 +1,5 @@
+import useCustomColor from "../../hooks/useCustomColor";
+
 import {
   CircularProgressbar as CircularProgress,
   buildStyles,
@@ -22,28 +24,10 @@ const tokens = {
   },
 };
 
-const types = {
-  warning: {
-    textColor: "var(--color-warning-500)",
-    pathColor: "var(--color-warning-400)",
-    trailColor: "var(--color-warning-200)",
-  },
-  destructive: {
-    textColor: "var(--color-destructive-500)",
-    pathColor: "var(--color-destructive-400)",
-    trailColor: "var(--color-destructive-200)",
-  },
-  success: {
-    textColor: "var(--color-success-500)",
-    pathColor: "var(--color-success-400)",
-    trailColor: "var(--color-success-200)",
-  },
-};
-
 function CircularProgressbar({ token = "lg", type = "warning", value = 20.5 }) {
   //Error boundry
-  const selectedType = types[type] ?? types.warning;
   const selectedToken = tokens[token] ?? tokens.lg;
+  const customColor = useCustomColor(type);
 
   //Component itself
   return (
@@ -53,9 +37,9 @@ function CircularProgressbar({ token = "lg", type = "warning", value = 20.5 }) {
         text={`${value}%`}
         strokeWidth={selectedToken.strokeWidth}
         styles={buildStyles({
-          textColor: selectedType.textColor,
-          pathColor: selectedType.pathColor,
-          trailColor: selectedType.trailColor,
+          textColor: customColor,
+          pathColor: `color-mix(in srgb, ${customColor} 80%, transparent)`,
+          trailColor: `color-mix(in srgb, ${customColor} 20%, transparent)`,
           textSize: selectedToken.textSize,
           fontFamily: "Outfit, sans-serif",
           strokeLinecap: "round",

@@ -29,18 +29,6 @@ function KpiPreview() {
       `}
     >
       <Kpi
-        chartValue={30}
-        token="md"
-        type={selectedTypeInverse}
-        kpiType="warning"
-        KpiIconName={WalletMoneyIcon}
-        SubTxtIcon={null}
-        title="Revenue at Risk"
-        number="$9,923"
-        subtxt="Potential revenue at risk."
-      />
-
-      <Kpi
         chartValue={85}
         token="md"
         type={selectedTypeInverse}
@@ -50,6 +38,18 @@ function KpiPreview() {
         title="Revenue Growth"
         number="+18.6%"
         subtxt="Revenue increased this month."
+      />
+
+      <Kpi
+        chartValue={30}
+        token="md"
+        type={selectedTypeInverse}
+        kpiType="warning"
+        KpiIconName={WalletMoneyIcon}
+        SubTxtIcon={null}
+        title="Revenue at Risk"
+        number="$9,923"
+        subtxt="Potential revenue at risk."
       />
 
       <Kpi

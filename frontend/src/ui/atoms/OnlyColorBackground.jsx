@@ -37,15 +37,11 @@ const baseClasses = {
   `,
 };
 
-function OnlyColorBackground({
-  token = "md",
-  selectedColor,
-  setSelectedColor,
-}) {
-  const selectedToken = tokens[token] ?? tokens.md;
+function OnlyColorBackground({ token = "md", selectedColor, onColorChange }) {
   const { type } = useThemeContext();
   const [isOpen, setIsOpen] = useState(false);
 
+  const selectedToken = tokens[token] ?? tokens.md;
   const ref = useOutsideClick(() => setIsOpen(false));
 
   return (
@@ -74,7 +70,7 @@ function OnlyColorBackground({
           }
         `}
       >
-        <HexColorPicker color={selectedColor} onChange={setSelectedColor} />
+        <HexColorPicker color={selectedColor} onChange={onColorChange} />
       </div>
     </div>
   );

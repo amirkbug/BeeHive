@@ -1,27 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userBackgroundColor: "#DEC9AE",
-  feedBackColors: {
+  userBackgroundColor: "#fff",
+
+  feedbackColors: {
     successColor: "#55C271",
-    warningColor: "#7D5E0F",
+    warningColor: "#F8C53A",
     destructiveColor: "#E75F5F",
   },
+
   chartColors: {
     primary: "#F8F8F4",
     secondary: "#F2B41C",
     accent: "#A67C14",
   },
 };
+
 const settingsSlice = createSlice({
-  name: "componentsColor",
+  name: "settings",
   initialState,
+
   reducers: {
-    backgroundChange(state, action) {
+    setUserBackgroundColor(state, action) {
       state.userBackgroundColor = action.payload;
+    },
+
+    setFeedbackColor(state, action) {
+      const { colorName, color } = action.payload;
+
+      state.feedbackColors[colorName] = color;
     },
   },
 });
 
 export default settingsSlice.reducer;
-export const { backgroundChange } = settingsSlice.actions;
+
+export const { setUserBackgroundColor, setFeedbackColor } =
+  settingsSlice.actions;
