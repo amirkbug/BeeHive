@@ -17,6 +17,7 @@ import {
   AreaChart,
 } from "recharts";
 import { compactFormatter } from "../../utils/helpers";
+import { useSelector } from "react-redux";
 
 // Dumb data
 const data = [
@@ -117,7 +118,7 @@ const baseClasses = {
   rounded-lg
   shrink-0
   transition-all
-  hover:shadow-400-BoxShadowM
+  
 `,
 };
 
@@ -128,16 +129,24 @@ function Chart({
   className = "",
 }) {
   // Error boundary / fallback values
+  const selectedPaddingBaseOnChartType =
+    paddingBaseOnChartType[token] ?? paddingBaseOnChartType.sm;
   const selectedType = types[type] ?? types.primary;
   const selectedToken = tokens[token] ?? tokens.md;
   const selectedChartType = chartTypes.includes(chartType) ? chartType : "bar";
-  const selectedPaddingBaseOnChartType =
-    paddingBaseOnChartType[token] ?? paddingBaseOnChartType.sm;
+
+  const { primary, secondary, accent } = useSelector(
+    (state) => state.settings.chartColors,
+  );
 
   //Component itself
   return (
     <article
+      style={{
+        "--accent-color": accent,
+      }}
       className={`
+        hover:shadow-[0_0_20px_var(--accent-color)]
         ${baseClasses.article}
         ${selectedType.containerClasses}
         ${selectedChartType === "pie" || selectedChartType === "dougnut" ? "" : `${selectedPaddingBaseOnChartType} pl-0`}
@@ -186,14 +195,14 @@ function Chart({
             name="Revenue"
             data={scatterData}
             dataKey="revenue"
-            fill={selectedType.chartColors.primaryColor}
+            fill={primary}
           />
 
           <Scatter
             name="Profit"
             data={scatterData}
             dataKey="profit"
-            fill={selectedType.chartColors.secondaryColor}
+            fill={secondary}
           />
         </ScatterChart>
       )}
@@ -234,8 +243,8 @@ function Chart({
             type="monotone"
             dataKey="revenue"
             name="Revenue"
-            stroke={selectedType.chartColors.primaryColor}
-            fill={selectedType.chartColors.secondaryColor}
+            stroke={primary}
+            fill={primary}
             strokeWidth={2.5}
           />
 
@@ -243,8 +252,8 @@ function Chart({
             type="monotone"
             dataKey="profit"
             name="Profit"
-            stroke={selectedType.chartColors.secondaryColor}
-            fill={selectedType.chartColors.primaryColor}
+            stroke={secondary}
+            fill={secondary}
             strokeWidth={2.5}
           />
         </AreaChart>
@@ -286,7 +295,7 @@ function Chart({
             type="linear"
             dataKey="revenue"
             name="Revenue"
-            stroke={selectedType.chartColors.primaryColor}
+            stroke={primary}
             strokeWidth={2.5}
             dot={{ r: 3 }}
             activeDot={{ r: 6 }}
@@ -296,7 +305,7 @@ function Chart({
             type="linear"
             dataKey="profit"
             name="Profit"
-            stroke={selectedType.chartColors.secondaryColor}
+            stroke={secondary}
             strokeWidth={2.5}
             dot={{ r: 3 }}
             activeDot={{ r: 6 }}
@@ -307,14 +316,14 @@ function Chart({
         <PieChart responsive style={selectedToken.pieAndDonutChartSize}>
           <Pie
             activeShape={{
-              fill: selectedType.chartColors.secondaryColor,
+              fill: secondary,
             }}
             paddingAngle={5}
             innerRadius={selectedToken.donutChartRadius}
             data={pieData}
             dataKey="profit"
             nameKey="month"
-            fill={selectedType.chartColors.primaryColor}
+            fill={primary}
             stroke={selectedType.txtColor.firstBarAndGrid}
           />
 
@@ -328,14 +337,14 @@ function Chart({
         <PieChart responsive style={selectedToken.pieAndDonutChartSize}>
           <Pie
             activeShape={{
-              fill: selectedType.chartColors.secondaryColor,
+              fill: secondary,
             }}
             paddingAngle={0.5}
             cornerRadius={3}
             data={pieData}
             dataKey="profit"
             nameKey="month"
-            fill={selectedType.chartColors.primaryColor}
+            fill={primary}
             stroke={selectedType.txtColor.firstBarAndGrid}
           />
 
@@ -383,13 +392,9 @@ function Chart({
             }}
           />
 
-          <Bar
-            radius={[4, 4, 0, 0]}
-            fill={selectedType.chartColors.primaryColor}
-            dataKey="revenue"
-          >
+          <Bar radius={[4, 4, 0, 0]} fill={primary} dataKey="revenue">
             <LabelList
-              fill={selectedType.txtColor.firstBarAndGrid}
+              fill={primary}
               dataKey="revenue"
               position="top"
               formatter={(label) => compactFormatter(Number(label))}
@@ -397,17 +402,13 @@ function Chart({
             />
           </Bar>
 
-          <Bar
-            radius={[2, 2, 0, 0]}
-            fill={selectedType.chartColors.secondaryColor}
-            dataKey="profit"
-          >
+          <Bar radius={[2, 2, 0, 0]} fill={secondary} dataKey="profit">
             <LabelList
               dataKey="profit"
               position="top"
               formatter={(label) => compactFormatter(Number(label))}
               fontSize={11}
-              fill={selectedType.txtColor.secondBar}
+              fill={secondary}
             />
           </Bar>
         </BarChart>

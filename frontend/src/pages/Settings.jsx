@@ -8,12 +8,14 @@ const baseClasses = {
   py-3
   pl-5
   pr-10
+  overflow-auto
   `,
 
   section: `
   w-full h-full
   px-6 py-5
   rounded-lg
+  
   `,
 
   main: `

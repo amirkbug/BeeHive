@@ -30,14 +30,14 @@ const baseClasses = {
 function KpiIcon({ type = "warning", token = "md", Icon = DollarIcon }) {
   //Error boundry
   const selectedToken = tokens[token] ?? tokens.md;
-  const customColor = useCustomColor(type);
+  const { primaryCustomColor, secondaryCustomColor } = useCustomColor(type);
 
   //Component itself
   return (
     <span
       style={{
-        "--bg-color": `color-mix(in srgb, ${customColor} 20%, transparent)`,
-        "--icon-color": customColor,
+        "--bg-color": secondaryCustomColor,
+        "--icon-color": primaryCustomColor,
       }}
       className={`
         bg-(--bg-color)

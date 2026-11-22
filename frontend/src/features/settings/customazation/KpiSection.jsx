@@ -1,27 +1,48 @@
-import KpiColorInputs from "./KpiColorInputs";
+import ColorInputs from "./ColorInputs";
 import KpisPreview from "./KpisPreview";
+import Explanations from "./Explanations";
 
-const kpiPreviewContents = [
+import { setFeedbackColor } from "../settingsSlice";
+import { useSelector } from "react-redux";
+
+const mainColors = [
   {
     title: "Success",
-    subTitle: "Color for success.",
+    subTitle: "Main color for success.",
     token: "lg",
-    color: "#55C271",
-    feedBackField: "successColor",
+    colorState: "successColor",
   },
   {
     title: "Warning",
-    subTitle: "Color for warnings.",
+    subTitle: "Main color for warnings.",
     token: "lg",
-    color: "#7D5E0F",
-    feedBackField: "warningColor",
+    colorState: "warningColor",
   },
   {
     title: "Destructure",
-    subTitle: "Color for errors.",
+    subTitle: "Main color for errors.",
     token: "lg",
-    color: "#E75F5F",
-    feedBackField: "destructiveColor",
+    colorState: "destructiveColor",
+  },
+];
+const secondaryColors = [
+  {
+    title: "Secondary success",
+    subTitle: "Secondary color for success.",
+    token: "lg",
+    colorState: "successColorSecondary",
+  },
+  {
+    title: "Secondary warning",
+    subTitle: "Secondary color for warnings.",
+    token: "lg",
+    colorState: "warningColorSecondary",
+  },
+  {
+    title: "Secondary destructure",
+    subTitle: "Secondary color for errors.",
+    token: "lg",
+    colorState: "destructiveColorSecondary",
   },
 ];
 
@@ -34,10 +55,28 @@ const baseClasses = {
 };
 
 function KpiSection() {
+  const { statusColors } = useSelector((state) => state.settings);
   return (
     <div className={baseClasses.div}>
+      <Explanations title="Customize KPI Status Colors">
+        <p>
+          Personalize the colors used to represent different KPI statuses,
+          including success, warning, and destructive states. Your selected
+          colors will be applied consistently across KPI indicators throughout
+          the dashboard.
+        </p>
+      </Explanations>
       <KpisPreview />
-      <KpiColorInputs contents={kpiPreviewContents} />
+      <ColorInputs
+        action={setFeedbackColor}
+        colorStateObj={statusColors}
+        contents={mainColors}
+      />
+      <ColorInputs
+        action={setFeedbackColor}
+        colorStateObj={statusColors}
+        contents={secondaryColors}
+      />
     </div>
   );
 }

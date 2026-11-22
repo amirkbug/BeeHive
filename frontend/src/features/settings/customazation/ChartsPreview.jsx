@@ -2,18 +2,20 @@ import Chart from "../../../ui/molecules/Chart";
 
 import { useThemeContext } from "../../../contexts/ThemeContext";
 
+const tempTypes = ["bar", "dougnut", "area"];
+
 const baseClasses = {
   section: `
     overflow-x-auto
     flex flex-row
-    items-center justify-start
+    items-center justify-between
     w-full h-fit
     gap-4
     px-4 py-4
     `,
 };
 
-function ChartsPreview() {
+function ChartsPreview({ types = tempTypes }) {
   const { selectedTypeInverse } = useThemeContext();
   return (
     <article
@@ -22,12 +24,14 @@ function ChartsPreview() {
         ${selectedTypeInverse === "primary" ? "bg-secondary-400" : "bg-background-light"}
       `}
     >
-      <Chart token="md" type={selectedTypeInverse} chartType="bar" />
-      <Chart token="md" type={selectedTypeInverse} chartType="dougnut" />
-      <Chart token="md" type={selectedTypeInverse} chartType="area" />
-      <Chart token="md" type={selectedTypeInverse} chartType="line" />
-      <Chart token="md" type={selectedTypeInverse} chartType="pie" />
-      <Chart token="md" type={selectedTypeInverse} chartType="bar" />
+      {types.map((type) => (
+        <Chart
+          key={type}
+          token="md"
+          type={selectedTypeInverse}
+          chartType={type}
+        />
+      ))}
     </article>
   );
 }

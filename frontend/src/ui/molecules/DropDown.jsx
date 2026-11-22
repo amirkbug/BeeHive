@@ -5,7 +5,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useGetElementPosition } from "../../hooks/useGetElementPosition";
+import { useGetElementDetails } from "../../hooks/useGetElementDetails";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import { createPortal } from "react-dom";
 
@@ -67,7 +67,7 @@ const base = {
 function DropDown({ children, type = "primary", token = "sm" }) {
   const [openName, setOpenName] = useState(null);
   const [optionValue, setOptionValue] = useState(null);
-  const [position, getPosition] = useGetElementPosition();
+  const [details, getDetails] = useGetElementDetails();
 
   //Error boundry
   const selectedType = types[type] ?? types.primary;
@@ -87,8 +87,8 @@ function DropDown({ children, type = "primary", token = "sm" }) {
         selectedType,
         open,
         openName,
-        position,
-        getPosition,
+        details,
+        getDetails,
         handleClose,
         optionValue,
         setOptionValue,
@@ -102,7 +102,7 @@ function DropDown({ children, type = "primary", token = "sm" }) {
 
 //The function that responsible for showing the open button
 function DropDownButton({ children, opens: dropDownUlName }) {
-  const { getPosition, setOpenName, openName } = useDropDownContext();
+  const { getDetails, setOpenName, openName } = useDropDownContext();
   const buttonRef = useRef(null);
   const isOpen = openName === dropDownUlName;
 
@@ -111,7 +111,7 @@ function DropDownButton({ children, opens: dropDownUlName }) {
     setOpenName((prevName) =>
       prevName === dropDownUlName ? null : dropDownUlName,
     );
-    getPosition(buttonRef.current);
+    getDetails(buttonRef.current);
   }
 
   return (
@@ -163,8 +163,7 @@ function DropDownLi({ children, value }) {
 //The function that responsible for showing the dropdown ul
 function DropDownUl({ children, name }) {
   //Use context
-  const { selectedType, openName, position, handleClose } =
-    useDropDownContext();
+  const { selectedType, openName, details, handleClose } = useDropDownContext();
 
   //Handle functions
   const isOpen = name === openName;
@@ -177,8 +176,8 @@ function DropDownUl({ children, name }) {
       id="dropDown"
       style={{
         position: "absolute",
-        top: position && position.top + 8,
-        left: position?.left,
+        top: details && details.top + 8,
+        left: details?.left,
       }}
       className={`
         shadow-accent-100 shadow-100

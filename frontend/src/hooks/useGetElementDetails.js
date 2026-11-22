@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-export function useGetElementPosition() {
-  const [position, setPosition] = useState(null);
+export function useGetElementDetails() {
+  const [details, setDetails] = useState(null);
 
-  function getPosition(element) {
+  function getDetails(element) {
     if (!element) {
       return null;
     }
 
     const rect = element.getBoundingClientRect();
 
-    setPosition({
+    setDetails({
       top: Math.ceil(rect.bottom),
       left: Math.ceil(rect.left),
       width: Math.ceil(rect.width),
@@ -18,5 +18,5 @@ export function useGetElementPosition() {
     });
   }
 
-  return [position, getPosition];
+  return [details, getDetails];
 }

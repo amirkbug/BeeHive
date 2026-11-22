@@ -27,7 +27,7 @@ const tokens = {
 function CircularProgressbar({ token = "lg", type = "warning", value = 20.5 }) {
   //Error boundry
   const selectedToken = tokens[token] ?? tokens.lg;
-  const customColor = useCustomColor(type);
+  const { primaryCustomColor, secondaryCustomColor } = useCustomColor(type);
 
   //Component itself
   return (
@@ -37,9 +37,9 @@ function CircularProgressbar({ token = "lg", type = "warning", value = 20.5 }) {
         text={`${value}%`}
         strokeWidth={selectedToken.strokeWidth}
         styles={buildStyles({
-          textColor: customColor,
-          pathColor: `color-mix(in srgb, ${customColor} 80%, transparent)`,
-          trailColor: `color-mix(in srgb, ${customColor} 20%, transparent)`,
+          textColor: primaryCustomColor,
+          pathColor: primaryCustomColor,
+          trailColor: secondaryCustomColor,
           textSize: selectedToken.textSize,
           fontFamily: "Outfit, sans-serif",
           strokeLinecap: "round",

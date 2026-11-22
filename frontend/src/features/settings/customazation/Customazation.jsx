@@ -1,3 +1,4 @@
+import Line from "../../../ui/atoms/Line";
 import ChartsSection from "./ChartsSection";
 import KpiSection from "./KpiSection";
 
@@ -8,7 +9,11 @@ const baseClasses = {
     items-center justify-start
     w-full h-full
     px-4
-    gap-20
+    gap-10
+    `,
+
+  line: `
+      shrink-0
     `,
 };
 
@@ -16,6 +21,7 @@ function Customazation() {
   return (
     <section className={baseClasses.section}>
       <KpiSection />
+      <Line className={baseClasses.line} />
       <ChartsSection />
     </section>
   );

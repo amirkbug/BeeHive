@@ -1,18 +1,30 @@
 import { useSelector } from "react-redux";
 
 function useCustomColor(type = "warning") {
-  const { successColor, warningColor, destructiveColor } = useSelector(
-    (state) => state.settings.feedbackColors,
-  );
+  const {
+    successColor,
+    warningColor,
+    destructiveColor,
+    destructiveColorSecondary,
+    warningColorSecondary,
+    successColorSecondary,
+  } = useSelector((state) => state.settings.statusColors);
 
-  const customColor =
+  const primaryCustomColor =
     type === "destructive"
       ? destructiveColor
       : type === "success"
         ? successColor
         : warningColor;
 
-  return customColor;
+  const secondaryCustomColor =
+    type === "destructive"
+      ? destructiveColorSecondary
+      : type === "success"
+        ? successColorSecondary
+        : warningColorSecondary;
+
+  return { primaryCustomColor, secondaryCustomColor };
 }
 
 export default useCustomColor;

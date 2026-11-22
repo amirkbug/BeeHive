@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userBackgroundColor: "#fff",
+  userBackgroundColor: "rgba(222, 206, 174, 1)",
 
-  feedbackColors: {
-    successColor: "#55C271",
-    warningColor: "#F8C53A",
-    destructiveColor: "#E75F5F",
+  statusColors: {
+    successColor: "rgba(47, 158, 68, 1)",
+    successColorSecondary: "rgba(199, 235, 207, 1)",
+    warningColor: "rgba(242, 180, 28, 1)",
+    warningColorSecondary: "rgba(255, 231, 170, 1)",
+    destructiveColor: "rgba(214, 69, 69, 1)",
+    destructiveColorSecondary: "rgba(247, 199, 199, 1)",
   },
 
   chartColors: {
-    primary: "#F8F8F4",
-    secondary: "#F2B41C",
-    accent: "#A67C14",
+    primary: "rgba(242, 180, 28, 1)",
+    secondary: "rgba(242, 180, 28, 0.6)",
+    accent: "rgba(242, 180, 28, 0.8)",
   },
 };
 
@@ -26,14 +29,20 @@ const settingsSlice = createSlice({
     },
 
     setFeedbackColor(state, action) {
-      const { colorName, color } = action.payload;
+      const { colorState, color } = action.payload;
 
-      state.feedbackColors[colorName] = color;
+      state.statusColors[colorState] = color;
+    },
+
+    setChartColor(state, action) {
+      const { colorState, color } = action.payload;
+
+      state.chartColors[colorState] = color;
     },
   },
 });
 
 export default settingsSlice.reducer;
 
-export const { setUserBackgroundColor, setFeedbackColor } =
+export const { setUserBackgroundColor, setFeedbackColor, setChartColor } =
   settingsSlice.actions;

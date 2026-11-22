@@ -2,7 +2,6 @@ import KpiIcon from "../atoms/KpiIcon";
 import CircularProgressbar from "../atoms/CircularProgressbar";
 
 import { Chart2Icon, ChartSquare2Icon } from "@solar-icons/react/line-duotone";
-import { useSelector } from "react-redux";
 import useCustomColor from "../../hooks/useCustomColor";
 
 // Object for different variations
@@ -82,15 +81,15 @@ function Kpi({
   // Error boundary
   const selectedType = types[type] ?? types.primary;
   const selectedToken = tokens[token] ?? tokens.sm;
-  const customColor = useCustomColor(kpiType);
+  const { secondaryCustomColor } = useCustomColor(kpiType);
   // Component itself
   return (
     <article
       style={{
-        "--shadow-color": customColor,
+        "--secondary-color": secondaryCustomColor,
       }}
       className={`
-        hover:shadow-[0_0_20px_color-mix(in_srgb,var(--shadow-color)_80%,transparent)]
+        hover:shadow-[0_0_20px_var(--secondary-color)]
         ${baseClasses.article}
         ${selectedToken.containerClasses}
         ${selectedType}

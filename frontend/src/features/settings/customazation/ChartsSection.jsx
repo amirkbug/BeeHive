@@ -1,24 +1,31 @@
 import ChartsPreview from "./ChartsPreview";
-import KpiColorInputs from "./KpiColorInputs";
+import ColorInputs from "./ColorInputs";
+import Explanations from "./Explanations";
 
-const chartsPreviewContents = [
+import { setChartColor } from "../settingsSlice";
+import { useSelector } from "react-redux";
+
+const firstChartTypes = ["bar", "pie", "area"];
+const secondChartTypes = ["scatter", "dougnut", "line"];
+
+const chartInputContents = [
   {
     title: "Primary",
     subTitle: "Main charts color.",
     token: "lg",
-    color: "#F8F8F4",
+    colorState: "primary",
   },
   {
     title: "Secondary",
-    subTitle: "secondary charts color..",
+    subTitle: "Secondary charts color.",
     token: "lg",
-    color: "#F2B41C",
+    colorState: "secondary",
   },
   {
     title: "Accent",
     subTitle: "Highlight color.",
     token: "lg",
-    color: "#A67C14",
+    colorState: "accent",
   },
 ];
 
@@ -31,10 +38,24 @@ const baseClasses = {
 };
 
 function ChartsSection() {
+  const { chartColors } = useSelector((state) => state.settings);
   return (
     <div className={baseClasses.div}>
-      <ChartsPreview />
-      <KpiColorInputs contents={chartsPreviewContents} />
+      <Explanations title="Customize Chart Colors">
+        <p>
+          Adjust the visual appearance of your charts by customizing three color
+          roles. Primary defines the main data series, secondary represents
+          additional data series, and accent is used for supporting elements
+          such as labels, text, and backgrounds.
+        </p>
+      </Explanations>
+      <ChartsPreview types={firstChartTypes} />
+      <ChartsPreview types={secondChartTypes} />
+      <ColorInputs
+        action={setChartColor}
+        colorStateObj={chartColors}
+        contents={chartInputContents}
+      />
     </div>
   );
 }

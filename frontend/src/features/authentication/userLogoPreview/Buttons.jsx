@@ -33,7 +33,7 @@ function Buttons() {
       }}
       className={`
         ${baseClasses.div}
-        ${`${type === "secondary" ? "from-primary-100 to-(--profile-bg)" : "from-(--profile-bg) to-primary-100"}`}
+        ${`${type === "secondary" ? "from-(--profile-bg) to-secondary-500" : "from-(--profile-bg) to-primary-100"}`}
       `}
     >
       <UserProfile token="xl" />

@@ -1,7 +1,6 @@
 import ColorInput from "../../../ui/organs/ColorInput";
 
-import { setFeedbackColor } from "../settingsSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const baseClasses = {
   div: `
@@ -17,30 +16,29 @@ const tempContents = [
     title: "Success",
     subTitle: "Color for success.",
     token: "lg",
-    feedBackField: "successColor",
+    colorState: "successColor",
   },
   {
     title: "Warning",
     subTitle: "Color for warnings.",
     token: "lg",
-    feedBackField: "warningColor",
+    colorState: "warningColor",
   },
   {
     title: "Destructive",
     subTitle: "Color for errors.",
     token: "lg",
-    feedBackField: "destructiveColor",
+    colorState: "destructiveColor",
   },
 ];
 
-function KpiColorInputs({ contents = tempContents }) {
-  const { feedbackColors } = useSelector((state) => state.settings);
+function ColorInputs({ contents = tempContents, colorStateObj, action }) {
   const dispatch = useDispatch();
 
-  function handleSelectedColor(colorName, color) {
+  function handleSelectedColor(colorState, color) {
     dispatch(
-      setFeedbackColor({
-        colorName,
+      action({
+        colorState,
         color,
       }),
     );
@@ -54,9 +52,9 @@ function KpiColorInputs({ contents = tempContents }) {
           title={content.title}
           subTitle={content.subTitle}
           token={content.token}
-          selectedColor={feedbackColors[content.feedBackField]}
+          selectedColor={colorStateObj[content.colorState]}
           onColorChange={(color) =>
-            handleSelectedColor(content.feedBackField, color)
+            handleSelectedColor(content.colorState, color)
           }
         />
       ))}
@@ -64,4 +62,4 @@ function KpiColorInputs({ contents = tempContents }) {
   );
 }
 
-export default KpiColorInputs;
+export default ColorInputs;
