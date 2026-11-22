@@ -2,12 +2,12 @@ import IconDoutone from "../atoms/IconDoutone";
 
 import { useState } from "react";
 import { MagnifierIcon } from "@solar-icons/react/line-duotone/magnifier";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 const baseClasses = {
   div: `
   has-focus-visible:shadow-300-BoxShadowM
   flex flex-row
-  bg-secondary-500
   transition-all
   hover:shadow-300-BoxShadowM
   rounded-full
@@ -25,17 +25,16 @@ const baseClasses = {
 
   input: `
   pl-2
-  text-primary-100
   outline-none
   transition-opacity duration-100
   focus:outline-none
-  placeholder:text-primary-500
   appearance-none
 `,
 };
 
 function SearchIconV2Component() {
   const [isOpen, setIsOpen] = useState(false);
+  const { type, selectedTypeInverse } = useThemeContext();
 
   function handleOpen() {
     setIsOpen((prev) => !prev);
@@ -45,6 +44,7 @@ function SearchIconV2Component() {
     <div
       className={`
         ${baseClasses.div}
+        ${type === "primary" ? "bg-secondary-500" : "bg-primary-100"}
         ${isOpen ? "w-1/5" : "size-10"}
       `}
     >
@@ -54,11 +54,16 @@ function SearchIconV2Component() {
           ${baseClasses.button}
         `}
       >
-        <IconDoutone Icon={MagnifierIcon} type="secondary" size={20} />
+        <IconDoutone
+          Icon={MagnifierIcon}
+          type={selectedTypeInverse}
+          size={20}
+        />
       </button>
       <input
         className={`
           ${baseClasses.input}
+          ${type === "primary" ? "text-primary-100 placeholder:text-primary-500" : "text-secondary-500 placeholder:text-secondary-200"}
           ${isOpen ? "opacity-100 delay-20" : "opacity-0 delay-0"}
         `}
         name="search"
