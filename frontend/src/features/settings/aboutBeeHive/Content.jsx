@@ -46,6 +46,7 @@ const contentArray = [
 
 const baseClasses = {
   commonClasses: `
+  overflow-y-auto
     flex flex-col
     transition-all duration-500 ease-in-out
     gap-7

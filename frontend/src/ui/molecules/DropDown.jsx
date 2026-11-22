@@ -64,9 +64,14 @@ const base = {
 };
 
 //Mother function for storing key variables and provide them
-function DropDown({ children, type = "primary", token = "sm" }) {
+function DropDown({
+  children,
+  type = "primary",
+  token = "sm",
+  optionValue,
+  setOptionValue,
+}) {
   const [openName, setOpenName] = useState(null);
-  const [optionValue, setOptionValue] = useState(null);
   const [details, getDetails] = useGetElementDetails();
 
   //Error boundry
@@ -141,7 +146,7 @@ function DropDownLi({ children, value }) {
   } = useDropDownContext();
 
   function handleLiClick(value) {
-    setOptionValue((prevValue) => (prevValue !== value ? value : prevValue));
+    setOptionValue(value);
     handleClose();
   }
 

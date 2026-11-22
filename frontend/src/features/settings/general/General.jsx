@@ -1,24 +1,38 @@
-import EditProfile from "./EditProfile";
 import EditInformation from "./EditInformation";
-import EditBackgroundColor from "./EditBackgroundColor";
+import Explanations from "../../../ui/atoms/Explanations";
+import EditPreferences from "./EditPreferences";
+import Line from "../../../ui/atoms/Line";
 
 const baseClasses = {
   form: `
   flex flex-col
   justify-start
   w-full h-full
-  gap-10
+  gap-5
   px-4
   pb-4
+  overflow-y-auto
   `,
 };
 
 function SettingsGeneral() {
   return (
     <form className={baseClasses.form}>
-      <EditProfile />
+      <Explanations title="Edit your profile information.">
+        <p>
+          Update your username, email, and password, and personalize your
+          profile background color.
+        </p>
+      </Explanations>
       <EditInformation />
-      <EditBackgroundColor />
+      <Line />
+      <Explanations title="Manage your application preferences.">
+        <p>
+          Configure your sync frequency, choose a language, and select a
+          customization preset to personalize your dashboard experience.
+        </p>
+      </Explanations>
+      <EditPreferences />
     </form>
   );
 }

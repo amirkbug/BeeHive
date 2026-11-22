@@ -1,6 +1,6 @@
 import ColorInputs from "./ColorInputs";
 import KpisPreview from "./KpisPreview";
-import Explanations from "./Explanations";
+import Explanations from "../../../ui/atoms/Explanations";
 
 import { setFeedbackColor } from "../settingsSlice";
 import { useSelector } from "react-redux";

@@ -1,6 +1,6 @@
 import ChartsPreview from "./ChartsPreview";
 import ColorInputs from "./ColorInputs";
-import Explanations from "./Explanations";
+import Explanations from "../../../ui/atoms/Explanations";
 
 import { setChartColor } from "../settingsSlice";
 import { useSelector } from "react-redux";

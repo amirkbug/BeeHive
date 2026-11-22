@@ -23,7 +23,7 @@ function ChartsRow({ time = "Daily", Icon = CalendarDateIcon }) {
         Icon={Icon}
         time={time}
       />
-      <AllCharts />
+      <AllCharts selectedTypeInverse={selectedTypeInverse} />
     </div>
   );
 }

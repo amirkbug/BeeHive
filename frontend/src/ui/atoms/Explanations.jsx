@@ -1,4 +1,4 @@
-import { useThemeContext } from "../../../contexts/ThemeContext";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 const baseClasses = {
   header: `

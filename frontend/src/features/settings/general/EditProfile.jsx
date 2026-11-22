@@ -20,8 +20,8 @@ const baseClasses = {
 
   iconDoutone: `
   absolute
-  bottom-0
-  left-18
+  bottom-2
+  left-17
   cursor-pointer
   `,
 };

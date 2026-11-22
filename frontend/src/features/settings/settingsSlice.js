@@ -1,6 +1,9 @@
+import colorPresets from "../../utils/colorPresets";
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  selectedPreset: "default",
   userBackgroundColor: "rgba(222, 206, 174, 1)",
 
   statusColors: {
@@ -36,13 +39,25 @@ const settingsSlice = createSlice({
 
     setChartColor(state, action) {
       const { colorState, color } = action.payload;
-
       state.chartColors[colorState] = color;
+    },
+
+    setPresetColor(state, action) {
+      const value = action.payload;
+      const preset = colorPresets(value);
+
+      state.selectedPreset = value;
+      state.statusColors = preset.statusColors;
+      state.chartColors = preset.chartColors;
     },
   },
 });
 
 export default settingsSlice.reducer;
 
-export const { setUserBackgroundColor, setFeedbackColor, setChartColor } =
-  settingsSlice.actions;
+export const {
+  setUserBackgroundColor,
+  setPresetColor,
+  setFeedbackColor,
+  setChartColor,
+} = settingsSlice.actions;

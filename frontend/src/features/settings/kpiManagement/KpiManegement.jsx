@@ -3,6 +3,7 @@ import KpiPreview from "./KpiPreview";
 
 const baseClasses = {
   section: `
+  overflow-y-auto
   flex flex-col
   items-center justify-between
   w-full h-full
