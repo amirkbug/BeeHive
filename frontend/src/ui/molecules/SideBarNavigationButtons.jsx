@@ -60,7 +60,7 @@ function SideBarNavigationButtons() {
 
       <UserLogoPreview />
 
-      <NavLink className={baseClasses.navLink} to="/app/dashboard?period=today">
+      <NavLink className={baseClasses.navLink} to="/app/dashboard?period=daily">
         <SideBarButton type={selectedTypeInverse} Icon={HomeIcon}>
           <IconDoutone Icon={HomeIcon} size={20} type={selectedTypeInverse} />
           Home

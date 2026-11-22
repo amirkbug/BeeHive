@@ -16,7 +16,7 @@ import {
   Area,
   AreaChart,
 } from "recharts";
-import { compactFormatter } from "../../utils/helpers";
+import { compactFormatter } from "../../utils/numberHelpers";
 import { useSelector } from "react-redux";
 
 // Dumb data
@@ -124,7 +124,7 @@ const baseClasses = {
 
 function Chart({
   chartType = "pie",
-  token = "sm",
+  token = "lg",
   type = "secondary",
   className = "",
 }) {

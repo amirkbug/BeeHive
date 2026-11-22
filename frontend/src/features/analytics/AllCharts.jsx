@@ -16,12 +16,12 @@ const baseClasses = {
 function AllCharts({ selectedTypeInverse }) {
   return (
     <section className={baseClasses.section}>
-      <Chart token="md" type={selectedTypeInverse} chartType="bar" />
-      <Chart token="md" type={selectedTypeInverse} chartType="dougnut" />
-      <Chart token="md" type={selectedTypeInverse} chartType="area" />
-      <Chart token="md" type={selectedTypeInverse} chartType="line" />
-      <Chart token="md" type={selectedTypeInverse} chartType="pie" />
-      <Chart token="md" type={selectedTypeInverse} chartType="bar" />
+      <Chart token="sm" type={selectedTypeInverse} chartType="bar" />
+      <Chart token="sm" type={selectedTypeInverse} chartType="dougnut" />
+      <Chart token="sm" type={selectedTypeInverse} chartType="area" />
+      <Chart token="sm" type={selectedTypeInverse} chartType="line" />
+      <Chart token="sm" type={selectedTypeInverse} chartType="pie" />
+      <Chart token="sm" type={selectedTypeInverse} chartType="bar" />
     </section>
   );
 }

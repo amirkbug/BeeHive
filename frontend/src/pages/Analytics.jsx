@@ -4,6 +4,7 @@ import {
   CalendarDateIcon,
   CalendarMarkIcon,
   CalendarIcon,
+  CalendarMinimalisticIcon,
 } from "@solar-icons/react/line-duotone";
 
 const baseClasses = {
@@ -19,9 +20,10 @@ const baseClasses = {
 function Analytics() {
   return (
     <section className={baseClasses.section}>
-      <ChartsRow time="Daily" Icon={CalendarDateIcon} />
-      <ChartsRow time="Weekly" Icon={CalendarMarkIcon} />
-      <ChartsRow time="Monthly" Icon={CalendarIcon} />
+      <ChartsRow time="Past year" Icon={CalendarMarkIcon} />
+      <ChartsRow time="Past month" Icon={CalendarMinimalisticIcon} />
+      <ChartsRow time="Past week" Icon={CalendarIcon} />
+      <ChartsRow time="Today" Icon={CalendarDateIcon} />
     </section>
   );
 }

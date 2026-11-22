@@ -3,6 +3,12 @@ import IconDoutone from "../../ui/atoms/IconDoutone";
 
 import { useSearchParams } from "react-router-dom";
 
+const baseClasses = {
+  button: `
+  group-[.active]:opacity-80 group-[.active]:scale-95
+  `,
+};
+
 function NavigationButton({ selectedTypeInverse, content }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -19,7 +25,12 @@ function NavigationButton({ selectedTypeInverse, content }) {
         ${isActive ? "active" : ""}
       `}
     >
-      <Button token="sm" type={selectedTypeInverse} onClick={handleClick}>
+      <Button
+        className={baseClasses.button}
+        token="sm"
+        type={selectedTypeInverse}
+        onClick={handleClick}
+      >
         {content.title}
 
         <IconDoutone Icon={content.Icon} size={16} type={selectedTypeInverse} />

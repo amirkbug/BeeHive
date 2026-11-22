@@ -4,14 +4,13 @@ const baseClasses = {
   div: `
   overflow-x-hidden
   w-full h-full
-  mt-4
+  mt-4.25
   `,
 
   section: `
   flex flex-col flex-1
   justify-between
-  w-full
-  gap-5
+  w-full h-full
   `,
 };
 

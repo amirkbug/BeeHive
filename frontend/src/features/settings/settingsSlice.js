@@ -1,6 +1,11 @@
 import colorPresets from "../../utils/colorPresets";
 
+import {
+  UsersGroupRoundedIcon,
+  WalletMoneyIcon,
+} from "@solar-icons/react/linear";
 import { createSlice } from "@reduxjs/toolkit";
+import { TbShoppingCartDiscount } from "react-icons/tb";
 
 const initialState = {
   selectedPreset: "default",
@@ -20,6 +25,51 @@ const initialState = {
     secondary: "rgba(242, 180, 28, 0.6)",
     accent: "rgba(242, 180, 28, 0.8)",
   },
+
+  kpiContents: [
+    {
+      id: 1,
+      icon: WalletMoneyIcon,
+      title: "Total Revenue",
+      numberFormat: "currency",
+      number: 48250,
+      kpiCaption: "Revenue generated this month",
+      targets: {
+        daily: 2000,
+        weekly: 14000,
+        monthly: 60000,
+        yearly: 720000,
+      },
+    },
+    {
+      id: 2,
+      icon: TbShoppingCartDiscount,
+      title: "Total Orders",
+      numberFormat: "number",
+      number: 1284,
+      kpiCaption: "Orders received this month",
+      targets: {
+        daily: 2000,
+        weekly: 700,
+        monthly: 3000,
+        yearly: 36000,
+      },
+    },
+    {
+      id: 3,
+      icon: UsersGroupRoundedIcon,
+      title: "Total Customers",
+      numberFormat: "compact",
+      number: 3642,
+      kpiCaption: "Customers acquired this month",
+      targets: {
+        daily: 150,
+        weekly: 4000,
+        monthly: 4500,
+        yearly: 54000,
+      },
+    },
+  ],
 };
 
 const settingsSlice = createSlice({

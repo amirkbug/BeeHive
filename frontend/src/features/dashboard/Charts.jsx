@@ -9,7 +9,7 @@ const baseClasses = {
   justify-between
   w-full
   gap-4
-  py-4
+  py-5.75
   pl-5
   pr-10
 `,

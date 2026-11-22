@@ -1,12 +1,9 @@
 import Kpi from "../../ui/organs/Kpi";
 
 import { useThemeContext } from "../../contexts/ThemeContext";
-
-import {
-  WalletMoneyIcon,
-  GraphUpIcon,
-  DangerTriangleIcon,
-} from "@solar-icons/react/line-duotone";
+import { useSelector } from "react-redux";
+import { formatKpiNumber, getKpiType } from "../../utils/kpiHelpers";
+import { useSearchParams } from "react-router-dom";
 
 const baseClasses = {
   section: `
@@ -23,44 +20,31 @@ const baseClasses = {
 
 function KpisDashboard() {
   const { selectedTypeInverse } = useThemeContext();
-
+  const [searchParams] = useSearchParams();
+  const targetPeriod = searchParams.get("period") || "monthly";
+  const kpiContents = useSelector((state) => state.settings.kpiContents);
   return (
     <section className={baseClasses.section}>
-      <Kpi
-        chartValue={30}
-        token="md"
-        type={selectedTypeInverse}
-        kpiType="warning"
-        KpiIconName={WalletMoneyIcon}
-        SubTxtIcon={null}
-        title="Revenue at Risk"
-        number="$9,923"
-        subtxt="Potential revenue at risk."
-      />
-
-      <Kpi
-        chartValue={85}
-        token="md"
-        type={selectedTypeInverse}
-        kpiType="success"
-        KpiIconName={GraphUpIcon}
-        SubTxtIcon={null}
-        title="Revenue Growth"
-        number="+18.6%"
-        subtxt="Revenue increased this month."
-      />
-
-      <Kpi
-        chartValue={15}
-        token="md"
-        type={selectedTypeInverse}
-        kpiType="destructive"
-        KpiIconName={DangerTriangleIcon}
-        SubTxtIcon={null}
-        title="Critical Issues"
-        number="24"
-        subtxt="Issues require immediate attention."
-      />
+      {kpiContents.map((kpi) => {
+        const target = kpi.targets[targetPeriod];
+        const value = Number(kpi.number);
+        const chartValue =
+          target > 0 ? Math.floor(Math.min((value / target) * 100, 100)) : 0;
+        return (
+          <Kpi
+            key={kpi.id}
+            chartValue={chartValue}
+            token="md"
+            type={selectedTypeInverse}
+            kpiType={getKpiType(chartValue)}
+            KpiIconName={kpi.icon}
+            SubTxtIcon={null}
+            title={kpi.title}
+            number={formatKpiNumber(value, kpi.numberFormat)}
+            subtxt={kpi.kpiCaption}
+          />
+        );
+      })}
     </section>
   );
 }

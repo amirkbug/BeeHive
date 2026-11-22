@@ -8,7 +8,7 @@ const baseClasses = {
   flex flex-row
   items-start justify-end
   w-dvw h-dvh
-   py-4
+  py-4
   `,
 
   section: `

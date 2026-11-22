@@ -2,8 +2,9 @@ import Line from "../../ui/atoms/Line";
 
 import {
   CalendarIcon,
-  ClockCircleIcon,
   CalendarMarkIcon,
+  CalendarDateIcon,
+  CalendarMinimalisticIcon,
 } from "@solar-icons/react/line-duotone";
 import { useThemeContext } from "../../contexts/ThemeContext";
 import NavigationButton from "./NavigationButton";
@@ -25,9 +26,26 @@ const baseClasses = {
 };
 
 const buttonsContentTemp = [
-  { title: "Past month", to: "past_month", Icon: CalendarMarkIcon },
-  { title: "Past week", to: "past_week", Icon: CalendarIcon },
-  { title: "Today", to: "today", Icon: ClockCircleIcon },
+  {
+    title: "Past year",
+    to: "yearly",
+    Icon: CalendarMarkIcon,
+  },
+  {
+    title: "Past month",
+    to: "monthly",
+    Icon: CalendarMinimalisticIcon,
+  },
+  {
+    title: "Past week",
+    to: "weekly",
+    Icon: CalendarIcon,
+  },
+  {
+    title: "Today",
+    to: "daily",
+    Icon: CalendarDateIcon,
+  },
 ];
 
 function NavigationButtons() {

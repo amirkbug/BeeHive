@@ -181,6 +181,7 @@ function DropDownUl({ children, name }) {
       id="dropDown"
       style={{
         position: "absolute",
+        width: details?.width,
         top: details && details.top + 8,
         left: details?.left,
       }}
