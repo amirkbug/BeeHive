@@ -31,7 +31,7 @@ const tempNavigationButtonsContent = [
     end: false,
   },
   {
-    to: "kpi-management",
+    to: "kpi-management/1",
     icon: ChartSquareIcon,
     content: "KPI Management",
     end: false,
@@ -67,7 +67,7 @@ const baseClasses = {
   `,
 };
 
-function NavigationButton() {
+function NavigationButtons() {
   const { selectedTypeInverse } = useThemeContext();
 
   return tempNavigationButtonsContent.map((content) => (
@@ -89,4 +89,4 @@ function NavigationButton() {
   ));
 }
 
-export default NavigationButton;
+export default NavigationButtons;

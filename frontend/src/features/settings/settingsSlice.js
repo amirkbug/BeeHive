@@ -1,11 +1,6 @@
 import colorPresets from "../../utils/colorPresets";
 
-import {
-  UsersGroupRoundedIcon,
-  WalletMoneyIcon,
-} from "@solar-icons/react/linear";
 import { createSlice } from "@reduxjs/toolkit";
-import { TbShoppingCartDiscount } from "react-icons/tb";
 
 const initialState = {
   selectedPreset: "default",
@@ -29,10 +24,12 @@ const initialState = {
   kpiContents: [
     {
       id: 1,
-      icon: WalletMoneyIcon,
+      icon: "wallet-money",
       title: "Total Revenue",
       numberFormat: "currency",
       number: 48250,
+      dataSource: "orders",
+      trendDirection: "higher_is_better",
       kpiCaption: "Revenue generated this month",
       targets: {
         daily: 2000,
@@ -43,10 +40,12 @@ const initialState = {
     },
     {
       id: 2,
-      icon: TbShoppingCartDiscount,
+      icon: "cart-large",
       title: "Total Orders",
       numberFormat: "number",
       number: 1284,
+      dataSource: "revenue",
+      trendDirection: "higher_is_better",
       kpiCaption: "Orders received this month",
       targets: {
         daily: 2000,
@@ -57,14 +56,16 @@ const initialState = {
     },
     {
       id: 3,
-      icon: UsersGroupRoundedIcon,
-      title: "Total Customers",
-      numberFormat: "compact",
+      icon: "wallet-money",
+      title: "Total Expenses",
+      numberFormat: "currency",
+      dataSource: "expenses",
       number: 3642,
-      kpiCaption: "Customers acquired this month",
+      trendDirection: "lower_is_better",
+      kpiCaption: "Total expenses this month",
       targets: {
         daily: 150,
-        weekly: 4000,
+        weekly: 3000,
         monthly: 4500,
         yearly: 54000,
       },
@@ -100,6 +101,19 @@ const settingsSlice = createSlice({
       state.statusColors = preset.statusColors;
       state.chartColors = preset.chartColors;
     },
+
+    setKpiContents(state, action) {
+      const { id, data } = action.payload;
+
+      const index = state.kpiContents.findIndex((kpi) => kpi.id === id);
+
+      if (index !== -1) {
+        state.kpiContents[index] = {
+          ...state.kpiContents[index],
+          ...data,
+        };
+      }
+    },
   },
 });
 
@@ -110,4 +124,5 @@ export const {
   setPresetColor,
   setFeedbackColor,
   setChartColor,
+  setKpiContents,
 } = settingsSlice.actions;

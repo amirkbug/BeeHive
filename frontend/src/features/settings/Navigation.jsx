@@ -1,4 +1,4 @@
-import NavigationButton from "./NavigationButtons";
+import NavigationButtons from "./NavigationButtons";
 import { useThemeContext } from "../../contexts/ThemeContext";
 
 const baseClasses = {
@@ -14,7 +14,7 @@ const baseClasses = {
   `,
 };
 
-function SettingsNavigationButtons() {
+function Navigation() {
   const { selectedTypeInverse } = useThemeContext();
 
   return (
@@ -24,9 +24,9 @@ function SettingsNavigationButtons() {
         ${selectedTypeInverse === "primary" ? "border-primary-100/10" : "border-secondary-500/10"}
       `}
     >
-      <NavigationButton />
+      <NavigationButtons />
     </nav>
   );
 }
 
-export default SettingsNavigationButtons;
+export default Navigation;

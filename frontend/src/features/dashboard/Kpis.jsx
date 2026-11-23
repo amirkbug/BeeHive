@@ -2,7 +2,12 @@ import Kpi from "../../ui/organs/Kpi";
 
 import { useThemeContext } from "../../contexts/ThemeContext";
 import { useSelector } from "react-redux";
-import { formatKpiNumber, getKpiType } from "../../utils/kpiHelpers";
+import {
+  chartValue,
+  formatKpiNumber,
+  getKpiType,
+  kpiIconName,
+} from "../../utils/kpiHelpers";
 import { useSearchParams } from "react-router-dom";
 
 const baseClasses = {
@@ -23,21 +28,22 @@ function KpisDashboard() {
   const [searchParams] = useSearchParams();
   const targetPeriod = searchParams.get("period") || "monthly";
   const kpiContents = useSelector((state) => state.settings.kpiContents);
+
   return (
     <section className={baseClasses.section}>
       {kpiContents.map((kpi) => {
         const target = kpi.targets[targetPeriod];
         const value = Number(kpi.number);
-        const chartValue =
-          target > 0 ? Math.floor(Math.min((value / target) * 100, 100)) : 0;
+        const progress = chartValue(target, value, kpi.trendDirection);
+        const kpiIcon = kpiIconName(kpi.icon);
         return (
           <Kpi
             key={kpi.id}
-            chartValue={chartValue}
+            chartValue={progress}
             token="md"
             type={selectedTypeInverse}
-            kpiType={getKpiType(chartValue)}
-            KpiIconName={kpi.icon}
+            kpiType={getKpiType(progress)}
+            KpiIconName={kpiIcon}
             SubTxtIcon={null}
             title={kpi.title}
             number={formatKpiNumber(value, kpi.numberFormat)}

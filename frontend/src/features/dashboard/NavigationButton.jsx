@@ -1,13 +1,7 @@
-import Button from "../../ui/molecules/Button";
 import IconDoutone from "../../ui/atoms/IconDoutone";
+import ToggleButton from "../../ui/molecules/ToggleButton";
 
 import { useSearchParams } from "react-router-dom";
-
-const baseClasses = {
-  button: `
-  group-[.active]:opacity-80 group-[.active]:scale-95
-  `,
-};
 
 function NavigationButton({ selectedTypeInverse, content }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,16 +19,10 @@ function NavigationButton({ selectedTypeInverse, content }) {
         ${isActive ? "active" : ""}
       `}
     >
-      <Button
-        className={baseClasses.button}
-        token="sm"
-        type={selectedTypeInverse}
-        onClick={handleClick}
-      >
-        {content.title}
-
+      <ToggleButton onClick={handleClick}>
+        <p>{content.title}</p>
         <IconDoutone Icon={content.Icon} size={16} type={selectedTypeInverse} />
-      </Button>
+      </ToggleButton>
     </a>
   );
 }

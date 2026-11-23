@@ -26,7 +26,7 @@ function App() {
               <Route index element={<General />} />
               <Route path="notifications" element={<Notifications />} />
               <Route path="customazation" element={<Customazation />} />
-              <Route path="kpi-management" element={<KpiManegement />} />
+              <Route path="kpi-management/:id" element={<KpiManegement />} />
               <Route path="about-us" element={<AboutBeeHive />} />
             </Route>
             <Route path="data" element={<Data />} />

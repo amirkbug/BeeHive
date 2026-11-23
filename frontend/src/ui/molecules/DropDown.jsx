@@ -166,7 +166,7 @@ function DropDownLi({ children, value }) {
   );
 }
 //The function that responsible for showing the dropdown ul
-function DropDownUl({ children, name }) {
+function DropDownUl({ children, name, ...dropDownProps }) {
   //Use context
   const { selectedType, openName, details, handleClose } = useDropDownContext();
 
@@ -179,6 +179,7 @@ function DropDownUl({ children, name }) {
     <ul
       ref={ulRef}
       id="dropDown"
+      {...dropDownProps}
       style={{
         position: "absolute",
         width: details?.width,

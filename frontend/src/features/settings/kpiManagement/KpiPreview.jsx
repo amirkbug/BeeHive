@@ -1,7 +1,14 @@
 import Kpi from "../../../ui/organs/Kpi";
 
-import { WalletMoneyIcon } from "@solar-icons/react/line-duotone";
 import { useThemeContext } from "../../../contexts/ThemeContext";
+import {
+  chartValue,
+  formatKpiNumber,
+  getKpiType,
+  kpiIconName,
+} from "../../../utils/kpiHelpers";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 //Base classes
 const baseClasses = {
@@ -17,19 +24,29 @@ const baseClasses = {
 
 //Component itself
 function KpiPreview() {
+  const { id } = useParams();
   const { selectedTypeInverse } = useThemeContext();
+
+  const kpiContents = useSelector((state) => state.settings.kpiContents);
+  const selectedKpi = kpiContents.find((kpi) => String(kpi.id) === id);
+  const target = selectedKpi.targets.daily;
+  const value = Number(selectedKpi.number);
+  const progress = chartValue(target, value, selectedKpi.trendDirection);
+  const kpiIcon = kpiIconName(selectedKpi.icon);
+
   return (
     <article className={baseClasses.article}>
       <Kpi
-        chartValue={30}
+        key={selectedKpi.id}
+        chartValue={progress}
         token="md"
         type={selectedTypeInverse}
-        kpiType="warning"
-        KpiIconName={WalletMoneyIcon}
+        kpiType={getKpiType(progress)}
+        KpiIconName={kpiIcon}
         SubTxtIcon={null}
-        title="Revenue at Risk"
-        number="$9,923"
-        subtxt="Potential revenue at risk."
+        title={selectedKpi.title}
+        number={formatKpiNumber(value, selectedKpi.numberFormat)}
+        subtxt={selectedKpi.kpiCaption}
       />
     </article>
   );

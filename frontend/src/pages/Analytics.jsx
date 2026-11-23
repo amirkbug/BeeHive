@@ -20,10 +20,10 @@ const baseClasses = {
 function Analytics() {
   return (
     <section className={baseClasses.section}>
-      <ChartsRow time="Past year" Icon={CalendarMarkIcon} />
-      <ChartsRow time="Past month" Icon={CalendarMinimalisticIcon} />
-      <ChartsRow time="Past week" Icon={CalendarIcon} />
       <ChartsRow time="Today" Icon={CalendarDateIcon} />
+      <ChartsRow time="Past week" Icon={CalendarIcon} />
+      <ChartsRow time="Past month" Icon={CalendarMinimalisticIcon} />
+      <ChartsRow time="Past year" Icon={CalendarMarkIcon} />
     </section>
   );
 }

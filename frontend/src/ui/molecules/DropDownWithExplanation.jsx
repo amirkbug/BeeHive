@@ -24,7 +24,9 @@ function DropDownWithExplanation({
   explanation = "Select the data field used to calculate this KPI.",
   dropDownName = "Sync Frequency",
   options = tempOptions,
-  toekn = "md",
+  token = "md",
+  value,
+  onChange,
 }) {
   const { selectedTypeInverse, type } = useThemeContext();
   //For making the dropdown name usable
@@ -49,7 +51,7 @@ function DropDownWithExplanation({
       >
         {explanation}
       </p>
-      <DropDown type={type}>
+      <DropDown optionValue={value} setOptionValue={onChange} type={type}>
         <DropDown.DropDownButton opens={normalizedName}>
           <Button
             className="
@@ -58,7 +60,7 @@ function DropDownWithExplanation({
             type={selectedTypeInverse}
           >
             {dropDownName}
-            <AnimatedIcon position="right" type={type} token={toekn} />
+            <AnimatedIcon position="right" type={type} token={token} />
           </Button>
         </DropDown.DropDownButton>
         <DropDown.DropDownUl name={normalizedName}>
