@@ -7,6 +7,7 @@ import {
   formatKpiNumber,
   getKpiType,
   kpiIconName,
+  kpiNumberBaseOnDataSource,
 } from "../../utils/kpiHelpers";
 import { useSearchParams } from "react-router-dom";
 
@@ -33,7 +34,7 @@ function KpisDashboard() {
     <section className={baseClasses.section}>
       {kpiContents.map((kpi) => {
         const target = kpi.targets[targetPeriod];
-        const value = Number(kpi.number);
+        const value = kpiNumberBaseOnDataSource(kpi.dataSource);
         const progress = chartValue(target, value, kpi.trendDirection);
         const kpiIcon = kpiIconName(kpi.icon);
         return (

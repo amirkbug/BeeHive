@@ -2,9 +2,7 @@ import InputContainer from "../../../ui/molecules/InputContainer";
 import DropDownWithExplanation from "../../../ui/molecules/DropDownWithExplanation";
 import IconWithText from "../../../ui/atoms/IconWithText";
 import TargetInputs from "./TargetInputs";
-import KpiFormButtons from "./FormButtons";
 
-import { useThemeContext } from "../../../contexts/ThemeContext";
 import {
   WalletMoneyIcon,
   GraphUpIcon,
@@ -13,9 +11,7 @@ import {
   TargetIcon,
   DatabaseIcon,
 } from "@solar-icons/react/linear";
-import { Controller, useForm } from "react-hook-form";
-import { setKpiContents } from "../settingsSlice";
-import { useDispatch } from "react-redux";
+import { Controller } from "react-hook-form";
 
 //Objects for rendering the dropdowns
 const dataSourceOptions = [
@@ -117,23 +113,9 @@ const baseClasses = {
 };
 
 //Component itself
-function KpiForm({ selectedKpi }) {
-  const { selectedTypeInverse } = useThemeContext();
-  const { register, handleSubmit, control, reset } = useForm({
-    defaultValues: selectedKpi,
-  });
-  const dispatch = useDispatch();
-
-  function onSubmit(data) {
-    dispatch(setKpiContents({ id: selectedKpi.id, data: data }));
-  }
-
-  function handleResetForm() {
-    reset();
-  }
-
+function KpiForm({ register, control, selectedTypeInverse }) {
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={baseClasses.form}>
+    <section className={baseClasses.form}>
       <InputContainer token="md" type={selectedTypeInverse}>
         <InputContainer.InputTxt>KPI Title</InputContainer.InputTxt>
         <InputContainer.Input
@@ -153,7 +135,7 @@ function KpiForm({ selectedKpi }) {
           render={({ field }) => {
             return (
               <DropDownWithExplanation
-                dropDownName={content.name}
+                dropDownName={content.title}
                 explanation={content.explanation}
                 options={content.options}
                 value={field.value}
@@ -185,12 +167,7 @@ function KpiForm({ selectedKpi }) {
         register={register}
         selectedTypeInverse={selectedTypeInverse}
       />
-
-      <KpiFormButtons
-        selectedTypeInverse={selectedTypeInverse}
-        handleResetForm={handleResetForm}
-      />
-    </form>
+    </section>
   );
 }
 

@@ -6,6 +6,7 @@ import {
   formatKpiNumber,
   getKpiType,
   kpiIconName,
+  kpiNumberBaseOnDataSource,
 } from "../../../utils/kpiHelpers";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -30,7 +31,7 @@ function KpiPreview() {
   const kpiContents = useSelector((state) => state.settings.kpiContents);
   const selectedKpi = kpiContents.find((kpi) => String(kpi.id) === id);
   const target = selectedKpi.targets.daily;
-  const value = Number(selectedKpi.number);
+  const value = kpiNumberBaseOnDataSource(selectedKpi.dataSource);
   const progress = chartValue(target, value, selectedKpi.trendDirection);
   const kpiIcon = kpiIconName(selectedKpi.icon);
 

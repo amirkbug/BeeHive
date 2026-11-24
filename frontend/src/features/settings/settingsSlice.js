@@ -27,7 +27,6 @@ const initialState = {
       icon: "wallet-money",
       title: "Total Revenue",
       numberFormat: "currency",
-      number: 48250,
       dataSource: "orders",
       trendDirection: "higher_is_better",
       kpiCaption: "Revenue generated this month",
@@ -43,7 +42,6 @@ const initialState = {
       icon: "cart-large",
       title: "Total Orders",
       numberFormat: "number",
-      number: 1284,
       dataSource: "revenue",
       trendDirection: "higher_is_better",
       kpiCaption: "Orders received this month",
@@ -60,7 +58,6 @@ const initialState = {
       title: "Total Expenses",
       numberFormat: "currency",
       dataSource: "expenses",
-      number: 3642,
       trendDirection: "lower_is_better",
       kpiCaption: "Total expenses this month",
       targets: {

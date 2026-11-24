@@ -8,13 +8,16 @@ import {
 
 const baseClasses = {
   section: `
-  flex flex-row justify-between
+  flex flex-row justify-start
   w-full
   gap-2
   `,
 };
 
-function KpiFormButtons({ selectedTypeInverse, handleResetForm }) {
+function KpiFormButtons({ selectedTypeInverse, reset }) {
+  function handleResetForm() {
+    reset();
+  }
   return (
     <section className={baseClasses.section}>
       <Button type={selectedTypeInverse} htmlType="submit">

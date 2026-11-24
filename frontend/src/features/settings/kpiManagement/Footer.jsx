@@ -1,3 +1,4 @@
+import KpiFormButtons from "./FormButtons";
 import Pagination from "./Pagination";
 
 const baseClasses = {
@@ -10,9 +11,10 @@ const baseClasses = {
   `,
 };
 
-function Footer() {
+function Footer({ reset, selectedTypeInverse }) {
   return (
     <footer className={baseClasses.footer}>
+      <KpiFormButtons reset={reset} selectedTypeInverse={selectedTypeInverse} />
       <Pagination />
     </footer>
   );

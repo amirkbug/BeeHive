@@ -64,3 +64,15 @@ export const kpiIconName = (iconName) => {
 
   return kpiMapping[iconName] ?? DatabaseIcon;
 };
+
+const dataSourceDefaults = {
+  revenue: 48250,
+  sales: 1284,
+  orders: 1284,
+  users: 3642,
+  expenses: 3642,
+};
+
+export const kpiNumberBaseOnDataSource = (dataSource) => {
+  return dataSourceDefaults[dataSource] ?? 0;
+};

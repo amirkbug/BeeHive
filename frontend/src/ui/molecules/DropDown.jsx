@@ -2,6 +2,7 @@ import {
   cloneElement,
   createContext,
   useContext,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -119,6 +120,18 @@ function DropDownButton({ children, opens: dropDownUlName }) {
     getDetails(buttonRef.current);
   }
 
+  useEffect(() => {
+    function handleScroll() {
+      getDetails(buttonRef.current);
+    }
+
+    document.addEventListener("scroll", handleScroll, true);
+
+    return () => {
+      document.removeEventListener("scroll", handleScroll, true);
+    };
+  }, [getDetails]);
+
   return (
     <div
       onClick={handleClick}
@@ -174,6 +187,30 @@ function DropDownUl({ children, name, ...dropDownProps }) {
   const isOpen = name === openName;
   const ulRef = useOutsideClick(handleClose, true);
 
+  //Prevent user to scroll when there is a open dropdown in page
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    function handleScroll(e) {
+      e.preventDefault();
+    }
+
+    document.addEventListener("wheel", handleScroll, {
+      passive: false,
+    });
+
+    document.addEventListener("touchmove", handleScroll, {
+      passive: false,
+    });
+
+    return () => {
+      document.removeEventListener("wheel", handleScroll);
+      document.removeEventListener("touchmove", handleScroll);
+    };
+  }, [isOpen]);
+
   //Component itself
   return createPortal(
     <ul
@@ -181,7 +218,7 @@ function DropDownUl({ children, name, ...dropDownProps }) {
       id="dropDown"
       {...dropDownProps}
       style={{
-        position: "absolute",
+        position: "fixed",
         width: details?.width,
         top: details && details.top + 8,
         left: details?.left,

@@ -230,7 +230,7 @@ function Description({ children }) {
 //Button container for submit buttons
 function Footer({ children, centered = false }) {
   return (
-    <div
+    <footer
       className={`
         flex flex-row
         items-center justify-between
@@ -239,7 +239,7 @@ function Footer({ children, centered = false }) {
       `}
     >
       {children}
-    </div>
+    </footer>
   );
 }
 
