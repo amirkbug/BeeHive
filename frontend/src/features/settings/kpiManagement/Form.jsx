@@ -113,18 +113,32 @@ const baseClasses = {
 };
 
 //Component itself
-function KpiForm({ register, control, selectedTypeInverse }) {
+function KpiForm({ register, control, selectedTypeInverse, formState }) {
+  const { errors } = formState;
   return (
     <section className={baseClasses.form}>
-      <InputContainer token="md" type={selectedTypeInverse}>
+      <InputContainer
+        hasError={Boolean(errors.title)}
+        inputId="title"
+        token="md"
+        type={selectedTypeInverse}
+      >
         <InputContainer.InputTxt>KPI Title</InputContainer.InputTxt>
         <InputContainer.Input
           LeftIcon={null}
           placeholderText="e.g. Total Revenue"
-          {...register("title")}
+          type="text"
+          {...register("title", {
+            maxLength: {
+              value: 30,
+              message: "Title must not exceed 30 characters.",
+            },
+          })}
         />
         <InputContainer.InputTxt>
-          Enter the main title displayed on the KPI card.
+          {errors?.title?.message
+            ? errors.title.message
+            : "Enter the main title displayed on the KPI card."}
         </InputContainer.InputTxt>
       </InputContainer>
       {dropDownContents.map((content) => (
@@ -145,24 +159,39 @@ function KpiForm({ register, control, selectedTypeInverse }) {
           }}
         />
       ))}
-      <InputContainer token="md" type={selectedTypeInverse}>
+      <InputContainer
+        hasError={Boolean(errors.kpiCaption)}
+        token="md"
+        type={selectedTypeInverse}
+      >
         <InputContainer.InputTxt>KPI Caption</InputContainer.InputTxt>
         <InputContainer.Input
           LeftIcon={null}
           placeholderText="e.g. Revenue generated this month"
-          {...register("kpiCaption")}
+          type="text"
+          id="title"
+          {...register("kpiCaption", {
+            maxLength: {
+              value: 60,
+              message: "Caption must not exceed 60 characters.",
+            },
+          })}
         />
         <InputContainer.InputTxt>
-          Add a short description to provide additional context.
+          {errors?.kpiCaption?.message
+            ? errors.kpiCaption.message
+            : "Enter the main title displayed on the KPI card."}
         </InputContainer.InputTxt>
       </InputContainer>
       <TargetInputs
+        errors={errors}
         contents={firstTargetInputsContents}
         register={register}
         selectedTypeInverse={selectedTypeInverse}
       />
 
       <TargetInputs
+        errors={errors}
         contents={secondTargetInputsContents}
         register={register}
         selectedTypeInverse={selectedTypeInverse}

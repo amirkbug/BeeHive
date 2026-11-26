@@ -8,6 +8,7 @@ const baseClasses = {
     w-full
     gap-2
     mt-5
+    px-2
   `,
 };
 

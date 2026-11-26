@@ -41,6 +41,7 @@ function DropDownWithExplanation({
         flex flex-row
         items-center justify-between
         w-full
+        px-2
       "
     >
       <p

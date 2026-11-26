@@ -179,7 +179,7 @@ function DropDownLi({ children, value }) {
   );
 }
 //The function that responsible for showing the dropdown ul
-function DropDownUl({ children, name, ...dropDownProps }) {
+function DropDownUl({ children, name, className = "", ...dropDownProps }) {
   //Use context
   const { selectedType, openName, details, handleClose } = useDropDownContext();
 
@@ -232,6 +232,7 @@ function DropDownUl({ children, name, ...dropDownProps }) {
         }
         ${base.ulBase}
         ${selectedType.ulType}
+        ${className}
       `}
     >
       {children}

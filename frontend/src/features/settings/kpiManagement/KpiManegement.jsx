@@ -27,7 +27,7 @@ function KpiManegement() {
   const { selectedTypeInverse } = useThemeContext();
   const kpiContents = useSelector((state) => state.settings.kpiContents);
   const selectedKpi = kpiContents.find((kpi) => String(kpi.id) === id);
-  const { register, handleSubmit, control, reset } = useForm({
+  const { register, handleSubmit, control, reset, formState } = useForm({
     defaultValues: selectedKpi,
   });
   const dispatch = useDispatch();
@@ -47,6 +47,7 @@ function KpiManegement() {
         </Explanations>
         <KpiPreview selectedKpi={selectedKpi} />
         <Form
+          formState={formState}
           selectedTypeInverse={selectedTypeInverse}
           register={register}
           control={control}

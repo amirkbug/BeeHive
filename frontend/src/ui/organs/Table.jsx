@@ -13,12 +13,14 @@ import {
   CalendarIcon,
   MenuDotsVerticalIcon,
   DatabaseIcon,
-  ServerIcon,
   ShopIcon,
   UsersGroupRoundedIcon,
-  FolderIcon,
-  SunIcon,
-  BoltIcon,
+  CartLargeIcon,
+  GraphUpIcon,
+  BuildingsIcon,
+  TargetIcon,
+  CloudIcon,
+  CpuIcon,
 } from "@solar-icons/react/line-duotone";
 import { AltArrowUpIcon, AltArrowDownIcon } from "@solar-icons/react/bold";
 
@@ -237,18 +239,19 @@ const tempHeaderContent = [
   },
 ];
 
-//What icon should be in the rows
+// What icon should be displayed in the rows
 const iconMap = {
-  "widget": WidgetIcon,
-  "wallet-money": WalletMoneyIcon,
-  "chart-square": ChartSquareIcon,
-  "database": DatabaseIcon,
-  "server": ServerIcon,
   "shop": ShopIcon,
+  "cart-large": CartLargeIcon,
+  "chart-square": ChartSquareIcon,
+  "graph-up": GraphUpIcon,
+  "wallet-money": WalletMoneyIcon,
+  "database": DatabaseIcon,
   "users-group-rounded": UsersGroupRoundedIcon,
-  "folder": FolderIcon,
-  "sun": SunIcon,
-  "bolt": BoltIcon,
+  "buildings": BuildingsIcon,
+  "target": TargetIcon,
+  "cloud": CloudIcon,
+  "cpu": CpuIcon,
 };
 
 //Objecs for diffrent variations

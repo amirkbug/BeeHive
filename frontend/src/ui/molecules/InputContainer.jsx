@@ -64,6 +64,13 @@ const tokens = {
 
 //Base classes
 const base = {
+  div: `
+  flex flex-col
+  w-full
+  gap-2
+  px-2
+  `,
+
   containerClassesBase: `
   inset-ring-0
   flex flex-row
@@ -103,6 +110,7 @@ function InputContainer({
   token = "md",
   children,
   inputId = "test",
+  hasError = false,
 }) {
   //Error boundry
   const selectedType = Object.hasOwn(types, type) ? type : "primary";
@@ -110,17 +118,9 @@ function InputContainer({
 
   return (
     <InputContext.Provider
-      value={{ selectedToken, selectedType, tokens, types, inputId }}
+      value={{ selectedToken, selectedType, tokens, hasError, types, inputId }}
     >
-      <div
-        className="
-          flex flex-col
-          w-full
-          gap-2
-        "
-      >
-        {children}
-      </div>
+      <div className={base.div}>{children}</div>
     </InputContext.Provider>
   );
 }
@@ -129,13 +129,13 @@ function InputContainer({
 function Input({
   placeholderText = "",
   LeftIcon = LetterIcon,
-  hasError = false,
   classNameMainContainer = "",
   children,
   ...inputProps
 }) {
   //Use context
-  const { tokens, selectedToken, selectedType, inputId } = useFormContext();
+  const { tokens, selectedToken, selectedType, inputId, hasError } =
+    useFormContext();
 
   return (
     <div
@@ -144,7 +144,7 @@ function Input({
         ${tokens[selectedToken].inputHeight}
         ${types[selectedType].containerClasses}
         ${classNameMainContainer}
-        ${hasError ? "inset-ring-1 inset-ring-destructive-500" : ""}
+        ${hasError ? "inset-ring-1 inset-ring-destructive-500 hover:shadow-300-destructure-BoxShadowM has-focus:inset-ring-1 has-focus:inset-ring-destructive-500" : ""}
       `}
     >
       <div
@@ -195,8 +195,8 @@ function InputRightContent({ children }) {
 }
 
 //Txtx above the input
-function InputTxt({ isCaption = false, children }) {
-  const { selectedToken, selectedType, inputId } = useFormContext();
+function InputTxt({ isCaption = false, children, classNameOnError = "" }) {
+  const { selectedToken, selectedType, inputId, hasError } = useFormContext();
 
   const Tag = isCaption ? "span" : "label";
 
@@ -208,6 +208,7 @@ function InputTxt({ isCaption = false, children }) {
         ${base.inputTxtbase}
         ${tokens[selectedToken].textSize}
         ${types[selectedType].inputTxtClasses}
+        ${hasError ? classNameOnError : ""}
       `}
       {...tagProps}
     >

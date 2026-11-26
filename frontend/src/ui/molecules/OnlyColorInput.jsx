@@ -10,6 +10,7 @@ const baseClasses = {
     relative
     inline-flex
     shrink-0
+    pl-2
   `,
 };
 

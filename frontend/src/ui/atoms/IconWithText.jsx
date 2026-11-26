@@ -1,4 +1,5 @@
 import { TargetIcon } from "@solar-icons/react/linear";
+import IconDoutone from "./IconDoutone";
 
 const baseClasses = {
   span: `
@@ -13,7 +14,7 @@ function IconWithText({ Icon = TargetIcon, title = "Database" }) {
   return (
     <span className={baseClasses.span}>
       <p>{title}</p>
-      <Icon size={18} />
+      <IconDoutone Icon={Icon} size={18} />
     </span>
   );
 }

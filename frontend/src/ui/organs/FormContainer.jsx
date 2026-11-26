@@ -66,6 +66,13 @@ const baseClasses = {
   bg-black/25
   backdrop-blur-xs
   transition-all`,
+
+  footer: `
+  flex flex-row
+  items-center justify-between
+  w-full
+  px-2
+  `,
 };
 
 const shadows = {
@@ -80,6 +87,8 @@ function FormContainer({
   shadow = "regular",
   size = "lg",
   type = "primary",
+  onSubmit,
+  isValid,
 }) {
   //Error boundry
   const selectedType = Object.hasOwn(types, type) ? type : "primary";
@@ -88,10 +97,19 @@ function FormContainer({
 
   //States and handle functions
   const [openName, setOpenName] = useState(null);
-
-  const close = () => setOpenName(null);
-
   const open = setOpenName;
+
+  const close = () => {
+    setOpenName(null);
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit();
+    if (isValid) {
+      close();
+    }
+  }
 
   //Component itself
   return (
@@ -103,6 +121,7 @@ function FormContainer({
         close,
         open,
         openName,
+        handleSubmit,
       }}
     >
       {children}
@@ -113,7 +132,7 @@ function FormContainer({
 //Window that had the main content
 function Window({ children, name }) {
   //Use context values
-  const { selectedType, openName, close } = useFormContext();
+  const { selectedType, openName, close, handleSubmit } = useFormContext();
 
   //States and variables
   const isOpen = name === openName;
@@ -122,7 +141,8 @@ function Window({ children, name }) {
 
   //Component itself
   return (
-    <article
+    <form
+      onSubmit={handleSubmit}
       ref={ref}
       className={`
         ${
@@ -135,12 +155,12 @@ function Window({ children, name }) {
       `}
     >
       {children}
-    </article>
+    </form>
   );
 }
 
 //Form component responsible for showing the form
-function Form({ centered = false, children }) {
+function Form({ centered = false, children, onSubmit }) {
   const { selectedSize, selectedShadow, selectedType } = useFormContext();
 
   return (
@@ -159,6 +179,7 @@ function Form({ centered = false, children }) {
           w-full h-full
           ${centered ? "items-center" : ""}
         `}
+        onSubmit={onSubmit}
       >
         {children}
       </form>
@@ -232,9 +253,7 @@ function Footer({ children, centered = false }) {
   return (
     <footer
       className={`
-        flex flex-row
-        items-center justify-between
-        w-full
+        ${baseClasses.footer}
         ${centered ? "justify-center" : "justify-between"}
       `}
     >
@@ -275,10 +294,15 @@ function Overlay() {
 }
 
 //We needed to clone the button so we could add open fn to it
-function OpenButton({ children, opens: openWindowName }) {
+function OpenButton({ children, opens: openWindowName, onOpen }) {
   const { open } = useFormContext();
 
-  return cloneElement(children, { onClick: () => open(openWindowName) });
+  function handleOpen() {
+    open(openWindowName);
+    onOpen();
+  }
+
+  return cloneElement(children, { onClick: handleOpen });
 }
 
 //We needed to clone the button so we could add close fn to it
